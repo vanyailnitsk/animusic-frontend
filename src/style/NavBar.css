@@ -1,0 +1,8 @@
+.custom-navbar {
+    position: relative;
+}
+
+.volume-slider {
+    width: 100px; /* Настройте ширину ползунка по своему усмотрению */
+    margin-top: 10px;
+}

@@ -2,13 +2,15 @@
 import React from 'react';
 import {Navbar, Nav, NavDropdown, Container} from 'react-bootstrap';
 import {CREATE_ANIME, CREATE_SOUNDTRACK_FROM_FILE, CREATE_SOUNDTRACK_FROM_YOUTUBE, HOME_ROUTE} from "./routes";
+import MusicPlayer from "../components/MusicPlayer";
 
 const NavBar = ({animeNavs}) => {
     return (
         <Navbar bg="dark" data-bs-theme="dark">
-            <Container className="border-0">
-                <Navbar.Brand href="#home">Animusic</Navbar.Brand>
-                <Nav className="me-auto">
+            <Container className="border-0 p-0">
+                <Navbar.Brand href="/">Animusic</Navbar.Brand>
+                <MusicPlayer className="m-5"/>
+                <Nav className="me-auto ms-3">
                     <Nav.Link href={HOME_ROUTE}>Home</Nav.Link>
                     <Nav.Link href={CREATE_ANIME}>Create Anime</Nav.Link>
                     <NavDropdown title="Create soundtrack" id="basic-nav-dropdown">

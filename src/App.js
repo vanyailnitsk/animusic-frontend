@@ -14,7 +14,6 @@ function App() {
     return (
         <Provider store={store}>
             <NavBar animeNavs={animeNavs}/>
-            <MusicPlayer/>
             <AppRouter/>
         </Provider>
     );

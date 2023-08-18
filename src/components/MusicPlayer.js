@@ -29,7 +29,7 @@ const MusicPlayer = () => {
         <div>
             <div>
                 {currentTrackId && (
-                    <audio ref={audioRef} src={`http://localhost:1234/${currentTrackId}`} controls autoPlay></audio>
+                    <audio ref={audioRef} src={process.env.REACT_APP_AUDIO_URL+currentTrackId} controls autoPlay></audio>
                 )}
             </div>
             <input

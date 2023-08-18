@@ -14,13 +14,28 @@ const AnimePage = () => {
                 return data.data.soundtracks;
             })
             .then(soundtracksData => {
+                soundtracksData.sort((a, b) => a.animeTitle.localeCompare(b.animeTitle));
                 setSoundtracks(soundtracksData);
             });
     }, [id]);
+
+    const groupedSoundtracks = soundtracks.reduce((groups, soundtrack) => {
+        if (!groups[soundtrack.type]) {
+            groups[soundtrack.type] = [];
+        }
+        groups[soundtrack.type].push(soundtrack);
+        return groups;
+    }, {});
+
     return (
         <div>
             <h1>{animeData.title}</h1>
-            <SoundtrackList soundtracks={soundtracks}/>
+            {Object.keys(groupedSoundtracks).map((category) => (
+                <div key={category}>
+                    <h2>{category}</h2>
+                    <SoundtrackList soundtracks={groupedSoundtracks[category]} />
+                </div>
+            ))}
         </div>
     );
 };

@@ -90,7 +90,7 @@ const CreateSoundtrack = () => {
                     />
                 </Form.Group>
 
-                <Button variant="primary" onClick={handleSubmit}>Create</Button>
+                <Button variant="primary" onClick={handleSubmit} className="mt-2">Create</Button>
             </Form>
             <p>{status}</p>
         </Container>
