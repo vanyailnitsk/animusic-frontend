@@ -5,10 +5,17 @@ const MusicPlayer = () => {
     const audioRef = useRef(null);
     const [volume, setVolume] = useState(0.25);
     const {currentTrackId} = useSelector((state) => state.player);
+    const [isPlaying,setIsPlaying] = useState(false)
 
     useEffect(() => {
         audioRef.current.volume = volume
-    })
+        if (isPlaying) {
+            audioRef.current.play()
+        }
+        else {
+            audioRef.current.pause()
+        }
+    },[isPlaying])
     const handleVolumeChange = (event) => {
         const newVolume = parseFloat(event.target.value);
         setVolume(newVolume);

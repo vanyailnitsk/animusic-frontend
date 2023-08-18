@@ -1,0 +1,44 @@
+.soundtrack-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 75%; /* Установите максимальную ширину по вашему выбору */
+}
+
+.soundtrack-play-button {
+    background-color: #1db954;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.soundtrack-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.soundtrack-title {
+    margin: 0;
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.soundtrack-anime {
+    margin: 5px 0;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

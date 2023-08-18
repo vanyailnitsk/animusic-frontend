@@ -1,18 +1,19 @@
 import './App.css';
-import UploadSoundtrack from "./modals/UploadSoundtrack";
-import {BrowserRouter, Route, Router, Routes} from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import AnimePage from "./pages/AnimePage";
-import AppRouter from "./AppRouter";
-import {PlayerProvider} from "./context/PlayerContext";
+import AppRouter from "./navigation/AppRouter";
 import MusicPlayer from "./components/MusicPlayer";
 import {Provider} from "react-redux";
 import store from './store/index'
+import NavBar from "./navigation/NavBar";
+import {useEffect, useState} from "react";
+import {getAnimeNavs} from "./services/api/anime";
 function App() {
-
-
+    const [animeNavs,setAnimeNavs] = useState([])
+    useEffect(() => {
+        getAnimeNavs().then(data => setAnimeNavs(data.data))
+    },[])
     return (
         <Provider store={store}>
+            <NavBar animeNavs={animeNavs}/>
             <MusicPlayer/>
             <AppRouter/>
         </Provider>

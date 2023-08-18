@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
-import {createSoundtrackFromFile} from "../services/api/audio";
 import {Button, Container, Form} from "react-bootstrap";
 import '../style/UploadSoundtrack.css'
-const UploadSoundtrack = () => {
-    const [file, setFile] = useState(null);
+import {createSoundtrackFromYoutube} from "../services/api/audio";
+const CreateSoundtrack = () => {
     const [soundtrackData, setSoundtrackData] = useState({
         originalTitle: '',
         animeTitle: '',
         trackType: 'OPENING',
+        videoUrl:'',
         anime:''
     });
     const [status,setStatus] = useState("")
 
-    const handleFileChange = (event) => {
-        setFile(event.target.files[0]);
-    };
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -25,14 +22,7 @@ const UploadSoundtrack = () => {
     };
 
     const handleSubmit = () => {
-        const formData = new FormData();
-        formData.append('file', file);
-
-        for (const key in soundtrackData) {
-            formData.append(key, soundtrackData[key]);
-        }
-        console.log(soundtrackData.trackType)
-        createSoundtrackFromFile(formData)
+        createSoundtrackFromYoutube(soundtrackData)
             .then(data => setStatus("Саундтрек успешно создан"))
             .catch(error => setStatus("Ошибка при создании саундтрека"));
     };
@@ -89,19 +79,22 @@ const UploadSoundtrack = () => {
                     />
                 </Form.Group>
 
-                <Form.Group controlId="file">
-                    <Form.Label>File</Form.Label>
+                <Form.Group controlId="videoUrl">
+                    <Form.Label>Youtube URL</Form.Label>
                     <Form.Control
-                        type="file"
-                        onChange={handleFileChange}
+                        type="text"
+                        name="videoUrl"
+                        value={soundtrackData.videoUrl}
+                        onChange={handleInputChange}
+                        placeholder="URL"
                     />
                 </Form.Group>
 
-                <Button variant="primary" onClick={handleSubmit}>Upload</Button>
+                <Button variant="primary" onClick={handleSubmit}>Create</Button>
             </Form>
             <p>{status}</p>
         </Container>
     );
 };
 
-export default UploadSoundtrack;
+export default CreateSoundtrack;

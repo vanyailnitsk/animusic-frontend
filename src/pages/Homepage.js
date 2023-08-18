@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import MusicPlayer from "../components/MusicPlayer";
-import UploadSoundtrack from "../modals/UploadSoundtrack";
 
 const Homepage = () => {
     const track1 = 'http://localhost:1234/Hunting For Your Dream.mp3';
