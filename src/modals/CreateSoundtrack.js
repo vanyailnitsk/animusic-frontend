@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Container, Form} from "react-bootstrap";
 import '../style/UploadSoundtrack.css'
 import {createSoundtrackFromYoutube} from "../services/api/audio";
+import {getAnimeNavs} from "../services/api/anime";
 const CreateSoundtrack = () => {
     const [soundtrackData, setSoundtrackData] = useState({
         originalTitle: '',
@@ -10,7 +11,12 @@ const CreateSoundtrack = () => {
         videoUrl:'',
         anime:''
     });
+    const [animeTitles,setAnimeTitles] = useState([])
     const [status,setStatus] = useState("")
+
+    useEffect(() => {
+        getAnimeNavs().then(data => setAnimeTitles(data.data))
+    },[])
 
 
     const handleInputChange = (event) => {
@@ -70,13 +76,17 @@ const CreateSoundtrack = () => {
 
                 <Form.Group controlId="anime">
                     <Form.Label>Anime</Form.Label>
-                    <Form.Control
-                        type="text"
+                    <Form.Select
                         name="anime"
                         value={soundtrackData.anime}
-                        onChange={handleInputChange}
-                        placeholder="Anime"
-                    />
+                        onChange={handleInputChange}>
+                        <option value="">Select an anime title</option>
+                        {animeTitles.map((title) => (
+                            <option key={title.title} value={title.title}>
+                                {title.title}
+                            </option>
+                        ))}
+                    </Form.Select>
                 </Form.Group>
 
                 <Form.Group controlId="videoUrl">

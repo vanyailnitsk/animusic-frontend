@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { playTrack, setCurrentTrackId } from "../store/playerActions";
+import { playTrack, setCurrentTrack } from "../store/playerActions";
 import "../style/Soundtrack.css";
 
 const Soundtrack = ({ soundtrackData }) => {
@@ -8,7 +8,7 @@ const Soundtrack = ({ soundtrackData }) => {
 
     const playTrackHandler = () => {
         dispatch(playTrack(soundtrackData));
-        dispatch(setCurrentTrackId(soundtrackData.pathToFile)); // Установите текущий трек по ID
+        dispatch(setCurrentTrack(soundtrackData)); // Установите текущий трек по ID
     };
 
     return (

@@ -7,13 +7,9 @@ import NavBar from "./navigation/NavBar";
 import {useEffect, useState} from "react";
 import {getAnimeNavs} from "./services/api/anime";
 function App() {
-    const [animeNavs,setAnimeNavs] = useState([])
-    useEffect(() => {
-        getAnimeNavs().then(data => setAnimeNavs(data.data))
-    },[])
+
     return (
         <Provider store={store}>
-            <NavBar animeNavs={animeNavs}/>
             <AppRouter/>
         </Provider>
     );

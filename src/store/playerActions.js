@@ -1,4 +1,3 @@
-// store/playerActions.js
 export const playTrack = (track) => {
     return {
         type: "PLAY_TRACK",
@@ -6,9 +5,9 @@ export const playTrack = (track) => {
     };
 };
 
-export const setCurrentTrackId = (trackId) => {
+export const setCurrentTrack = (track) => {
     return {
-        type: "SET_CURRENT_TRACK_ID",
-        payload: trackId,
+        type: "SET_CURRENT_TRACK",
+        payload: track,
     };
 };

@@ -4,7 +4,8 @@ import {useSelector} from "react-redux";
 const MusicPlayer = () => {
     const audioRef = useRef(null);
     const [volume, setVolume] = useState(0.25);
-    const {currentTrackId} = useSelector((state) => state.player);
+    //const {currentTrackId} = useSelector((state) => state.player);
+    const {currentTrack} = useSelector(state => state.player)
     const [isPlaying,setIsPlaying] = useState(false)
 
     useEffect(() => {
@@ -27,16 +28,19 @@ const MusicPlayer = () => {
     };
     return (
         <div>
+            {currentTrack &&
+                <p style={{ color: 'white' }}>{currentTrack.animeName+' - '+currentTrack.animeTitle}</p>}
             <div>
-                {currentTrackId && (
-                    <audio ref={audioRef} src={process.env.REACT_APP_AUDIO_URL+currentTrackId} controls autoPlay></audio>
-                )}
+                    <audio ref={audioRef}
+                           src={currentTrack && process.env.REACT_APP_AUDIO_URL+currentTrack.pathToFile} controls autoPlay>
+
+                    </audio>
             </div>
             <input
                 type="range"
                 min="0"
                 max="1"
-                step="0.05"
+                step="0.01"
                 value={volume}
                 onChange={handleVolumeChange}
                 className="volume-slider"

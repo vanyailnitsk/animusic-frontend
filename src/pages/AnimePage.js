@@ -28,7 +28,7 @@ const AnimePage = () => {
     }, {});
 
     return (
-        <div>
+        <div className="ms-2">
             <h1>{animeData.title}</h1>
             {Object.keys(groupedSoundtracks).map((category) => (
                 <div key={category}>

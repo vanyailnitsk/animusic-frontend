@@ -1,7 +1,7 @@
-// store/playerReducer.js
+
 const initialState = {
-    currentTrack: null,
-    currentTrackId: localStorage.getItem("currentTrackId") || null,
+    //currentTrack: null,
+    currentTrack: JSON.parse(localStorage.getItem("currentTrack")) || null,
     isPlaying: false,
 };
 
@@ -13,11 +13,11 @@ const playerReducer = (state = initialState, action) => {
                 currentTrack: action.payload,
                 isPlaying: true,
             };
-        case "SET_CURRENT_TRACK_ID":
-            localStorage.setItem("currentTrackId", action.payload);
+        case "SET_CURRENT_TRACK":
+            localStorage.setItem("currentTrack", JSON.stringify(action.payload));
             return {
                 ...state,
-                currentTrackId: action.payload,
+                currentTrack: action.payload,
             };
         case "PAUSE_TRACK":
             return {
