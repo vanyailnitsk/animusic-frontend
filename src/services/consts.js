@@ -1,0 +1,1 @@
+export const trackTypes = ["OPENING", "ENDING", "THEME", "SCENE_SONG"];

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { getAnimeInfo} from "../services/api/anime";
 import {useParams} from "react-router-dom";
 import SoundtrackList from "../components/SoundtrackList";
+import {trackTypes} from "../services/consts";
 
 const AnimePage = () => {
     const {id} = useParams()
@@ -30,11 +31,13 @@ const AnimePage = () => {
     return (
         <div className="ms-2">
             <h1>{animeData.title}</h1>
-            {Object.keys(groupedSoundtracks).map((category) => (
-                <div key={category}>
-                    <h2>{category}</h2>
-                    <SoundtrackList soundtracks={groupedSoundtracks[category]} />
-                </div>
+            {trackTypes.map((category) => (
+                groupedSoundtracks[category] && (
+                    <div key={category}>
+                        <h2>{category}</h2>
+                        <SoundtrackList soundtracks={groupedSoundtracks[category]} />
+                    </div>
+                )
             ))}
         </div>
     );

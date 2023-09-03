@@ -32,7 +32,9 @@ const MusicPlayer = () => {
                 <p style={{ color: 'white' }}>{currentTrack.animeName+' - '+currentTrack.animeTitle}</p>}
             <div>
                     <audio ref={audioRef}
-                           src={currentTrack && process.env.REACT_APP_AUDIO_URL+currentTrack.pathToFile} controls autoPlay>
+                           src={currentTrack && process.env.REACT_APP_AUDIO_URL+currentTrack.pathToFile} controls autoPlay
+                            onEnded={() => audioRef.current.play()}
+                    >
 
                     </audio>
             </div>
