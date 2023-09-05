@@ -1,3 +1,2 @@
 [build]
-  command = "npm run build" # Замените эту команду на вашу команду сборки, если она отличается
-  publish = "build" # Замените "build" на путь к каталогу с вашим собранным приложением
+  command = "CI= npm run build"
