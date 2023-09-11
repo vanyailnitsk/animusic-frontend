@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { getAnimeInfo} from "../services/api/anime";
 import {useParams} from "react-router-dom";
 import SoundtrackList from "../components/SoundtrackList";
-import {trackTypes} from "../services/consts";
+import {trackTypes, trackTypeToName} from "../services/consts";
 
 const AnimePage = () => {
     const {id} = useParams()
@@ -15,7 +15,6 @@ const AnimePage = () => {
                 return data.data.soundtracks;
             })
             .then(soundtracksData => {
-                soundtracksData.sort((a, b) => a.animeTitle.localeCompare(b.animeTitle));
                 setSoundtracks(soundtracksData);
             });
     }, [id]);
@@ -34,7 +33,7 @@ const AnimePage = () => {
             {trackTypes.map((category) => (
                 groupedSoundtracks[category] && (
                     <div key={category}>
-                        <h2>{category}</h2>
+                        <h2>{trackTypeToName[category]}</h2>
                         <SoundtrackList soundtracks={groupedSoundtracks[category]} />
                     </div>
                 )
