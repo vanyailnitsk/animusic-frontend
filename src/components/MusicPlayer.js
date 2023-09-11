@@ -9,14 +9,10 @@ const MusicPlayer = () => {
     //const {currentTrackId} = useSelector((state) => state.player);
     const playlist = useSelector((state) => state.player.playlist);
     const currentTrackIndex = useSelector((state) => state.player.currentTrackIndex);
-    const {currentTrack} = playlist[currentTrackIndex]
     const dispatch = useDispatch();
     const [isPlaying] = useState(false)
 
     useEffect(() => {
-        // if (playlist.length > 0 && currentTrackIndex >= 0) {
-        //     setCurrentTrack(playlist[currentTrackIndex]);
-        // }
         audioRef.current.volume = volume
         if (isPlaying) {
             audioRef.current.play()
@@ -37,7 +33,6 @@ const MusicPlayer = () => {
 
     const playNextTrack = () => {
         const nextIndex = currentTrackIndex + 1;
-        // Проверьте, не вышел ли индекс за пределы плейлиста
         if (nextIndex < playlist.length) {
             dispatch(setCurrentTrackIndex(nextIndex));
         } else {

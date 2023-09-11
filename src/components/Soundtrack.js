@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {playTrack, setCurrentPlaylist, setCurrentTrack} from "../store/playerActions";
+import {playTrack, setCurrentPlaylist} from "../store/playerActions";
 import "../style/Soundtrack.css";
 
 const Soundtrack = ({ soundtrackData,playlist,index }) => {
