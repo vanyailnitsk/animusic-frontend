@@ -1,14 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { playTrack, setCurrentTrack } from "../store/playerActions";
+import {playTrack, setCurrentPlaylist, setCurrentTrack} from "../store/playerActions";
 import "../style/Soundtrack.css";
 
-const Soundtrack = ({ soundtrackData }) => {
+const Soundtrack = ({ soundtrackData,playlist,index }) => {
     const dispatch = useDispatch();
 
     const playTrackHandler = () => {
-        dispatch(playTrack(soundtrackData));
-        dispatch(setCurrentTrack(soundtrackData)); // Установите текущий трек по ID
+        dispatch(setCurrentPlaylist(playlist))
+        dispatch(playTrack(index));
     };
 
     return (

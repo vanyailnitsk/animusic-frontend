@@ -1,14 +1,22 @@
 import React, {useEffect, useRef, useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setCurrentTrackIndex} from "../store/playerActions";
+import {Button} from "react-bootstrap";
 
 const MusicPlayer = () => {
     const audioRef = useRef(null);
     const [volume, setVolume] = useState(0.25);
     //const {currentTrackId} = useSelector((state) => state.player);
-    const {currentTrack} = useSelector(state => state.player)
+    const playlist = useSelector((state) => state.player.playlist);
+    const currentTrackIndex = useSelector((state) => state.player.currentTrackIndex);
+    const {currentTrack} = playlist[currentTrackIndex]
+    const dispatch = useDispatch();
     const [isPlaying] = useState(false)
 
     useEffect(() => {
+        // if (playlist.length > 0 && currentTrackIndex >= 0) {
+        //     setCurrentTrack(playlist[currentTrackIndex]);
+        // }
         audioRef.current.volume = volume
         if (isPlaying) {
             audioRef.current.play()
@@ -26,14 +34,26 @@ const MusicPlayer = () => {
             audioElement.volume = newVolume;
         }
     };
+
+    const playNextTrack = () => {
+        const nextIndex = currentTrackIndex + 1;
+        // Проверьте, не вышел ли индекс за пределы плейлиста
+        if (nextIndex < playlist.length) {
+            dispatch(setCurrentTrackIndex(nextIndex));
+        } else {
+            dispatch(setCurrentTrackIndex(0));
+        }
+    };
     return (
         <div>
-            {currentTrack &&
-                <p style={{ color: 'white' }}>{currentTrack.animeName+' - '+currentTrack.animeTitle}</p>}
+            {playlist[currentTrackIndex] &&
+                <p style={{ color: 'white' }}>
+                    {playlist[currentTrackIndex].animeName+' - '+playlist[currentTrackIndex].animeTitle}
+                </p>}
             <div>
                     <audio ref={audioRef}
-                           src={currentTrack && process.env.REACT_APP_AUDIO_URL+currentTrack.pathToFile} controls autoPlay
-                            onEnded={() => audioRef.current.play()}
+                           src={playlist[currentTrackIndex] && process.env.REACT_APP_AUDIO_URL+playlist[currentTrackIndex].pathToFile} controls autoPlay
+                            onEnded={playNextTrack}
                     >
 
                     </audio>
@@ -47,6 +67,7 @@ const MusicPlayer = () => {
                 onChange={handleVolumeChange}
                 className="volume-slider"
             />
+            <Button size="sm" className="ms-3" onClick={playNextTrack}>Next</Button>
         </div>
     );
 };

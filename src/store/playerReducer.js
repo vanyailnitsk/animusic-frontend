@@ -1,7 +1,6 @@
-
 const initialState = {
-    //currentTrack: null,
-    currentTrack: JSON.parse(localStorage.getItem("currentTrack")) || null,
+    playlist: JSON.parse(localStorage.getItem("playlist")) || [], // Инициализация пустого плейлиста
+    currentTrackIndex: JSON.parse(localStorage.getItem("currentTrackIndex")) || 0, // Индекс текущего трека
     isPlaying: false,
 };
 
@@ -10,14 +9,19 @@ const playerReducer = (state = initialState, action) => {
         case "PLAY_TRACK":
             return {
                 ...state,
-                currentTrack: action.payload,
+                currentTrackIndex: action.payload, // Сохраняем индекс текущего трека
                 isPlaying: true,
             };
-        case "SET_CURRENT_TRACK":
-            localStorage.setItem("currentTrack", JSON.stringify(action.payload));
+        case "SET_CURRENT_TRACK_INDEX":
             return {
                 ...state,
-                currentTrack: action.payload,
+                currentTrackIndex: action.payload,
+            };
+        case "SET_PLAYLIST":
+            localStorage.setItem("playlist", JSON.stringify(action.payload)); // Сохраняем плейлист
+            return {
+                ...state,
+                playlist: action.payload,
             };
         case "PAUSE_TRACK":
             return {
