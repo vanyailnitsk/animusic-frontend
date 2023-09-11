@@ -14,7 +14,7 @@ const NavBar = () => {
         getAnimeNavs().then(data => setAnimeNavs(data.data))
     }, [])
     return (
-        <Navbar bg="dark" data-bs-theme="dark">
+        <Navbar bg="dark" data-bs-theme="dark" expand="lg">
             <Container className="border-0 p-0">
                 <Navbar.Brand href="/">Animusic</Navbar.Brand>
                 <MusicPlayer className="m-5"/>
@@ -26,12 +26,10 @@ const NavBar = () => {
                     </Nav.Link>
                     <NavDropdown title="Create soundtrack" id="basic-nav-dropdown">
                         <NavDropdown.Item
-                            // href={CREATE_SOUNDTRACK_FROM_FILE}>from file
                             onClick={() => navigate(CREATE_SOUNDTRACK_FROM_FILE)}
                         >from file
                         </NavDropdown.Item>
                         <NavDropdown.Item
-                            // href={CREATE_SOUNDTRACK_FROM_YOUTUBE}>from YouTube
                             onClick={() => navigate(CREATE_SOUNDTRACK_FROM_YOUTUBE)}
                         >from YouTube
                         </NavDropdown.Item>
