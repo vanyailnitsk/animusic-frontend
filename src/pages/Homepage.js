@@ -15,10 +15,8 @@ const Homepage = () => {
         }
     }
     return (
-        <div className="App" >
-            <MusicPlayer trackUrl={trackUrl}/>
-            <h1>{new Date().getTime()}</h1>
-            <button onClick={changeTrack}>Следующий трек</button>
+        <div>
+
         </div>
     );
 };

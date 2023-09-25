@@ -11,6 +11,7 @@ const MusicPlayer = () => {
     const currentTrackIndex = useSelector((state) => state.player.currentTrackIndex);
     const dispatch = useDispatch();
     const [isPlaying] = useState(false)
+    const audioUrl = process.env.REACT_APP_AUDIO_URL;
 
     useEffect(() => {
         audioRef.current.volume = volume
@@ -39,6 +40,7 @@ const MusicPlayer = () => {
             dispatch(setCurrentTrackIndex(0));
         }
     };
+
     return (
         <div>
             {playlist[currentTrackIndex] &&
@@ -47,7 +49,9 @@ const MusicPlayer = () => {
                 </p>}
             <div>
                     <audio ref={audioRef}
-                           src={playlist[currentTrackIndex] && process.env.REACT_APP_AUDIO_URL+playlist[currentTrackIndex].pathToFile} controls autoPlay
+                           src={playlist[currentTrackIndex] && audioUrl + playlist[currentTrackIndex].id}
+                           controls
+                           autoPlay
                             onEnded={playNextTrack}
                     >
 
