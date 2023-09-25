@@ -39,7 +39,7 @@ const UploadSoundtrack = () => {
 
 
     return (
-        <Container className="mt-4">
+        <Container >
             <Form>
                 <Form.Group controlId="originalTitle">
                     <Form.Label>Original Title</Form.Label>

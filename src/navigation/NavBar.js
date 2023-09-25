@@ -6,6 +6,7 @@ import MusicPlayer from "../components/MusicPlayer";
 import '../style/NavBar.css'
 import {useNavigate} from "react-router-dom";
 import {getAnimeNavs} from "../services/api/anime";
+import {findAllByDisplayValue} from "@testing-library/react";
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -14,38 +15,19 @@ const NavBar = () => {
         getAnimeNavs().then(data => setAnimeNavs(data.data))
     }, [])
     return (
-        <Navbar bg="dark" data-bs-theme="dark" expand="lg">
-            <Container className="border-0 p-0">
-                <Navbar.Brand href="/">Animusic</Navbar.Brand>
-                <MusicPlayer className="m-5"/>
-                <Nav className="me-auto ms-3">
-                    <Nav.Link onClick={() => navigate(HOME_ROUTE)}>Home</Nav.Link>
-                    <Nav.Link
-                        onClick={() => navigate(CREATE_ANIME)}
-                    >Create Anime
-                    </Nav.Link>
-                    <NavDropdown title="Create soundtrack" id="basic-nav-dropdown">
-                        <NavDropdown.Item
-                            onClick={() => navigate(CREATE_SOUNDTRACK_FROM_FILE)}
-                        >from file
-                        </NavDropdown.Item>
-                        <NavDropdown.Item
-                            onClick={() => navigate(CREATE_SOUNDTRACK_FROM_YOUTUBE)}
-                        >from YouTube
-                        </NavDropdown.Item>
-                    </NavDropdown>
-                    <NavDropdown title="Anime" id="basic-nav-dropdown">
-                        {animeNavs && animeNavs.map(anime => (
-                            <NavDropdown.Item
-                                key={anime.id}
-                                onClick={() => navigate(`/anime/${anime.id}`)}
-                            >{anime.title}
-                            </NavDropdown.Item>
-                        ))}
-                    </NavDropdown>
-                </Nav>
-            </Container>
-        </Navbar>
+    <div className="home">
+    <div className="nav_container">
+        <div className="navigation">
+            <div className="logo">Animusic</div>
+            <div className="actions">
+                <input className="browse" type="text" id="search-box" placeholder="Поиск аниме"/>
+            </div>
+        </div>
+    </div>
+    <div className="player">
+        вапавап
+    </div>
+    </div>
     );
 };
 

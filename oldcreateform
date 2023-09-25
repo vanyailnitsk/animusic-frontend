@@ -1,35 +1,4 @@
-import React, {useState} from 'react';
-import {Button, Container, Form} from 'react-bootstrap';
-import '../style/CreateAnime.css';
-import {createAnime} from "../services/api/anime";
-import {findAllByDisplayValue} from "@testing-library/react"; // Подключите стили по вашему пути
-
-const CreateAnime = () => {
-    const [animeData, setAnimeData] = useState({
-        title: '',
-        studio: '',
-        releaseYear: '',
-        description: '',
-        folderName: '',
-    });
-    const [status, setStatus] = useState('');
-
-    const handleInputChange = (event) => {
-        const {name, value} = event.target;
-        setAnimeData({
-            ...animeData,
-            [name]: value,
-        });
-    };
-
-    const handleSubmit = () => {
-        createAnime(animeData)
-            .then(data => setStatus("Аниме успешно создано"))
-            .catch(error => setStatus("Ошибка при создании аниме"));
-    };
-
-    return (
-        <Container className="container">
+ <Container className="container">
             <Form >
                 <Form.Group controlId="title">
                     <Form.Label>Title</Form.Label>
@@ -93,7 +62,3 @@ const CreateAnime = () => {
             </Form>
             <p>{status}</p>
         </Container>
-    );
-};
-
-export default CreateAnime;

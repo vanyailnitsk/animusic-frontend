@@ -3,6 +3,7 @@ import { getAnimeInfo} from "../services/api/anime";
 import {useParams} from "react-router-dom";
 import SoundtrackList from "../components/SoundtrackList";
 import {trackTypes, trackTypeToName} from "../services/consts";
+import "../style/AnimePage.css"
 
 const AnimePage = () => {
     const {id} = useParams()
@@ -28,7 +29,7 @@ const AnimePage = () => {
     }, {});
 
     return (
-        <div className="ms-2">
+        <div className="music_list">
             <h1>{animeData.title}</h1>
             {trackTypes.map((category) => (
                 groupedSoundtracks[category] && (

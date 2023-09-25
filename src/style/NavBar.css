@@ -1,8 +1,56 @@
-.custom-navbar {
-    position: relative;
+.home{
+
+
+}
+.nav_container{
+    font-family: "Oswald";
+    position: fixed;
+    top:0;
+    width: 18%;
+    height: 100vh;
+    background: linear-gradient(135deg, #e55d87 0%, #5fc3e4 100%);
+}
+.navigation{
+    width: 80%;
+    height: 45vh;
+    margin: auto;
+}
+.logo{
+    text-align: left;
+    font-weight: 700;
+    color:white;
+    font-size: 3vw;
+}
+.actions{
+    margin-top: 30%;
+    width: 100%;
+    height: auto;
+}
+input::placeholder{
+    color: white;
+}
+input:focus{
+    border: 1px solid #ffffff;
+
+
+}
+.browse{
+    color:white;
+    width: 100%;
+    background: transparent;
+    font-weight: 400;
+    font-size: 1.4vw;
+    text-align: left;
+    border: none;
 }
 
-.volume-slider {
-    width: 100px; /* Настройте ширину ползунка по своему усмотрению */
-    margin-top: 10px;
+.player{
+    position: fixed;
+    top:0;
+    margin-left: 18%;
+    width: 82%;
+    height: auto;
+    color: white;
+    background-color: gray;
 }
+

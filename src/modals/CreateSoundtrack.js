@@ -35,7 +35,7 @@ const CreateSoundtrack = () => {
 
 
     return (
-        <Container className="mt-4">
+        <Container className="">
             <Form>
                 <Form.Group controlId="originalTitle">
                     <Form.Label>Original Title</Form.Label>
