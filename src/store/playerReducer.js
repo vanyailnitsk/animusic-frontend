@@ -13,6 +13,7 @@ const playerReducer = (state = initialState, action) => {
                 isPlaying: true,
             };
         case "SET_CURRENT_TRACK_INDEX":
+            localStorage.setItem("currentTrackIndex", JSON.stringify(action.payload));
             return {
                 ...state,
                 currentTrackIndex: action.payload,
