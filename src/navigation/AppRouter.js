@@ -4,9 +4,16 @@ import Homepage from '../pages/Homepage';
 import AnimePage from '../pages/AnimePage';
 import UploadSoundtrack from "../modals/UploadSoundtrack";
 import CreateSoundtrack from "../modals/CreateSoundtrack";
-import {CREATE_ANIME, CREATE_SOUNDTRACK_FROM_FILE, CREATE_SOUNDTRACK_FROM_YOUTUBE, HOME_ROUTE} from "./routes";
+import {
+    CREATE_ANIME,
+    CREATE_SOUNDTRACK_FROM_FILE,
+    CREATE_SOUNDTRACK_FROM_YOUTUBE,
+    HOME_ROUTE,
+    PLAYLIST_PAGE, PLAYLIST_ROUTE
+} from "./routes";
 import CreateAnime from "../modals/CreateAnime";
 import NavBar from "./NavBar";
+import PlaylistPage from "../pages/PlaylistPage";
 
 function AppRouter() {
     return (
@@ -18,6 +25,7 @@ function AppRouter() {
                 <Route path={CREATE_SOUNDTRACK_FROM_YOUTUBE} element={<CreateSoundtrack/>}/>
                 <Route path='/anime/:id' element={<AnimePage/>}/>
                 <Route path={CREATE_ANIME} element={<CreateAnime/>}/>
+                <Route path={PLAYLIST_ROUTE} element={<PlaylistPage/>}/>
             </Routes>
         </BrowserRouter>
     );
