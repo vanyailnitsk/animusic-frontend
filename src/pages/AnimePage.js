@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { getAnimeInfo} from "../services/api/anime";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import SoundtrackList from "../components/SoundtrackList";
 import {trackTypes, trackTypeToName} from "../services/consts";
 import hunterxhunterBanner from "../images/hunterxhunter-banner.jpg"
@@ -8,12 +8,14 @@ import "../style/AnimePage.css"
 import {getPlaylistsByAnimeId} from "../services/api/tracks";
 import data from "bootstrap/js/src/dom/data";
 import Soundtrack from "../components/Soundtrack";
+import {PLAYLIST_ROUTE} from "../navigation/routes";
 
 const AnimePage = () => {
     const {id} = useParams()
     const [soundtracks,setSoundtracks] = useState([])
     const [animeData,setAnimeData] = useState({})
     const [playlists,setPlaylists] = useState([])
+    const navigate = useNavigate();
     useEffect(() => {
         getAnimeInfo(id)
             .then(data => {
@@ -38,6 +40,9 @@ const AnimePage = () => {
         return groups;
     }, {});
 
+    const handleNavigate= (playlistId) => {
+        navigate(`/playlist/${playlistId}`)
+    }
     return (
         <div className="main_page">
             <img src={hunterxhunterBanner} alt="" className="anime_image"/>
@@ -47,14 +52,13 @@ const AnimePage = () => {
             </div>
             <div className="playlists">
                 {playlists.map(playlist => (
-                    <button>{playlist.name}</button>
+                    <button onClick={() => handleNavigate(playlist.id)}>{playlist.name}</button>
                 ))}
                 {/*<button>OPENINGS</button>*/}
                 {/*<button>ENDINGS</button>*/}
                 {/*<button>THEMES</button>*/}
                 {/*<button>SCENES</button>*/}
             </div>
-            <SoundtrackList soundtracks={soundtracks}/>
         </div>
     );
 };

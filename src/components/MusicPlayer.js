@@ -11,7 +11,7 @@ const MusicPlayer = () => {
     const currentTrackIndex = useSelector((state) => state.player.currentTrackIndex);
     const dispatch = useDispatch();
     const [isPlaying] = useState(false)
-    const audioUrl = process.env.REACT_APP_AUDIO_URL;
+    const audioUrl = process.env.REACT_APP_API_URL+'/soundtracks/play/';
 
     useEffect(() => {
         audioRef.current.volume = volume

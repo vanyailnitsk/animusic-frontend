@@ -8,16 +8,24 @@ import {getPlaylistById} from "../services/api/tracks";
 const PlaylistPage = () => {
     const {id} = useParams()
     const [playlist,setPlaylist] = useState({})
+    const [soundtracks,setSoundtracks] = useState([])
     useEffect(() => {
         getPlaylistById(id)
             .then(data => {
                 setPlaylist(data)
-            }).catch(console.log("error"))
+                return data.soundtracks
+            })
+            .then(soundtracksData => {
+                setSoundtracks(soundtracksData);
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }, []);
     return (
         <div>
             <h1>{playlist.name}</h1>
-            <SoundtrackList soundtracks={playlist.soundtracks}/>
+            <SoundtrackList soundtracks={soundtracks}/>
         </div>
     );
 };

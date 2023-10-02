@@ -25,7 +25,7 @@ const NavBar = () => {
         </div>
     </div>
     <div className="player">
-        ##########
+        <MusicPlayer/>
     </div>
     </div>
     );

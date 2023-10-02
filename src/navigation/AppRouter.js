@@ -9,7 +9,7 @@ import {
     CREATE_SOUNDTRACK_FROM_FILE,
     CREATE_SOUNDTRACK_FROM_YOUTUBE,
     HOME_ROUTE,
-    PLAYLIST_PAGE, PLAYLIST_ROUTE
+    PLAYLIST_ROUTE
 } from "./routes";
 import CreateAnime from "../modals/CreateAnime";
 import NavBar from "./NavBar";
