@@ -4,6 +4,8 @@ import Soundtrack from "../components/Soundtrack";
 import SoundtrackList from "../components/SoundtrackList";
 import {useParams} from "react-router-dom";
 import {getPlaylistById} from "../services/api/tracks";
+import "../style/PlaylistPage.css"
+import hunterxhunterBanner from "../images/hunterxhunter-banner.jpg";
 
 const PlaylistPage = () => {
     const {id} = useParams()
@@ -23,8 +25,9 @@ const PlaylistPage = () => {
             })
     }, []);
     return (
-        <div>
-            <h1>{playlist.name}</h1>
+        <div className="main">
+            <img src={hunterxhunterBanner} alt="" className="anime_image"/>
+            <h1 className="playlist-name">{playlist.name}</h1>
             <SoundtrackList soundtracks={soundtracks}/>
         </div>
     );

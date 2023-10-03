@@ -1,0 +1,12 @@
+.main {
+    margin-top: 10vh;
+    margin-left: 18%;
+    background-color: #3a3b3a;
+    font-family: "Oswald";
+    height: 100%;
+}
+.playlist-name {
+    margin-top: 2%;
+    color: white;
+    text-align: center;
+}
