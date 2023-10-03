@@ -1,0 +1,71 @@
+.music-player-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.play-pause-button {
+    margin-right: 10px;
+}
+
+.next-button {
+    margin-right: 10px;
+}
+
+.track-info {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.time-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 2;
+    margin: 0 10px;
+}
+
+.current-time,
+.total-time {
+    margin: 0 10px;
+}
+
+.progress-bar {
+    flex-grow: 2;
+    height: 4px;
+    background-color: #ccc;
+    border-radius: 4px;
+    margin: 0 10px;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background-color: #007bff;
+    border-radius: 4px;
+}
+
+.volume-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 100px;
+}
+
+.volume-icon {
+    margin-right: 10px;
+}
+
+.volume-progress {
+    flex-grow: 2;
+    height: 4px;
+    background-color: #ccc;
+    border-radius: 4px;
+    margin: 0 10px;
+    position: relative;
+}
+
+.volume {
+    height: 100%;
+    background-color: #007bff;
+    border-radius: 4px;
+}

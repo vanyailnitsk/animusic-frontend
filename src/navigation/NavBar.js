@@ -1,12 +1,8 @@
-// NavBar.js
 import React, {useEffect, useState} from 'react';
-import {Navbar, Nav, NavDropdown, Container} from 'react-bootstrap';
-import {CREATE_ANIME, CREATE_SOUNDTRACK_FROM_FILE, CREATE_SOUNDTRACK_FROM_YOUTUBE, HOME_ROUTE} from "./routes";
 import MusicPlayer from "../components/MusicPlayer";
 import '../style/NavBar.css'
 import {useNavigate} from "react-router-dom";
 import {getAnimeNavs} from "../services/api/anime";
-import {findAllByDisplayValue} from "@testing-library/react";
 
 const NavBar = () => {
     const navigate = useNavigate();
