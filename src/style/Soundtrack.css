@@ -1,52 +1,52 @@
 .soundtrack-container {
-    display: flex;
     color: white;
-    align-items: center;
-    padding-left: 1%;
     padding-block:0.5%;
     border-radius: 5px;
     margin-bottom: 0.5%;
-    background-color: #fff;
-    width: 80%;
-    margin-left: 10%;
-    box-shadow: 1px 1px 1px #ffffff;
-    background: -webkit-linear-gradient(45deg, rgb(2, 2, 2) 60%, rgb(148, 148, 148));
-    background: -moz-linear-gradient(45deg, rgb(2, 2, 2) 60%, rgb(148, 148, 148));
-    background: linear-gradient(45deg, rgb(2, 2, 2) 60%, rgb(148, 148, 148));
+    width: 98%;
+    margin-inline:auto;
+    background-color: #1b1c1c;
+    transition: 0.3s linear;
+}
+.soundtrack-container:hover{
+    background-color: gray;
 }
 .soundtrack-container:last-child{
-    margin-top: 0;
+    margin-bottom: 0;
 }
 .soundtrack-play-button {
-    background-color: #1db954;
-    color: #fff;
+    display: flex;
+    align-items: center;
+    margin-block: auto;
+    background-color: transparent;
     border: none;
-    padding-inline: 1.2%;
-    padding-block: 0.5%;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
+}
+.soundtrack-play-button img {
+    width: 1rem;
 }
 
 .soundtrack-info {
-    flex: 1;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-block: auto;
     font-size: 1vw;
     overflow: hidden;
 }
 
 .soundtrack-title {
-    margin: 0;
+    width: 11%;
+    text-align: left;
+    margin:0 39%;
     font-size: 1vw;
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .soundtrack-anime {
-    margin: 5px 0;
-    color: #666;
-    white-space: nowrap;
+    width: 10%;
+    text-align: left;
+    margin: 0 1%;
+    color: #fff;
+    font-size: 1vw;
     overflow: hidden;
-    text-overflow: ellipsis;
 }

@@ -3,6 +3,7 @@ import MusicPlayer from "../components/MusicPlayer";
 import '../style/NavBar.css'
 import {useNavigate} from "react-router-dom";
 import {getAnimeNavs} from "../services/api/anime";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const NavBar = () => {
     <div className="home">
     <div className="nav_container">
         <div className="navigation">
-            <div className="logo">Animusic</div>
+            <Link to="" className="logo">Animusic</Link>
             <div className="actions">
                 <input className="browse" type="text" id="search-box" placeholder="Поиск аниме"/>
             </div>
