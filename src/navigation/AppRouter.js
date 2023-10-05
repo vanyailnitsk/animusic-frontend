@@ -14,11 +14,13 @@ import {
 import CreateAnime from "../modals/CreateAnime";
 import NavBar from "./NavBar";
 import PlaylistPage from "../pages/PlaylistPage";
+import MusicPlayer from "../components/MusicPlayer";
 
 function AppRouter() {
     return (
         <BrowserRouter>
             <NavBar/>
+            <MusicPlayer/>
             <Routes>
                 <Route path={HOME_ROUTE} element={<Homepage/>}/>
                 <Route path={CREATE_SOUNDTRACK_FROM_FILE} element={<UploadSoundtrack/>}/>

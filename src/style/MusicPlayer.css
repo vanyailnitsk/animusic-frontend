@@ -1,71 +1,72 @@
 .music-player-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    position: fixed;
+    top:0;
+    margin-left: 18%;
+    width: 82%;
+    height: 10vh;
+    color: white;
+    background-color: #3a3b3a;
+    font-family: "Oswald";
 }
 
-.play-pause-button {
-    margin-right: 10px;
+.player-buttons{
+    margin-left: 10%;
+    align-items: center;
 }
 
-.next-button {
-    margin-right: 10px;
+.player-previous-button{
+    padding: 0;
+    background-color: transparent;
+    border: none;
 }
-
-.track-info {
-    flex-grow: 1;
+.player-previous-button img {
+    width: 1.4rem;
+}
+.player-play-pause-button{
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+.player-play-pause-button img{
+    width: 2rem;
+}
+.player-next-button{
+    padding: 0;
+    background-color: transparent;
+    border: none;
+}
+.player-next-button img{
+    width: 1.4rem;
+}
+.info-timebar{
+    width: 40%;
+    display: block;
+    align-items: center;
     text-align: center;
 }
-
-.time-bar {
+.player-name-track{
+    font-size: 1.5vw;
+    margin-block: 0;
+}
+.time-bar{
     display: flex;
-    align-items: center;
-    flex-grow: 2;
-    margin: 0 10px;
+    justify-content: space-between;
+    padding-top: 1vh;
+}
+.curent-time, .total-time {
 }
 
-.current-time,
-.total-time {
-    margin: 0 10px;
+.current-time, .total-time {
+    font-size: 1vw;
 }
 
-.progress-bar {
-    flex-grow: 2;
-    height: 4px;
-    background-color: #ccc;
-    border-radius: 4px;
-    margin: 0 10px;
-    position: relative;
+.progress-bar{
+    margin-inline: 1%;
+    width: 100%;
 }
-
-.progress {
-    height: 100%;
-    background-color: #007bff;
-    border-radius: 4px;
-}
-
 .volume-bar {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    max-width: 100px;
-}
-
-.volume-icon {
-    margin-right: 10px;
-}
-
-.volume-progress {
-    flex-grow: 2;
-    height: 4px;
-    background-color: #ccc;
-    border-radius: 4px;
-    margin: 0 10px;
-    position: relative;
-}
-
-.volume {
-    height: 100%;
-    background-color: #007bff;
-    border-radius: 4px;
+    margin-right: 10%;
 }

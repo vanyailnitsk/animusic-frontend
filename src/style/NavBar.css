@@ -46,13 +46,5 @@ input:focus{
     border-radius: 0.5em;
 }
 
-.player{
-    position: fixed;
-    top:0;
-    margin-left: 18%;
-    width: 82%;
-    height: 10vh;
-    color: white;
-    background-color: #3a3b3a;
-}
+
 
