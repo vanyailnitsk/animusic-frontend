@@ -1,22 +1,24 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MusicPlayer from "../components/MusicPlayer";
+import {useNavigate} from "react-router-dom";
+import {getAnimeNavs} from "../services/api/anime";
+import Soundtrack from "../components/Soundtrack";
 
 const Homepage = () => {
-    const track1 = 'http://localhost:1234/Hunting For Your Dream.mp3';
-    const track2= 'http://localhost:1234/Naruto_Shippuden/Opening 3.mp3';
-    const [trackUrl,setTrackUrl]= useState(track2);
+    const navigate = useNavigate();
+    const [animeNavs, setAnimeNavs] = useState([])
+    useEffect(() => {
+        getAnimeNavs().then(data => setAnimeNavs(data.data))
+    }, [])
 
-    const changeTrack = () => {
-        if (trackUrl === track1) {
-            setTrackUrl(track2);
-        }
-        else {
-            setTrackUrl(track1)
-        }
-    }
     return (
         <div>
-ghggjugjugtjgt
+            {animeNavs.map((nav) => (
+                <div style={{margin:'300px'}}>
+                    <h1>{nav.title}</h1>
+                    <button onClick={() => navigate('/anime/'+nav.id)}>GO</button>
+                </div>
+            ))}
         </div>
     );
 };

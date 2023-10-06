@@ -41,6 +41,13 @@ const MusicPlayer = () => {
     const playPauseHandler = () => {
         setIsPlaying(!isPlaying);
     };
+    const handlePlay = () => {
+        setIsPlaying(true);
+    };
+
+    const handlePause = () => {
+        setIsPlaying(false);
+    };
     const handleVolumeChange = (event) => {
         const newVolume = parseFloat(event.target.value);
         setVolume(newVolume);
@@ -99,6 +106,8 @@ const MusicPlayer = () => {
                            autoPlay
                            onEnded={playNextTrack}
                            onTimeUpdate={handleTimeUpdate}
+                           onPlay={handlePlay}
+                           onPause={handlePause}
                     >
                     </audio>
                     <div className="current-time">{formatTime(currentTime)}</div>
