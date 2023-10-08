@@ -3,6 +3,8 @@ import MusicPlayer from "../components/MusicPlayer";
 import {useNavigate} from "react-router-dom";
 import {getAnimeNavs} from "../services/api/anime";
 import Soundtrack from "../components/Soundtrack";
+import styles from "../style/HomePage.css"
+import hunterCard from "../images/hunter-card.jpeg"
 
 const Homepage = () => {
     const navigate = useNavigate();
@@ -12,13 +14,15 @@ const Homepage = () => {
     }, [])
 
     return (
-        <div>
-            {animeNavs.map((nav) => (
-                <div style={{margin:'300px'}}>
-                    <h1>{nav.title}</h1>
-                    <button onClick={() => navigate('/anime/'+nav.id)}>GO</button>
-                </div>
-            ))}
+        <div className="home-page-container">
+            <div className="anime-card-container">
+                {animeNavs.map((nav) => (
+                    <div className="anime-container" onClick={() => navigate('/anime/'+nav.id)}>
+                        <h1>{nav.title}</h1>
+                        <img src={hunterCard} alt=""/>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
