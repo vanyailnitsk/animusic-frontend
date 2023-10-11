@@ -7,6 +7,7 @@ const initialState = {
 const playerReducer = (state = initialState, action) => {
     switch (action.type) {
         case "PLAY_TRACK":
+            localStorage.setItem("currentTrackIndex", JSON.stringify(action.payload));
             return {
                 ...state,
                 currentTrackIndex: action.payload, // Сохраняем индекс текущего трека
@@ -23,11 +24,6 @@ const playerReducer = (state = initialState, action) => {
             return {
                 ...state,
                 playlist: action.payload,
-            };
-        case "PAUSE_TRACK":
-            return {
-                ...state,
-                isPlaying: false,
             };
         default:
             return state;

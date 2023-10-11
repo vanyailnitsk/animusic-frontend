@@ -11,7 +11,6 @@ import "../style/MusicPlayer.css"
 const MusicPlayer = () => {
     const audioRef = useRef(null);
     const [volume, setVolume] = useState(0.25);
-    //const {currentTrackId} = useSelector((state) => state.player);
     const playlist = useSelector((state) => state.player.playlist);
     const currentTrackIndex = useSelector((state) => state.player.currentTrackIndex);
     const dispatch = useDispatch();
@@ -108,6 +107,7 @@ const MusicPlayer = () => {
                            onTimeUpdate={handleTimeUpdate}
                            onPlay={handlePlay}
                            onPause={handlePause}
+                           preload="auto"
                     >
                     </audio>
                     <div className="current-time">{formatTime(currentTime)}</div>

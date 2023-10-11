@@ -1,14 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { getAnimeInfo} from "../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
-import SoundtrackList from "../components/SoundtrackList";
-import {trackTypes, trackTypeToName} from "../services/consts";
 import hunterxhunterBanner from "../images/hunterxhunter-banner.jpg"
 import "../style/AnimePage.css"
 import {getPlaylistsByAnimeId} from "../services/api/tracks";
-import data from "bootstrap/js/src/dom/data";
-import Soundtrack from "../components/Soundtrack";
-import {PLAYLIST_ROUTE} from "../navigation/routes";
 
 const AnimePage = () => {
     const {id} = useParams()
@@ -27,7 +22,6 @@ const AnimePage = () => {
             });
         getPlaylistsByAnimeId(id)
             .then(data => {
-                console.log(data)
                 setPlaylists(data)
             });
     }, [id]);

@@ -1,4 +1,5 @@
 import {$host} from "./index";
+import axios from "axios";
 
 export const getPlaylistsByAnimeId = async (animeId) => {
     const {data} = await $host.get('playlist/by-anime/' + animeId);
