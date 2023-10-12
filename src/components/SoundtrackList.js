@@ -1,8 +1,9 @@
 import React from 'react';
 import Soundtrack from "./Soundtrack";
 import "../style/SoundtrackList.css"
+import {observer} from "mobx-react-lite";
 
-const SoundtrackList = ({soundtracks}) => {
+const SoundtrackList = observer(({soundtracks}) => {
     return (
         <div className="main-soundtracklist">
             {soundtracks.map((soundtrack,index) => (
@@ -15,6 +16,6 @@ const SoundtrackList = ({soundtracks}) => {
             ))}
         </div>
     );
-};
+});
 
 export default SoundtrackList;

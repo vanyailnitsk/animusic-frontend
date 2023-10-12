@@ -23,7 +23,7 @@ const PlaylistPage = () => {
             .catch(error => {
                 console.log(error)
             })
-    }, []);
+    }, [id]);
     return (
         <div className="main">
             <img src={hunterxhunterBanner} alt="" className="anime_image"/>

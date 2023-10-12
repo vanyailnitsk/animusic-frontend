@@ -1,26 +1,30 @@
-import React, {useState} from "react";
-import { useDispatch } from "react-redux";
-import {playTrack, setCurrentPlaylist} from "../store/playerActions";
+import React, {useContext} from "react";
 import "../style/Soundtrack.css";
 import playButton from "../images/play-button.png"
 import pauseButton from "../images/pause-button.png"
 import flowSign from "../images/flowSign.jpeg"
-const Soundtrack = ({ soundtrackData,playlist,index }) => {
-    const dispatch = useDispatch();
-    const [isPlaying, setIsPlaying] = useState(false);
+import {Context} from "../index";
+import {observer} from "mobx-react-lite";
+
+const Soundtrack = observer(({soundtrackData, playlist, index}) => {
+    const {musicStore} = useContext(Context)
     const playTrackHandler = () => {
-        dispatch(setCurrentPlaylist(playlist))
-        dispatch(playTrack(index));
-        setIsPlaying(!isPlaying);
+        if (!musicStore.trackEquals(soundtrackData)) {
+            musicStore.setPlaylist(playlist)
+            musicStore.setTrackIndex(index)
+            musicStore.setIsPlaying(true)
+        } else {
+            musicStore.togglePlayPause()
+        }
     };
 
     return (
         <div className="soundtrack-container">
             <button className="soundtrack-play-button" onClick={playTrackHandler}>
-                {isPlaying ? (
-                    <img src={pauseButton} alt="Pause" />
+                {musicStore.trackEquals(soundtrackData) && musicStore.isPlaying ? (
+                    <img src={pauseButton} alt="Pause"/>
                 ) : (
-                    <img src={playButton} alt="Play" />
+                    <img src={playButton} alt="Play"/>
                 )}
             </button>
             <div className="soundtrack-info">
@@ -31,6 +35,6 @@ const Soundtrack = ({ soundtrackData,playlist,index }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Soundtrack;

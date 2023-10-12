@@ -1,13 +1,15 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import MusicStore from "./store/MusicStore";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+export const Context  = createContext(null)
 root.render(
-  // <React.StrictMode>
+    <Context.Provider value={{musicStore:new MusicStore()}}>
     <App/>
-  // </React.StrictMode>
+    </Context.Provider>
 );
 

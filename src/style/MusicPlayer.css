@@ -14,6 +14,7 @@
 }
 
 .player-buttons{
+    display: flex;
     margin-left: 10%;
     align-items: center;
 }

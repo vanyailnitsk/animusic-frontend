@@ -1,31 +1,27 @@
-import React, {useEffect, useRef, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {setCurrentTrackIndex} from "../store/playerActions";
-import {Button} from "react-bootstrap";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import pauseButton from "../images/pause-button.png"
 import playButton from "../images/play-button.png"
 import nextButton from "../images/next-button.png"
 import previousButton from "../images/previous-button.png"
 import "../style/MusicPlayer.css"
+import {observer} from "mobx-react-lite";
+import {Context} from "../index";
 
-const MusicPlayer = () => {
+const MusicPlayer = observer(() => {
     const audioRef = useRef(null);
     const [volume, setVolume] = useState(0.25);
-    const playlist = useSelector((state) => state.player.playlist);
-    const currentTrackIndex = useSelector((state) => state.player.currentTrackIndex);
-    const dispatch = useDispatch();
+    const {musicStore} = useContext(Context)
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
-    const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     useEffect(() => {
         audioRef.current.volume = volume
-        if (isPlaying) {
+        if (musicStore.isPlaying) {
             audioRef.current.play()
         } else {
             audioRef.current.pause()
         }
-    }, [isPlaying])
+    }, [musicStore.isPlaying])
 
     useEffect(() => {
         const onTimeUpdate = () => {
@@ -38,14 +34,14 @@ const MusicPlayer = () => {
         };
     }, []);
     const playPauseHandler = () => {
-        setIsPlaying(!isPlaying);
+        musicStore.togglePlayPause()
     };
     const handlePlay = () => {
-        setIsPlaying(true);
+        musicStore.setIsPlaying(true)
     };
 
     const handlePause = () => {
-        setIsPlaying(false);
+        musicStore.setIsPlaying(false);
     };
     const handleVolumeChange = (event) => {
         const newVolume = parseFloat(event.target.value);
@@ -71,12 +67,7 @@ const MusicPlayer = () => {
         setCurrentTime(time);
     };
     const playNextTrack = () => {
-        const nextIndex = currentTrackIndex + 1;
-        if (nextIndex < playlist.length) {
-            dispatch(setCurrentTrackIndex(nextIndex));
-        } else {
-            dispatch(setCurrentTrackIndex(0));
-        }
+        musicStore.nextTrack()
     };
 
     return (
@@ -85,7 +76,7 @@ const MusicPlayer = () => {
                 <button className="player-previous-button"  onClick={playNextTrack}>
                     <img src={previousButton} alt=""/>
                 </button>
-                <button className="player-play-pause-button" onClick={playPauseHandler}>{isPlaying ? (
+                <button className="player-play-pause-button" onClick={playPauseHandler}>{musicStore.isPlaying ? (
                     <img src={pauseButton} alt="Pause" />
                 ) : (
                     <img src={playButton} alt="Play" />
@@ -95,13 +86,13 @@ const MusicPlayer = () => {
             </button>
             </div>
             <div className="info-timebar">
-                {playlist[currentTrackIndex] &&
+                {musicStore.currentTrack &&
                     <p style={{color: 'white'}} className="player-name-track">
-                        {playlist[currentTrackIndex].animeName + ' - ' + playlist[currentTrackIndex].animeTitle}
+                        {musicStore.currentTrack.animeName + ' - ' + musicStore.currentTrack.animeTitle}
                     </p>}
                 <div className="time-bar">
                     <audio ref={audioRef}
-                           src={playlist[currentTrackIndex] && audioUrl + playlist[currentTrackIndex].id}
+                           src={musicStore.currentTrack && audioUrl + musicStore.currentTrack.id}
                            autoPlay
                            onEnded={playNextTrack}
                            onTimeUpdate={handleTimeUpdate}
@@ -135,6 +126,6 @@ const MusicPlayer = () => {
             </div>
         </div>
     );
-};
+});
 
 export default MusicPlayer;
