@@ -1,8 +1,6 @@
 import './App.css';
 import AppRouter from "./navigation/AppRouter";
-import {Provider} from "react-redux";
-import store from './store/index'
-import MusicStore from "./store/MusicStore";
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 function App() {
