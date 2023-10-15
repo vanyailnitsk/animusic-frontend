@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {Button, Container, Form} from 'react-bootstrap';
 import '../style/CreateAnime.css';
 import {createAnime} from "../services/api/anime";
-import {findAllByDisplayValue} from "@testing-library/react"; // Подключите стили по вашему пути
 
 const CreateAnime = () => {
     const [animeData, setAnimeData] = useState({

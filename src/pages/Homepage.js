@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import MusicPlayer from "../components/MusicPlayer";
 import {useNavigate} from "react-router-dom";
 import {getAnimeNavs} from "../services/api/anime";
-import Soundtrack from "../components/Soundtrack";
-import styles from "../style/HomePage.css"
+import "../style/HomePage.css"
 import hunterCard from "../images/hunter-card.jpeg"
 
 const Homepage = () => {

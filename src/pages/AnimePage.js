@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { getAnimeInfo} from "../services/api/anime";
+import {getAnimeInfo} from "../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
 import hunterxhunterBanner from "../images/hunterxhunter-banner.jpg"
 import "../style/AnimePage.css"
@@ -7,7 +7,6 @@ import {getPlaylistsByAnimeId} from "../services/api/tracks";
 
 const AnimePage = () => {
     const {id} = useParams()
-    const [soundtracks,setSoundtracks] = useState([])
     const [animeData,setAnimeData] = useState({})
     const [playlists,setPlaylists] = useState([])
     const navigate = useNavigate();
@@ -15,24 +14,13 @@ const AnimePage = () => {
         getAnimeInfo(id)
             .then(data => {
                 setAnimeData(data.data);
-                return data.data.soundtracks;
             })
-            .then(soundtracksData => {
-                setSoundtracks(soundtracksData);
-            });
+            .catch((error) => console.log(error))
         getPlaylistsByAnimeId(id)
             .then(data => {
                 setPlaylists(data)
             });
     }, [id]);
-
-    const groupedSoundtracks = soundtracks.reduce((groups, soundtrack) => {
-        if (!groups[soundtrack.type]) {
-            groups[soundtrack.type] = [];
-        }
-        groups[soundtrack.type].push(soundtrack);
-        return groups;
-    }, {});
 
     const handleNavigate= (playlistId) => {
         navigate(`/playlist/${playlistId}`)
@@ -48,10 +36,6 @@ const AnimePage = () => {
                 {playlists.map(playlist => (
                     <button onClick={() => handleNavigate(playlist.id)}>{playlist.name}</button>
                 ))}
-                {/*<button>OPENINGS</button>*/}
-                {/*<button>ENDINGS</button>*/}
-                {/*<button>THEMES</button>*/}
-                {/*<button>SCENES</button>*/}
             </div>
         </div>
     );

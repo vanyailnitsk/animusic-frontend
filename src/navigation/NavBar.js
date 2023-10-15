@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import MusicPlayer from "../components/MusicPlayer";
 import '../style/NavBar.css'
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {getAnimeNavs} from "../services/api/anime";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const NavBar = () => {
     const navigate = useNavigate();

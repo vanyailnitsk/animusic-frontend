@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import soundtrack from "../components/Soundtrack";
-import Soundtrack from "../components/Soundtrack";
 import SoundtrackList from "../components/SoundtrackList";
 import {useParams} from "react-router-dom";
 import {getPlaylistById} from "../services/api/tracks";
