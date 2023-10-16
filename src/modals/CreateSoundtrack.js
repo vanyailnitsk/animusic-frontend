@@ -3,6 +3,7 @@ import {Button, Container, Form} from "react-bootstrap";
 import '../style/UploadSoundtrack.css'
 import {createSoundtrackFromYoutube} from "../services/api/audio";
 import {getAnimeNavs} from "../services/api/anime";
+import '../style/CreateSoundtrack.css'
 const CreateSoundtrack = () => {
     const [soundtrackData, setSoundtrackData] = useState({
         originalTitle: '',
@@ -35,9 +36,9 @@ const CreateSoundtrack = () => {
 
 
     return (
-        <Container className="">
-            <Form>
-                <Form.Group controlId="originalTitle">
+        <div className="create-soundtrack-container">
+            <div>
+                <form controlId="originalTitle">
                     <Form.Label>Original Title</Form.Label>
                     <Form.Control
                         type="text"
@@ -46,7 +47,7 @@ const CreateSoundtrack = () => {
                         onChange={handleInputChange}
                         placeholder="Original Title"
                     />
-                </Form.Group>
+                </form>
 
                 <Form.Group controlId="animeTitle">
                     <Form.Label>Anime Track Title</Form.Label>
@@ -100,10 +101,10 @@ const CreateSoundtrack = () => {
                     />
                 </Form.Group>
 
-                <Button variant="primary" onClick={handleSubmit} className="mt-2">Create</Button>
-            </Form>
+                <button variant="primary" onClick={handleSubmit} className="mt-2">Create</button>
+            </div>
             <p>{status}</p>
-        </Container>
+        </div>
     );
 };
 

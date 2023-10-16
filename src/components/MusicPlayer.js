@@ -3,6 +3,7 @@ import pauseButton from "../images/pause-button.png"
 import playButton from "../images/play-button.png"
 import nextButton from "../images/next-button.png"
 import previousButton from "../images/previous-button.png"
+import volumeIcon from "../images/volume-icon.png"
 import "../style/MusicPlayer.css"
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
@@ -26,7 +27,7 @@ const MusicPlayer = observer(() => {
     useEffect(() => {
         const onTimeUpdate = () => {
             setCurrentTime(audioRef.current.currentTime);
-            setDuration(audioRef.current.duration);
+            setDuration(audioRef.current.duration || 0);
         };
         audioRef.current.addEventListener("timeupdate", onTimeUpdate);
         return () => {
@@ -114,6 +115,7 @@ const MusicPlayer = observer(() => {
                 </div>
             </div>
             <div className="volume-bar">
+                <img className="volume-icon" src={volumeIcon} alt=""/>
                 <input
                     type="range"
                     min="0"

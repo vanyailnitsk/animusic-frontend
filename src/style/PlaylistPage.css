@@ -1,6 +1,6 @@
 .main {
-    margin-top: 10vh;
-    margin-left: 18%;
+    margin-top: 8vh;
+    margin-left: 16%;
     background-color: #1b1c1c;
     font-family: "Oswald";
     height: 100vh;
@@ -9,4 +9,10 @@
     margin-top: 2%;
     color: white;
     text-align: center;
+}
+@media screen and (max-width: 768px) {
+    .main{
+        margin-left: 0;
+        margin-top: 4vh;
+    }
 }

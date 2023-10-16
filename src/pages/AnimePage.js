@@ -3,6 +3,7 @@ import {getAnimeInfo} from "../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
 import hunterxhunterBanner from "../images/hunterxhunter-banner.jpg"
 import "../style/AnimePage.css"
+import playButton from "../images/play-button.png"
 import {getPlaylistsByAnimeId} from "../services/api/tracks";
 
 const AnimePage = () => {
@@ -29,7 +30,9 @@ const AnimePage = () => {
         <div className="main_page">
             <img src={hunterxhunterBanner} alt="" className="anime_image"/>
             <div className='buttons'>
-                <button className="play_btn">PLAY</button>
+                <button className="play_btn">
+                    <img src={playButton} alt=""/>
+                </button>
                 <button className="follow_btn">FOLLOW</button>
             </div>
             <div className="playlists">

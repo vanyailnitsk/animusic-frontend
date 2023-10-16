@@ -5,17 +5,18 @@
     align-items: center;
     position: fixed;
     top:0;
-    margin-left: 18%;
-    width: 82%;
-    height: 10vh;
+    margin-left: 16%;
+    width: 84%;
+    height: 8vh;
     color: white;
-    background-color: #3a3b3a;
+    background-color: #454949;
     font-family: "Oswald";
 }
 
 .player-buttons{
     display: flex;
     margin-left: 10%;
+    width: auto;
     align-items: center;
 }
 
@@ -44,21 +45,24 @@
     width: 1.4rem;
 }
 .info-timebar{
+    align-self: flex-end;
     width: 40%;
+    margin-bottom: 0.3%;
     display: block;
     align-items: center;
     text-align: center;
 }
 .player-name-track{
     font-size: 1.5vw;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin-block: 0;
+    width: auto;
 }
 .time-bar{
     display: flex;
     justify-content: space-between;
-    padding-top: 1vh;
-}
-.curent-time, .total-time {
+    align-items: center;
+    margin-block:auto;
 }
 
 .current-time, .total-time {
@@ -71,4 +75,46 @@
 }
 .volume-bar {
     margin-right: 10%;
+}
+.volume-bar{
+    display: flex;
+}
+.volume-icon{
+    margin-right: 5%;
+    width: 15%;
+}
+@media screen and (max-width: 768px) {
+    /* Стили, применяемые к элементам, когда ширина экрана меньше или равна 768px */
+    .music-player-container {
+        margin: 0;
+        width: 100%;
+        background-color: #454949;
+        height: 4vh;
+    }
+    .player-previous-button img {
+        width: 1rem;
+    }
+    .player-play-pause-button img{
+        width: 1.3rem;
+    }
+    .player-next-button img{
+        width: 1rem;
+    }
+    .volume-bar{
+        display: none;
+    }
+    .info-timebar{
+        width: 60%;
+        margin-right: 10%;
+    }
+    .time-bar{
+        width: 100%;
+    }
+    .player-name-track{
+        font-size: 60%;
+    }
+    .current-time, .total-time {
+        font-size: 1.5vw;
+    }
+
 }

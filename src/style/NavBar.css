@@ -5,9 +5,11 @@
     font-family: "Oswald";
     position: fixed;
     top:0;
-    width: 18%;
+    width: 16%;
     height: 100vh;
-    background-color: #252625;
+    background: -webkit-linear-gradient(90deg, rgb(17, 19, 18), rgb(69, 73, 73));
+    background: -moz-linear-gradient(90deg, rgb(17, 19, 18), rgb(69, 73, 73));
+    background: linear-gradient(90deg, rgb(17, 19, 18), rgb(69, 73, 73));
 }
 .navigation{
     width: 80%;
@@ -46,5 +48,11 @@ input:focus{
     border-radius: 0.5em;
 }
 
+@media screen and (max-width: 768px) {
+    .nav_container{
+        display: none;
+    }
 
+
+}
 

@@ -2,10 +2,11 @@
 
 .main_page{
     background-color: #3a3b3a;
-    margin-left: 18%;
-    margin-top: 10vh;
-    height: 90vh;
+    margin-left: 16%;
+    margin-top: 8vh;
+    height: 100vh;
 }
+
 .anime_image{
     width: 100%;
     max-height: 35vh;
@@ -26,8 +27,11 @@
     background-color: #1db954;
     font-size: 1vw;
     font-weight: 600;
-    border-radius: 14px;
+    border-radius: 50%;
     transition: .1s linear;
+}
+.play_btn img {
+    width: 2rem;
 }
 .follow_btn{
     color:white;
@@ -42,6 +46,9 @@
     transition: .1s linear;
 }
 .playlists{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 4%;
 }
 .playlists button{
@@ -50,14 +57,39 @@
     color: white;
     background-color: black;
     font-weight: 600;
-    font-size: 1.1vw;
+    font-size: 60%;
     border: none;
     margin-left: 2%;
-    padding: 4% 3%;
+    padding: 4vh 3vh;
+    width: auto;
+    border-radius: 10%;
+    transition: .2s linear;
+}
+.playlists button:first-child{
+    display: inline-block;
+    text-align: center;
+    color: white;
+    background-color: black;
+    font-weight: 600;
+    font-size: 60%;
+    border: none;
+    margin-left: 0%;
+    padding: 4vh 3vh;
     width: auto;
     border-radius: 10%;
     transition: .2s linear;
 }
 .playlists button:hover{
     transform: scale(1.1)
+}
+@media screen and (max-width: 768px) {
+    .main_page{
+        background-color: #3a3b3a;
+        margin-left: 0;
+        margin-top: 4vh;
+        height: 100vh;
+
+    }
+
+
 }

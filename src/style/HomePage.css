@@ -1,7 +1,7 @@
 .home-page-container{
-    margin-left: 18%;
-    margin-top:10vh;
-    background-color: #3a3b3a;
+    margin-left: 16%;
+    margin-top:8vh;
+    background-color: #9a9a9a;
     font-family: "Oswald";
 }
 .anime-card-container {
@@ -35,12 +35,49 @@
     text-align: center;
 }
 .anime-container img {
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
     width: 100%;
     transition: .3s linear;
     border-radius: 25px;
     height: 100%;
-    opacity: 0.8;
+    opacity: 0.97;
 }
 .anime-container img:hover{
     opacity: 100%;
+}
+@media screen and (max-width: 768px) {
+    .home-page-container{
+        margin-left: 0;
+        margin-top:4vh;
+        background-color: #9a9a9a;
+        font-family: "Oswald";
+    }
+    .anime-container {
+        display: flex;
+        position: relative;
+        align-items: flex-end;
+        margin-top: 2%;
+        height: 16vh;
+        color:white;
+        border-radius: 25px;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        flex-basis: calc(49%);
+    }
+    .anime-card-container {
+        display: flex;
+        margin-inline: 1%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .anime-container h1{
+        position: absolute;
+        left: 4%;
+        z-index: 100;
+        bottom: 1%;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-size: 3vw;
+        text-align: center;
+    }
 }
