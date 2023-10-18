@@ -32,12 +32,9 @@ const Soundtrack = observer(({soundtrackData, playlist, index}) => {
                     <img src={playButton} alt="Play"/>
                 )}
             </button>
-            <div className="soundtrack-info">
                 <img src={flowSign} alt="" className="soundtrack-image"/>
                 <h3 className="soundtrack-anime">{soundtrackData.animeTitle}</h3>
                 <p className="soundtrack-title">{soundtrackData.originalTitle}</p>
-
-            </div>
         </div>
     );
 });

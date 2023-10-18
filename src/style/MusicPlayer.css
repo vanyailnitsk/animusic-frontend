@@ -9,7 +9,7 @@
     width: 84%;
     height: 8vh;
     color: white;
-    background-color: #454949;
+    background-color: #383838;
     font-family: "Oswald";
 }
 
@@ -63,6 +63,7 @@
     justify-content: space-between;
     align-items: center;
     margin-block:auto;
+
 }
 
 .current-time, .total-time {
@@ -73,6 +74,7 @@
     margin-inline: 1%;
     width: 100%;
 }
+
 .volume-bar {
     margin-right: 10%;
 }

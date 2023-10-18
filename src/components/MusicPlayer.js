@@ -103,7 +103,8 @@ const MusicPlayer = observer(() => {
                     >
                     </audio>
                     <div className="current-time">{formatTime(currentTime)}</div>
-                        <input className="progress-bar"
+                        <div className="progress-bar">
+                    <input
                             type="range"
                             min="0"
                             max={duration}
@@ -111,6 +112,7 @@ const MusicPlayer = observer(() => {
                             value={currentTime}
                             onChange={handleSeek}
                         />
+                        </div>
                     <div className="total-time">{formatTime(duration)}</div>
                 </div>
             </div>

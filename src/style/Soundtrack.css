@@ -1,5 +1,6 @@
 .soundtrack-container {
     color: #ebedeb;
+    margin-inline: 0;
     display: flex;
     align-items: center;
     padding-block:0.5%;
@@ -31,24 +32,16 @@
 }
 .soundtrack-image{
     margin-left: 1%;
-    width: 3vh;
-}
-.soundtrack-info {
-    display: flex;
-    width: 100%;
-    text-align: center;
-    align-items: center;
-    margin-block: auto;
-    font-size: 1.3vw;
-    overflow: hidden;
+    width: 4vh;
 }
 
 .soundtrack-title {
     white-space: nowrap;
     width: 20%;
     text-align: left;
-    margin:0 23%;
-    font-size: 1.3vw;
+    margin:0;
+    margin-left: 23%;
+    font-size: 90%;
     overflow: hidden;
 }
 
@@ -56,8 +49,35 @@
     white-space: nowrap;
     width: 15%;
     text-align: left;
-    margin: 0 1%;
+    margin: 0;
+    margin-left: 1%;
     color: #ebedeb;
-    font-size: 1.3vw;
+    font-size: 100%;
     overflow: hidden;
+}
+@media screen and (max-width: 768px) {
+    .soundtrack-play-button img {
+        width: 4vh;
+    }
+    .soundtrack-container{
+        margin-bottom: 4%;
+    }
+    .soundtrack-title {
+        white-space: nowrap;
+        text-align: left;
+        width: 100px;
+        margin-right: 0;
+        font-size: 15px;
+        overflow: hidden;
+    }
+    .soundtrack-anime {
+        white-space: nowrap;
+        width: 100px;
+        text-align: left;
+        margin-left: 1%;
+        color: #ebedeb;
+        font-size: 100%;
+        overflow: hidden;
+    }
+
 }

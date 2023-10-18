@@ -1,7 +1,7 @@
 .home-page-container{
     margin-left: 16%;
     margin-top:8vh;
-    background-color: #9a9a9a;
+    background-color: #1b1c1c;
     font-family: "Oswald";
 }
 .anime-card-container {
@@ -37,13 +37,13 @@
 .anime-container img {
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 1);
     width: 100%;
-    transition: .3s linear;
+    transition: .2s linear;
     border-radius: 25px;
     height: 100%;
-    opacity: 0.97;
+    opacity: 100;
 }
 .anime-container img:hover{
-    opacity: 100%;
+    opacity: 80%;
 }
 @media screen and (max-width: 768px) {
     .home-page-container{

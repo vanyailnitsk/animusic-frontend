@@ -3,7 +3,7 @@
     margin-left: 16%;
     background-color: #1b1c1c;
     font-family: "Oswald";
-    height: 100vh;
+    height: 92vh;
 }
 .playlist-name {
     margin-top: 2%;
@@ -14,5 +14,6 @@
     .main{
         margin-left: 0;
         margin-top: 4vh;
+        height: 96vh;
     }
 }

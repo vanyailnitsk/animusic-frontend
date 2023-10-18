@@ -7,9 +7,7 @@
     top:0;
     width: 16%;
     height: 100vh;
-    background: -webkit-linear-gradient(90deg, rgb(17, 19, 18), rgb(69, 73, 73));
-    background: -moz-linear-gradient(90deg, rgb(17, 19, 18), rgb(69, 73, 73));
-    background: linear-gradient(90deg, rgb(17, 19, 18), rgb(69, 73, 73));
+    background-color: #121212;
 }
 .navigation{
     width: 80%;
