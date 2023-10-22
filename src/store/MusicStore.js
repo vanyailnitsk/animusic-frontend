@@ -33,6 +33,14 @@ class MusicStore {
             this._trackIndex=0
         }
     }
+    previousTrack() {
+        const previousIndex = this._trackIndex - 1;
+        if (previousIndex > 0) {
+            this._trackIndex = previousIndex
+        } else {
+            this._trackIndex=0
+        }
+    }
 
     get playlist() {
         return this._playlist

@@ -12,6 +12,9 @@
     background-color: #1b1c1c;
     transition: 0.2s linear;
 }
+.soundtrack-container.playing {
+    background-color: #3c3d3c;
+}
 .soundtrack-container:hover{
     background-color: #3c3d3c;
 }
