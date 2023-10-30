@@ -67,14 +67,29 @@ const MusicPlayer = observer(() => {
         audioRef.current.currentTime = time;
         setCurrentTime(time);
     };
+    const playPreviousTrack = () => {
+        if (musicStore.trackIndex > 0 && audioRef.current.currentTime < 4) {
+            musicStore.previousTrack()
+        }
+        else {
+            audioRef.current.currentTime = 0;
+            setCurrentTime(0)
+        }
+    };
     const playNextTrack = () => {
         musicStore.nextTrack()
     };
+    navigator.mediaSession.setActionHandler("nexttrack", () => {
+        playNextTrack()
+    });
+    navigator.mediaSession.setActionHandler("previoustrack", () => {
+        playPreviousTrack()
+    });
 
     return (
         <div className="music-player-container">
             <div className="player-buttons">
-                <button className="player-previous-button"  onClick={playNextTrack}>
+                <button className="player-previous-button"  onClick={playPreviousTrack}>
                     <img src={previousButton} alt=""/>
                 </button>
                 <button className="player-play-pause-button" onClick={playPauseHandler}>{musicStore.isPlaying ? (

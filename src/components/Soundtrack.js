@@ -17,14 +17,16 @@ const Soundtrack = observer(({soundtrackData, playlist, index}) => {
             musicStore.togglePlayPause()
         }
     };
-    const containerStyles = {
-        background: musicStore.trackEquals(soundtrackData) && musicStore.isPlaying
-            ? "#3c3d3c" // Стиль фона, когда условие выполняется
-            : '#1b1c1c' // Стиль фона по умолчанию
-    };
+    const soundtrackContainerStyles = () => {
+        const classNames = ['soundtrack-container'];
+        if (musicStore.trackEquals(soundtrackData) && musicStore.isPlaying) {
+            classNames.push('playing');
+        }
+        return classNames.join(' ');
+    }
 
     return (
-        <div className="soundtrack-container" style={containerStyles} onClick={playTrackHandler}>
+        <div className={soundtrackContainerStyles()} onClick={playTrackHandler}>
             <button className="soundtrack-play-button">
                 {musicStore.trackEquals(soundtrackData) && musicStore.isPlaying ? (
                     <img src={pauseButton} alt="Pause"/>
