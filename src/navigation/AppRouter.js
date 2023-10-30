@@ -9,12 +9,13 @@ import {
     CREATE_SOUNDTRACK_FROM_FILE,
     CREATE_SOUNDTRACK_FROM_YOUTUBE,
     HOME_ROUTE,
-    PLAYLIST_ROUTE
+    PLAYLIST_ROUTE, SOUNDTRACK_MANAGE
 } from "./routes";
 import CreateAnime from "../modals/CreateAnime";
 import NavBar from "./NavBar";
 import PlaylistPage from "../pages/PlaylistPage";
 import MusicPlayer from "../components/MusicPlayer";
+import SoundtrackManager from "../pages/SoundtrackManager";
 
 function AppRouter() {
     return (
@@ -28,6 +29,7 @@ function AppRouter() {
                 <Route path='/anime/:id' element={<AnimePage/>}/>
                 <Route path={CREATE_ANIME} element={<CreateAnime/>}/>
                 <Route path={PLAYLIST_ROUTE} element={<PlaylistPage/>}/>
+                <Route path={SOUNDTRACK_MANAGE} element={<SoundtrackManager/>}/>
             </Routes>
         </BrowserRouter>
     );
