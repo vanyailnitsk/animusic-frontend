@@ -7,6 +7,7 @@ import volumeIcon from "../images/volume-icon.png"
 import "../style/MusicPlayer.css"
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
+import { isMobile } from 'react-device-detect';
 
 const MusicPlayer = observer(() => {
     const audioRef = useRef(null);
@@ -15,7 +16,11 @@ const MusicPlayer = observer(() => {
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
+
     useEffect(() => {
+        if (isMobile) {
+            setVolume(1);
+        }
         audioRef.current.volume = volume
         if (musicStore.isPlaying) {
             audioRef.current.play()
