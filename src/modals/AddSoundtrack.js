@@ -17,7 +17,12 @@ const AddSoundtrack = () => {
         <div className="add-soundtrack-main">
             <input className="original-title" type="text" placeholder=" Original title"/>
             <input className="anime-title" type="text" placeholder=" Anime Track Title"/>
-            <input className="anime" type="text" placeholder=" Anime"/>
+            <select className="anime">
+                {/*<option value="opening">Opening</option>*/}
+                {/*<option value="ending">Ending</option>*/}
+                {/*<option value="theme">Theme</option>*/}
+                {/*<option value="scene-song">Scene Song</option>*/}
+            </select>
             <div className="track-type">
                 <span>Choose playlist</span>
                 <select className="select">

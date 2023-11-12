@@ -29,6 +29,7 @@ const AnimePage = () => {
     return (
         <div className="main_page">
             <img src={hunterxhunterBanner} alt="" className="anime_image"/>
+            {<h1 className="title">{animeData.title}</h1>}
             <div className='buttons'>
                 <button className="play_btn">
                     <img src={playButton} alt=""/>
@@ -40,6 +41,7 @@ const AnimePage = () => {
                     <button onClick={() => handleNavigate(playlist.id)}>{playlist.name}</button>
                 ))}
             </div>
+
         </div>
     );
 };
