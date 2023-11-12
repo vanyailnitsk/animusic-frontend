@@ -4,7 +4,6 @@ import {useNavigate, useParams} from "react-router-dom";
 import hunterxhunterBanner from "../images/hunterxhunter-banner.jpg"
 import "../style/AnimePage.css"
 import playButton from "../images/play-button.png"
-import {getPlaylistsByAnimeId} from "../services/api/tracks";
 
 const AnimePage = () => {
     const {id} = useParams()
@@ -15,12 +14,12 @@ const AnimePage = () => {
         getAnimeInfo(id)
             .then(data => {
                 setAnimeData(data.data);
+                return data.data.playlists
+            })
+            .then(playlistsData => {
+                setPlaylists(playlistsData)
             })
             .catch((error) => console.log(error))
-        getPlaylistsByAnimeId(id)
-            .then(data => {
-                setPlaylists(data)
-            });
     }, [id]);
 
     const handleNavigate= (playlistId) => {

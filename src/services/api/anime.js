@@ -10,6 +10,11 @@ export const getAnimeInfo = async (animeId) => {
     return {data};
 }
 
+export const getAllAnime = async () => {
+    const {data} = await $host.get('anime');
+    return {data};
+}
+
 export const getAnimeNavs = async () => {
     const {data} = await $host.get('anime/navigation');
     return {data};
