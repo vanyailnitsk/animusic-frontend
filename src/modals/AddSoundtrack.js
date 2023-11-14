@@ -56,8 +56,8 @@ const AddSoundtrack = () => {
         });
     };
     const createFromFile = () => {
-        if (file && soundtrackData.originalTitle && soundtrackData.animeTitle &&
-            soundtrackData.videoUrl && soundtrackData.playlistId !== 0) {
+        if (file && soundtrackData.originalTitle && soundtrackData.animeTitle
+            && soundtrackData.playlistId !== 0) {
             const selectedPlaylist = playlists.find(
                 (playlist) => playlist.id.toString() === soundtrackData.playlistId.toString()
             );
