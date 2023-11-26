@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {getAnimeInfo} from "../services/api/anime";
+import {getAnimeBanner, getAnimeInfo} from "../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
 import hunterxhunterBanner from "../images/hunterxhunter-banner.jpg"
 import "../style/AnimePage.css"
 import playButton from "../images/play-button.png"
+import {animeBannerUrl} from "../services/api/consts";
 
 const AnimePage = () => {
     const {id} = useParams()
-    const [animeData,setAnimeData] = useState({})
-    const [playlists,setPlaylists] = useState([])
+    const [animeData, setAnimeData] = useState({})
+    const [error, setError] = useState(false);
+    const [playlists, setPlaylists] = useState([])
     const navigate = useNavigate();
+    const bannerUrl = animeBannerUrl + id;
     useEffect(() => {
         getAnimeInfo(id)
             .then(data => {
@@ -22,12 +25,16 @@ const AnimePage = () => {
             .catch((error) => console.log(error))
     }, [id]);
 
-    const handleNavigate= (playlistId) => {
+    const handleNavigate = (playlistId) => {
         navigate(`/playlist/${playlistId}`)
     }
+    const handleBannerError = () => {
+        setError(true);
+    };
     return (
         <div className="main_page">
-            <img src={hunterxhunterBanner} alt="" className="anime_image"/>
+            <img src={bannerUrl} alt="" className="anime_image" onError={handleBannerError}/>
+            {/*<img src={bannerUrl} alt="" className="anime_image"/>*/}
             {<h1 className="title">{animeData.title}</h1>}
             <div className='buttons'>
                 <button className="play_btn">
