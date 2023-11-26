@@ -5,6 +5,7 @@ import AnimePage from '../pages/AnimePage';
 import UploadSoundtrack from "../modals/UploadSoundtrack";
 import CreateSoundtrack from "../modals/CreateSoundtrack";
 import {
+    ANIME_MANAGE,
     CREATE_ANIME,
     CREATE_SOUNDTRACK_FROM_FILE,
     CREATE_SOUNDTRACK_FROM_YOUTUBE,
@@ -28,7 +29,7 @@ function AppRouter() {
                 <Route path={CREATE_SOUNDTRACK_FROM_FILE} element={<UploadSoundtrack/>}/>
                 <Route path={CREATE_SOUNDTRACK_FROM_YOUTUBE} element={<CreateSoundtrack/>}/>
                 <Route path='/anime/:id' element={<AnimePage/>}/>
-                <Route path={CREATE_ANIME} element={<AnimeManager/>}/>
+                <Route path={ANIME_MANAGE} element={<AnimeManager/>}/>
                 <Route path={PLAYLIST_ROUTE} element={<PlaylistPage/>}/>
                 <Route path={SOUNDTRACK_MANAGE} element={<SoundtrackManager/>}/>
             </Routes>
