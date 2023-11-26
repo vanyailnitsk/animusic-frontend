@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 .add-soundtrack-main{
+    position: relative;
     height: 80vh;
     width: 80%;
     background-color: #121212;
@@ -136,6 +137,9 @@ span{
 }
 .create{
     display: flex;
+    position: absolute;
+    bottom: 20px;
+    right: 0;
 }
 .create button{
     padding-inline: 14px;
