@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import "../style/Soundtrack.css";
+import "../styles/Soundtrack.css";
 import playButton from "../images/play-button.png"
 import pauseButton from "../images/pause-button.png"
 import flowSign from "../images/flowSign.jpeg"

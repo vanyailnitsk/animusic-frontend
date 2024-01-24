@@ -1,6 +1,6 @@
 import React from 'react';
 import CreateAnime from "../modals/CreateAnime";
-import '../style/AnimeManager.css'
+import '../styles/AnimeManager.css'
 
 const AnimeManager = () => {
     return (

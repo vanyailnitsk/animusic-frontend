@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import SoundtrackList from "../components/SoundtrackList";
+import SoundtrackList from "../../components/SoundtrackList";
 import {useParams} from "react-router-dom";
-import {getPlaylistById} from "../services/api/tracks";
-import "../style/PlaylistPage.css"
-import 'react-loading-skeleton/dist/skeleton.css'
-import {playlistBannerUrl} from "../services/api/consts";
+import {getPlaylistById} from "../../services/api/tracks";
+import "./PlaylistPage.css"
+import {playlistBannerUrl} from "../../services/api/consts";
 
 const PlaylistPage = () => {
     const {id} = useParams()
@@ -26,7 +25,7 @@ const PlaylistPage = () => {
             })
     }, []);
     return (
-        <div className="main">
+        <div className="playlist-page">
             <img
                 src={bannerUrl}
                 alt="Banner"

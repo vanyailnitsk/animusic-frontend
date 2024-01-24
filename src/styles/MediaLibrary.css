@@ -1,0 +1,9 @@
+.media__library__wrapper{
+    width: 350px;
+    grid-column: 1;
+    grid-row: 2;
+    height: 75vh;
+    border-radius: 7px;
+    background-color: #1A1A1A;
+
+}

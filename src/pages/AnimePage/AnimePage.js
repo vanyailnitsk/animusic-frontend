@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {getAnimeInfo} from "../services/api/anime";
+import {getAnimeInfo} from "../../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
-import "../style/AnimePage.css"
-import playButton from "../images/play-button.png"
-import {animeBannerUrl} from "../services/api/consts";
+import "./AnimePage.css"
+import playButton from "../../images/play-button.png"
+import {animeBannerUrl} from "../../services/api/consts";
 
 const AnimePage = () => {
     const {id} = useParams()

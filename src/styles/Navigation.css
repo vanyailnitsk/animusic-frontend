@@ -1,0 +1,26 @@
+.navigation__wrapper{
+    width:350px;
+    grid-column: 1;
+    grid-row: 1;
+    height: 11vh;
+    border-radius: 7px;
+    background-color: #1A1A1A;
+}
+.nav_block{
+    cursor: pointer;
+    margin-left: 15px;
+    margin-top: 7px;
+    display: flex;
+    align-items: center;
+    width: 119px;
+    transition: .3s;
+}
+.nav_block:last-child{
+    opacity: 60%;
+}
+.nav_block span{
+    margin-left: 14px;
+}
+.nav_block:hover{
+    opacity: 1;
+}

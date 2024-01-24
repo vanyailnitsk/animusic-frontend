@@ -1,0 +1,12 @@
+.main__wrapper{
+    width: 98%;
+    max-width: 1420px;
+    height: 88vh;
+    margin-top: 10px;
+    margin-bottom: 10vh;
+    margin-inline: 10px;
+    display: grid;
+    grid-template-columns:auto 1fr;
+    grid-template-rows:auto 1fr auto;
+    gap: 10px;
+}

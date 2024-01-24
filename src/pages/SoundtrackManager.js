@@ -1,6 +1,6 @@
 import React from 'react';
 import AddSoundtrack from "../modals/AddSoundtrack";
-import '../style/SoundtrackManager.css'
+import '../styles/SoundtrackManager.css'
 const SoundtrackManager = () => {
     return (
         <div className="soundtrack-manager-container">

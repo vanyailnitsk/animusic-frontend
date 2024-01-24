@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../style/CreateAnime.css';
+import '../styles/CreateAnime.css';
 import {createAnime} from "../services/api/anime";
 
 const CreateAnime = () => {

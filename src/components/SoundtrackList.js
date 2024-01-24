@@ -1,6 +1,6 @@
 import React from 'react';
 import Soundtrack from "./Soundtrack";
-import "../style/SoundtrackList.css"
+import "../styles/SoundtrackList.css"
 import {observer} from "mobx-react-lite";
 
 const SoundtrackList = observer(({soundtracks}) => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {createSoundtrackFromFile} from "../services/api/audio";
 import {Button, Container, Form} from "react-bootstrap";
-import '../style/UploadSoundtrack.css'
+import '../styles/UploadSoundtrack.css'
 const UploadSoundtrack = () => {
     const [file, setFile] = useState(null);
     const [soundtrackData, setSoundtrackData] = useState({

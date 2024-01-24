@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.app{
+    position: fixed;
+    top:0;
+    left: 0;
+    background-color: #060606;
+    height: 100vh;
+    width: 100%;
+    font-family: Kanit;
+    font-weight: 500;
+    color:#fff;
+}
