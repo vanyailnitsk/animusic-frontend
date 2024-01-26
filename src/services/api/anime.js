@@ -16,8 +16,8 @@ export const getAnimeBanner = async (animeId) => {
 }
 
 export const getAllAnime = async () => {
-    const {data} = await $host.get('anime');
-    return {data};
+    const response = await $host.get('anime');
+    return response;
 }
 
 export const getAnimeNavs = async () => {

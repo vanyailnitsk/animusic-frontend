@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
 import "../styles/Soundtrack.css";
-import playButton from "../images/play-button.png"
-import pauseButton from "../images/pause-button.png"
-import flowSign from "../images/flowSign.jpeg"
+// import playButton from "../images/play-button.png"
+// import pauseButton from "../images/pause-button.png"
+// import flowSign from "../images/flowSign.jpeg"
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 
@@ -27,16 +27,16 @@ const Soundtrack = observer(({soundtrackData, playlist, index}) => {
 
     return (
         <div className={soundtrackContainerStyles()} onClick={playTrackHandler}>
-            <button className="soundtrack-play-button">
-                {musicStore.trackEquals(soundtrackData) && musicStore.isPlaying ? (
-                    <img src={pauseButton} alt="Pause"/>
-                ) : (
-                    <img src={playButton} alt="Play"/>
-                )}
-            </button>
-                <img src={flowSign} alt="" className="soundtrack-image"/>
-                <h3 className="soundtrack-anime">{soundtrackData.animeTitle}</h3>
-                <p className="soundtrack-title">{soundtrackData.originalTitle}</p>
+            {/*<button className="soundtrack-play-button">*/}
+            {/*    {musicStore.trackEquals(soundtrackData) && musicStore.isPlaying ? (*/}
+            {/*        <img src={pauseButton} alt="Pause"/>*/}
+            {/*    ) : (*/}
+            {/*        <img src={playButton} alt="Play"/>*/}
+            {/*    )}*/}
+            {/*</button>*/}
+            {/*    <img src={flowSign} alt="" className="soundtrack-image"/>*/}
+            {/*    <h3 className="soundtrack-anime">{soundtrackData.animeTitle}</h3>*/}
+            {/*    <p className="soundtrack-title">{soundtrackData.originalTitle}</p>*/}
         </div>
     );
 });

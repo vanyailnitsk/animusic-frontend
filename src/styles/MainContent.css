@@ -1,11 +1,15 @@
 .main__content__wrapper{
     position: relative;
+    overflow: hidden;
     width: 1060px;
     grid-column: 2;
     grid-row: 1 / span 2;
     height: calc(86vh + 10px);
     border-radius: 7px;
     background-color: #1A1A1A;
+    -webkit-box-shadow: 4px 4px 5px -2px rgba(213, 217, 219, 0.2);
+    -moz-box-shadow: 4px 4px 5px -2px rgba(213, 217, 219, 0.2);
+    box-shadow: 4px 4px 5px -2px rgba(213, 217, 219, 0.2);
 }
 .logo{
     margin-top: 10px;

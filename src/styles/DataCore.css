@@ -1,6 +1,7 @@
 .data__core__wrapper{
-    margin:auto;
-    width: 1040px;
-    height: auto;
-    margin-top: 20px;
+    margin-inline:auto;
+    width: 1034px;
+    margin-top: 10px;
+    height: 100vh;
+    overflow-y: scroll;
 }
