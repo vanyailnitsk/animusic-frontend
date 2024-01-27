@@ -110,7 +110,7 @@ const MusicPlayer = observer(() => {
                 <div className='player__buttons'>
                     <img src={shuffleButton} alt="" style={{width:24,height:24}}/>
                     <img src={rewindButton} alt="" style={{width:27,height:27}}/>
-                    <img src={musicStore.isPlaying? pauseButton : playButton} alt="" style={{width:40,height:40}}/>
+                    <img src={musicStore.isPlaying? pauseButton : playButton} alt="" style={{width:40,height:40}} onClick={playPauseHandler}/>
                     <img src={nextButton} alt="" style={{width:27,height:27}}/>
                     <img src={repeatButton} alt="" style={{width:27,height:27}}/>
                 </div>
