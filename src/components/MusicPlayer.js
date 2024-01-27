@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
 
 import "../styles/MusicPlayer.css"
+import pauseButton from '../images/pauseButton.png'
 import rewindButton from '../images/rewindButton.png'
 import nextButton from '../images/next.png'
 import shuffleButton from '../images/shuffleButton.png'
@@ -11,6 +12,7 @@ import addButton from '../images/addButton.png'
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import { isMobile } from 'react-device-detect';
+import MusicStore from "../store/MusicStore";
 
 const MusicPlayer = observer(() => {
     const audioRef = useRef(null);
@@ -108,7 +110,7 @@ const MusicPlayer = observer(() => {
                 <div className='player__buttons'>
                     <img src={shuffleButton} alt="" style={{width:24,height:24}}/>
                     <img src={rewindButton} alt="" style={{width:27,height:27}}/>
-                    <img src={playButton} alt="" style={{width:40,height:40}}/>
+                    <img src={musicStore.isPlaying? pauseButton : playButton} alt="" style={{width:40,height:40}}/>
                     <img src={nextButton} alt="" style={{width:27,height:27}}/>
                     <img src={repeatButton} alt="" style={{width:27,height:27}}/>
                 </div>
