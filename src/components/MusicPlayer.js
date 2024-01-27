@@ -104,32 +104,42 @@ const MusicPlayer = observer(() => {
                 </div>
                 <img src={addButton} alt="" className='add__track'/>
             </div>
+            <div className='player'>
+                <div className='player__buttons'>
+                    <img src={shuffleButton} alt="" style={{width:24,height:24}}/>
+                    <img src={rewindButton} alt="" style={{width:27,height:27}}/>
+                    <img src={playButton} alt="" style={{width:40,height:40}}/>
+                    <img src={nextButton} alt="" style={{width:27,height:27}}/>
+                    <img src={repeatButton} alt="" style={{width:27,height:27}}/>
+                </div>
+                <div className="time__bar">
+                    <audio ref={audioRef}
+                           src={musicStore.currentTrack && audioUrl + musicStore.currentTrack.id}
+                           autoPlay
+                           onEnded={playNextTrack}
+                           onTimeUpdate={handleTimeUpdate}
+                           onPlay={handlePlay}
+                           onPause={handlePause}
+                           preload="auto"
+                    >
+                    </audio>
+                    <div className="current__time">{formatTime(currentTime)}</div>
+                    <div className="progress__bar">
+                        <input
+                            type="range"
+                            min="0"
+                            max={duration}
+                            step="1"
+                            value={currentTime}
+                            onChange={handleSeek}
+                        />
+                    </div>
+                    <div className="total-time">{formatTime(duration)}</div>
+                </div>
+            </div>
 
             {/*<div className="info-timebar">*/}
-            {/*    <div className="time-bar">*/}
-            {/*        <audio ref={audioRef}*/}
-            {/*               src={musicStore.currentTrack && audioUrl + musicStore.currentTrack.id}*/}
-            {/*               autoPlay*/}
-            {/*               onEnded={playNextTrack}*/}
-            {/*               onTimeUpdate={handleTimeUpdate}*/}
-            {/*               onPlay={handlePlay}*/}
-            {/*               onPause={handlePause}*/}
-            {/*               preload="auto"*/}
-            {/*        >*/}
-            {/*        </audio>*/}
-            {/*        <div className="current-time">{formatTime(currentTime)}</div>*/}
-            {/*            <div className="progress-bar">*/}
-            {/*        <input*/}
-            {/*                type="range"*/}
-            {/*                min="0"*/}
-            {/*                max={duration}*/}
-            {/*                step="1"*/}
-            {/*                value={currentTime}*/}
-            {/*                onChange={handleSeek}*/}
-            {/*            />*/}
-            {/*            </div>*/}
-            {/*        <div className="total-time">{formatTime(duration)}</div>*/}
-            {/*    </div>*/}
+
             {/*</div>*/}
             {/*<div className="volume-bar">*/}
             {/*    <img className="volume-icon" src='' alt=""/>*/}

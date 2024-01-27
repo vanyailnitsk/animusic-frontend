@@ -8,22 +8,31 @@
     height: 11vh;
     border-radius: 7px;
     background-color: #1A1A1A;
-}
-.nav_block{
-    cursor: pointer;
-    margin-left: 15px;
-    margin-top: 7px;
     display: flex;
     align-items: center;
+}
+.nav__block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 119px;
+    height: 60px;
+    margin-left: 19px;
+}
+.nav_title{
+    display: flex;
+    height: 26px;
+    align-items: center;
+    cursor: pointer;
     width: 119px;
     transition: .3s;
 }
-.nav_block:last-child{
+.nav_title:last-child{
     opacity: 60%;
 }
-.nav_block span{
+.nav_title span{
     margin-left: 14px;
 }
-.nav_block:hover{
+.nav_title:hover{
     opacity: 1;
 }

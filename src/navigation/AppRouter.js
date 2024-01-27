@@ -27,7 +27,6 @@ function AppRouter() {
             <Main/>
             <MusicPlayer/>
             <Routes>
-                <Route path={HOME_ROUTE} element={<Homepage/>}/>
                 <Route path={CREATE_SOUNDTRACK_FROM_FILE} element={<UploadSoundtrack/>}/>
                 <Route path={CREATE_SOUNDTRACK_FROM_YOUTUBE} element={<CreateSoundtrack/>}/>
                 <Route path='/anime/:id' element={<AnimePage/>}/>
