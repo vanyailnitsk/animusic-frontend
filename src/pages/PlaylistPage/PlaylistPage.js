@@ -12,7 +12,7 @@ const PlaylistPage = () => {
     const bannerUrl = playlistBannerUrl + id;
     const [isLoadingImage, setIsLoadingImage] = useState(true)
     useEffect(() => {
-        getPlaylistById(105)
+        getPlaylistById(110)
             .then(data => {
                 setPlaylist(data)
                 return data.soundtracks

@@ -12,6 +12,7 @@ import addButton from '../images/addButton.png'
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {isMobile} from 'react-device-detect';
+import repeatButtonActive from '../images/repeatButtonActive.png'
 import MusicStore from "../store/MusicStore";
 
 const MusicPlayer = observer(() => {
@@ -20,13 +21,16 @@ const MusicPlayer = observer(() => {
     const {musicStore} = useContext(Context)
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
     const [currentTime, setCurrentTime] = useState();
+    const [repeatStatus,setrepeatStatus] = useState(false)
     const [duration, setDuration] = useState(0);
 
     useEffect(() => {
         if (isMobile) {
             setVolume(1);
         }
-        audioRef.current.volume = volume
+        if (audioRef){
+            audioRef.current.volume = volume
+        }
         if (musicStore.isPlaying) {
             audioRef.current.play()
         } else {
@@ -85,6 +89,12 @@ const MusicPlayer = observer(() => {
             setCurrentTime(0)
         }
     };
+    const toggleRepeat = () => {
+        if (audioRef.current) {
+            audioRef.current.loop = !repeatStatus;
+            setrepeatStatus(audioRef.current.loop)
+        }
+    }
     const playNextTrack = () => {
         musicStore.nextTrack()
     };
@@ -99,10 +109,12 @@ const MusicPlayer = observer(() => {
         <div className="music__player__wrapper">
             <div className='current__track'>
                 <img src={trackImg} alt="" className='track__img'/>
-                <div className='track__name'>
-                    <span>Opening 6</span>
-                    <span>My War</span>
-                </div>
+                {musicStore.currentTrack &&
+                    <div className='track__name'>
+                        <span>{musicStore.currentTrack.originalTitle}</span>
+                        <span>{musicStore.currentTrack.animeTitle}</span>
+                    </div>
+                }
                 <img src={addButton} alt="" className='add__track'/>
             </div>
             <div className='player'>
@@ -111,7 +123,7 @@ const MusicPlayer = observer(() => {
                     <button onClick={playPreviousTrack}><img src={rewindButton} alt="" style={{width: 27, height: 27}}/></button>
                     <button onClick={playPauseHandler}><img src={musicStore.isPlaying ? pauseButton : playButton} alt="" style={{width: 40, height: 40}}/></button>
                     <button onClick={playNextTrack}><img src={nextButton} alt="" style={{width: 27, height: 27}}/></button>
-                    <button><img src={repeatButton} alt="" style={{width: 27, height: 27}}/></button>
+                    <button onClick={toggleRepeat}><img src={repeatStatus ? repeatButtonActive : repeatButton} alt="" style={{width: 27, height: 27}}/></button>
                 </div>
                 <div className="time__bar">
                     <audio ref={audioRef}
