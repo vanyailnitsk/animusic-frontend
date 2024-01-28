@@ -12,7 +12,7 @@ const PlaylistPage = () => {
     const bannerUrl = playlistBannerUrl + id;
     const [isLoadingImage, setIsLoadingImage] = useState(true)
     useEffect(() => {
-        getPlaylistById(id)
+        getPlaylistById(105)
             .then(data => {
                 setPlaylist(data)
                 return data.soundtracks
@@ -31,6 +31,7 @@ const PlaylistPage = () => {
                 alt="Banner"
                 className="anime_image"
                 onLoad={() => setIsLoadingImage(false)}
+                onError={() => {setIsLoadingImage(false)}}
             />
             {!isLoadingImage &&
                 <div>

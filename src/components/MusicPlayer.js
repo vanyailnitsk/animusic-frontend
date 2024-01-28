@@ -11,7 +11,7 @@ import repeatButton from '../images/repeatButton.png'
 import addButton from '../images/addButton.png'
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
-import { isMobile } from 'react-device-detect';
+import {isMobile} from 'react-device-detect';
 import MusicStore from "../store/MusicStore";
 
 const MusicPlayer = observer(() => {
@@ -80,8 +80,7 @@ const MusicPlayer = observer(() => {
     const playPreviousTrack = () => {
         if (musicStore.trackIndex > 0 && audioRef.current.currentTime < 4) {
             musicStore.previousTrack()
-        }
-        else {
+        } else {
             audioRef.current.currentTime = 0;
             setCurrentTime(0)
         }
@@ -108,11 +107,11 @@ const MusicPlayer = observer(() => {
             </div>
             <div className='player'>
                 <div className='player__buttons'>
-                    <img src={shuffleButton} alt="" style={{width:24,height:24}}/>
-                    <img src={rewindButton} alt="" style={{width:27,height:27}}/>
-                    <img src={musicStore.isPlaying? pauseButton : playButton} alt="" style={{width:40,height:40}} onClick={playPauseHandler}/>
-                    <img src={nextButton} alt="" style={{width:27,height:27}}/>
-                    <img src={repeatButton} alt="" style={{width:27,height:27}}/>
+                    <button><img src={shuffleButton} alt="" style={{width: 24, height: 24}}/></button>
+                    <button onClick={playPreviousTrack}><img src={rewindButton} alt="" style={{width: 27, height: 27}}/></button>
+                    <button onClick={playPauseHandler}><img src={musicStore.isPlaying ? pauseButton : playButton} alt="" style={{width: 40, height: 40}}/></button>
+                    <button onClick={playNextTrack}><img src={nextButton} alt="" style={{width: 27, height: 27}}/></button>
+                    <button><img src={repeatButton} alt="" style={{width: 27, height: 27}}/></button>
                 </div>
                 <div className="time__bar">
                     <audio ref={audioRef}
@@ -136,7 +135,7 @@ const MusicPlayer = observer(() => {
                             onChange={handleSeek}
                         />
                     </div>
-                    <div className="total-time">{formatTime(duration)}</div>
+                    <div className="total__time">{formatTime(duration)}</div>
                 </div>
             </div>
 
