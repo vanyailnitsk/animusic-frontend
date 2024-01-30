@@ -3,12 +3,13 @@ import '../styles/Main.css'
 import Navigation from "./Navigation";
 import MediaLibrary from "./MediaLibrary";
 import MainContent from "./MainContent";
-const Main = () => {
+
+const Main = ({page}) => {
     return (
         <div className='main__wrapper'>
             <Navigation/>
             <MediaLibrary/>
-            <MainContent/>
+            <MainContent page={page}/>
         </div>
     );
 };

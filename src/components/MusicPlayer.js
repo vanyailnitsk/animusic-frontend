@@ -13,7 +13,6 @@ import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {isMobile} from 'react-device-detect';
 import repeatButtonActive from '../images/repeatButtonActive.png'
-import MusicStore from "../store/MusicStore";
 
 const MusicPlayer = observer(() => {
     const audioRef = useRef(null);
@@ -21,14 +20,14 @@ const MusicPlayer = observer(() => {
     const {musicStore} = useContext(Context)
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
     const [currentTime, setCurrentTime] = useState();
-    const [repeatStatus,setrepeatStatus] = useState(false)
+    const [repeatStatus, setrepeatStatus] = useState(false)
     const [duration, setDuration] = useState(0);
 
     useEffect(() => {
         if (isMobile) {
             setVolume(1);
         }
-        if (audioRef){
+        if (audioRef) {
             audioRef.current.volume = volume
         }
         if (musicStore.isPlaying) {
@@ -120,10 +119,14 @@ const MusicPlayer = observer(() => {
             <div className='player'>
                 <div className='player__buttons'>
                     <button><img src={shuffleButton} alt="" style={{width: 24, height: 24}}/></button>
-                    <button onClick={playPreviousTrack}><img src={rewindButton} alt="" style={{width: 27, height: 27}}/></button>
-                    <button onClick={playPauseHandler}><img src={musicStore.isPlaying ? pauseButton : playButton} alt="" style={{width: 40, height: 40}}/></button>
-                    <button onClick={playNextTrack}><img src={nextButton} alt="" style={{width: 27, height: 27}}/></button>
-                    <button onClick={toggleRepeat}><img src={repeatStatus ? repeatButtonActive : repeatButton} alt="" style={{width: 27, height: 27}}/></button>
+                    <button onClick={playPreviousTrack}><img src={rewindButton} alt="" style={{width: 27, height: 27}}/>
+                    </button>
+                    <button onClick={playPauseHandler}><img src={musicStore.isPlaying ? pauseButton : playButton} alt=""
+                                                            style={{width: 40, height: 40}}/></button>
+                    <button onClick={playNextTrack}><img src={nextButton} alt="" style={{width: 27, height: 27}}/>
+                    </button>
+                    <button onClick={toggleRepeat}><img src={repeatStatus ? repeatButtonActive : repeatButton} alt=""
+                                                        style={{width: 27, height: 27}}/></button>
                 </div>
                 <div className="time__bar">
                     <audio ref={audioRef}

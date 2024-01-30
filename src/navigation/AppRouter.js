@@ -1,38 +1,24 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import React from 'react';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Main from "../components/Main";
 import Homepage from '../pages/Home/Homepage';
 import AnimePage from '../pages/AnimePage/AnimePage';
-import UploadSoundtrack from "../modals/UploadSoundtrack";
-import CreateSoundtrack from "../modals/CreateSoundtrack";
-import {
-    ANIME_MANAGE,
-    CREATE_ANIME,
-    CREATE_SOUNDTRACK_FROM_FILE,
-    CREATE_SOUNDTRACK_FROM_YOUTUBE,
-    HOME_ROUTE,
-    PLAYLIST_ROUTE, SOUNDTRACK_MANAGE
-} from "./routes";
-import CreateAnime from "../modals/CreateAnime";
+import {ANIME_MANAGE, ANIME_ROUTE, HOME_ROUTE, PLAYLIST_ROUTE, SOUNDTRACK_MANAGE} from "./routes";
 import PlaylistPage from "../pages/PlaylistPage/PlaylistPage";
 import MusicPlayer from "../components/MusicPlayer";
 import SoundtrackManager from "../pages/SoundtrackManager";
 import AnimeManager from "../pages/AnimeManager";
-import {getAnimeNavs} from "../services/api/anime";
-import DataCore from "../components/DataCore";
 
 function AppRouter() {
     return (
         <BrowserRouter>
-            <Main/>
             <MusicPlayer/>
             <Routes>
-                <Route path={CREATE_SOUNDTRACK_FROM_FILE} element={<UploadSoundtrack/>}/>
-                <Route path={CREATE_SOUNDTRACK_FROM_YOUTUBE} element={<CreateSoundtrack/>}/>
-                <Route path='/anime/:id' element={<AnimePage/>}/>
-                <Route path={ANIME_MANAGE} element={<AnimeManager/>}/>
-                <Route path={PLAYLIST_ROUTE} element={<PlaylistPage/>}/>
-                <Route path={SOUNDTRACK_MANAGE} element={<SoundtrackManager/>}/>
+                <Route path={HOME_ROUTE} element={<Main page={<Homepage/>}/>}/>
+                <Route path={ANIME_ROUTE} element={<Main page={<AnimePage/>}/>}/>
+                <Route path={ANIME_MANAGE} element={<Main page={<AnimeManager/>}/>}/>
+                <Route path={PLAYLIST_ROUTE} element={<Main page={<PlaylistPage/>}/>}/>
+                <Route path={SOUNDTRACK_MANAGE} element={<Main page={<SoundtrackManager/>}/>}/>
             </Routes>
         </BrowserRouter>
     );

@@ -2,7 +2,8 @@ import React from 'react';
 import '../styles/MainContent.css'
 import avatar from '../images/avatar.jpeg'
 import DataCore from "./DataCore";
-const MainContent = () => {
+
+const MainContent = ({page}) => {
     return (
         <div className='main__content__wrapper'>
             <div className='logo'>
@@ -11,7 +12,7 @@ const MainContent = () => {
             <div className='profile__picture__wrapper'>
                 <img src={avatar} alt="" style={{width:'100%',display:'block'}}/>
             </div>
-            <DataCore/>
+            <DataCore page={page}/>
         </div>
     );
 };
