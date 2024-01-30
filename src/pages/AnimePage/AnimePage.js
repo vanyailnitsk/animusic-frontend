@@ -33,6 +33,7 @@ const AnimePage = () => {
             <img
                 src={bannerUrl} alt="" className="anime_image"
                 onLoad={() => setIsLoadingImage(false)}
+                onError={() => setIsLoadingImage(false)}
             />
 
             {!isLoadingImage &&
