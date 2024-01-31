@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {getAnimeInfo} from "../../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
 import "./AnimePage.css"
-// import playButton from "../../images/play-button.png"
-import {animeBannerUrl} from "../../services/api/consts";
+import defaultBanner from '..//../images/defaultBanner.jpg'
+import followButton from '../../images/follow.png'
+import PlaylistCard from "../../components/PlaylistCard";
+import Playlists from "../../components/Playlists";
+// import {animeBannerUrl} from "../../services/api/consts";
 
 const AnimePage = () => {
     const {id} = useParams()
@@ -11,7 +14,7 @@ const AnimePage = () => {
     const [playlists, setPlaylists] = useState([])
     const navigate = useNavigate();
     const [isLoadingImage, setIsLoadingImage] = useState(true)
-    const bannerUrl = animeBannerUrl + id;
+    // const bannerUrl = animeBannerUrl + id;
     useEffect(() => {
         getAnimeInfo(id)
             .then(data => {
@@ -29,27 +32,21 @@ const AnimePage = () => {
     }
 
     return (
-        <div className="main_page">
-            <img
-                src={bannerUrl} alt="" className="anime_image"
-                onLoad={() => setIsLoadingImage(false)}
-                onError={() => setIsLoadingImage(false)}
-            />
-
+        <div className="anime__page__wrapper">
+            <div className="anime__banner">
+                <img
+                    src={defaultBanner} alt="Banner"
+                    onLoad={() => setIsLoadingImage(false)}
+                    onError={() => setIsLoadingImage(false)}
+                />
+            </div>
             {!isLoadingImage &&
                 <div>
-                    <h1 className="title">{animeData.title}</h1>
-                    <div className='buttons'>
-                        <button className="play_btn">
-                            {/*<img src={playButton} alt=""/>*/}
-                        </button>
-                        <button className="follow_btn">FOLLOW</button>
+                    <div className="title__follow">
+                        <h1 className="title">{animeData.title}</h1>
+                        <img src={followButton} alt=""/>
                     </div>
-                    <div className="playlists">
-                        {playlists.map(playlist => (
-                            <button onClick={() => handleNavigate(playlist.id)}>{playlist.name}</button>
-                        ))}
-                    </div>
+                    <Playlists playlists={playlists} handleNavigate={handleNavigate}/>
                 </div>
             }
 

@@ -1,13 +1,13 @@
 .data__core__wrapper{
     position: relative;
     margin-inline:auto;
-    width: 1034px;
+    width: 1041px;
     margin-top: 10px;
-    height: 100vh;
-    overflow: hidden;
+    height: 78vh;
+    overflow:auto;
 }
-.data__core__wrapper:hover{
-    overflow: auto;
+.data__core__wrapper:hover::-webkit-scrollbar-thumb{
+    background: #48494a;
 }
 ::-webkit-scrollbar {
     width: 7px;
@@ -18,10 +18,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #48494a;
+    background: transparent;
     border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
