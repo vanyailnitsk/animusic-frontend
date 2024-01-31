@@ -103,14 +103,13 @@ const MusicPlayer = observer(() => {
     navigator.mediaSession.setActionHandler("previoustrack", () => {
         playPreviousTrack()
     });
-
     return (
         <div className="music__player__wrapper">
             <div className='current__track'>
                 <img src={trackImg} alt="" className='track__img'/>
                 {musicStore.currentTrack &&
                     <div className='track__name'>
-                        <span>{musicStore.currentTrack.originalTitle}</span>
+                        <span className={musicStore.currentTrack.originalTitle.length > 20? "scrolling" : null }>{musicStore.currentTrack.originalTitle}</span>
                         <span>{musicStore.currentTrack.animeTitle}</span>
                     </div>
                 }
