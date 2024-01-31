@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {getAnimeInfo} from "../../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
 import "./AnimePage.css"
-import defaultBanner from '..//../images/defaultBanner.jpg'
+import defaultBanner from '..//../images/default-banner.jpg'
 import followButton from '../../images/follow.png'
 import PlaylistCard from "../../components/PlaylistCard";
 import Playlists from "../../components/Playlists";
-// import {animeBannerUrl} from "../../services/api/consts";
+import {animeBannerUrl} from "../../services/api/consts";
 
 const AnimePage = () => {
     const {id} = useParams()
@@ -33,6 +33,9 @@ const AnimePage = () => {
 
     return (
         <div className="anime__page__wrapper">
+            <div className='blur'>
+                <img src={defaultBanner} alt=""/>
+            </div>
             <div className="anime__banner">
                 <img
                     src={defaultBanner} alt="Banner"
