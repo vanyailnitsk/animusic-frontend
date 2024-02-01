@@ -4,6 +4,7 @@ import {Context} from "../index";
 import trackImg from '../images/trackImg.jpeg'
 import Pause from '../images/soundtrack-pause.png'
 import Play from '../images/soundtrack-play.png'
+import addButton from '../images/addButton.png'
 import {observer} from "mobx-react-lite";
 
 
@@ -18,16 +19,8 @@ const Soundtrack = observer(({soundtrackData, playlist, index}) => {
             musicStore.togglePlayPause()
         }
     };
-    const soundtrackContainerStyles = () => {
-        const classNames = ['soundtrack-container'];
-        if (musicStore.trackEquals(soundtrackData)) {
-            classNames.push('playing');
-        }
-        return classNames.join(' ');
-    }
-
     return (
-        <div className={soundtrackContainerStyles()} onClick={playTrackHandler}>
+        <div className={`soundtrack__container ${musicStore.trackEquals(soundtrackData)? "playing" : ""}`} onClick={playTrackHandler}>
             <button className="soundtrack__toggle__play">
                 {musicStore.trackEquals(soundtrackData) && musicStore.isPlaying ? (
                     <img src={Pause} alt="Pause"/>
@@ -35,9 +28,12 @@ const Soundtrack = observer(({soundtrackData, playlist, index}) => {
                     <img src={Play} alt="Play"/>
                 )}
             </button>
-                <img src={trackImg} alt="" className="soundtrack-image"/>
-                <h3 className="soundtrack-anime">{soundtrackData.animeTitle}</h3>
-                <p className="soundtrack-title">{soundtrackData.originalTitle}</p>
+                <img src={trackImg} alt="" className="soundtrack__image"/>
+                <h3 className="title">{soundtrackData.animeTitle}</h3>
+                <p className="original__title">{soundtrackData.originalTitle}</p>
+                <button className="soundtrack__add" onClick={(e)=> e.stopPropagation()}>
+                    <img src={addButton} alt="" />
+                </button>
         </div>
     );
 });
