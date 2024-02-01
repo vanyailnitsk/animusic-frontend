@@ -5,7 +5,7 @@ import {observer} from "mobx-react-lite";
 
 const SoundtrackList = observer(({soundtracks}) => {
     return (
-        <div className="main-soundtracklist">
+        <div className="soundtracklist__wrapper">
             {soundtracks.map((soundtrack,index) => (
                 <Soundtrack
                     key={soundtrack.id}

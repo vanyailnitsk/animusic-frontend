@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {getAnimeInfo} from "../../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
 import "./AnimePage.css"
-import defaultBanner from '..//../images/default-banner.jpg'
+import defaultBanner from '..//../images/defaultBanner.jpg'
 import followButton from '../../images/follow.png'
 import PlaylistCard from "../../components/PlaylistCard";
 import Playlists from "../../components/Playlists";
@@ -46,7 +46,7 @@ const AnimePage = () => {
             {!isLoadingImage &&
                 <div>
                     <div className="title__follow">
-                        <h1 className="title">{animeData.title}</h1>
+                        <h1>{animeData.title}</h1>
                         <img src={followButton} alt=""/>
                     </div>
                     <Playlists playlists={playlists} handleNavigate={handleNavigate}/>

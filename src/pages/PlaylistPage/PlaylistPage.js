@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import {getPlaylistById} from "../../services/api/tracks";
 import "./PlaylistPage.css"
 import {playlistBannerUrl} from "../../services/api/consts";
+import defaultBanner from "../../images/defaultBanner.jpg";
 
 const PlaylistPage = () => {
     const {id} = useParams()
@@ -25,17 +26,20 @@ const PlaylistPage = () => {
             })
     }, []);
     return (
-        <div className="playlist-page">
-            <img
-                src={bannerUrl}
-                alt="Banner"
-                className="anime_image"
-                onLoad={() => setIsLoadingImage(false)}
-                onError={() => {setIsLoadingImage(false)}}
-            />
+        <div className="playlist__page__wrapper">
+            <div className='blur'>
+                <img src={defaultBanner} alt=""/>
+            </div>
+            <div className="anime__banner">
+                <img
+                    src={defaultBanner} alt="Banner"
+                    onLoad={() => setIsLoadingImage(false)}
+                    onError={() => setIsLoadingImage(false)}
+                />
+            </div>
             {!isLoadingImage &&
                 <div>
-                    <h1 className="playlist-name">{playlist.name}</h1>
+                    <h1 className="playlist__name">{playlist.name}</h1>
                     <SoundtrackList soundtracks={soundtracks}/>
                 </div>
             }

@@ -1,19 +1,9 @@
-/*.playlist-page {*/
-/*    margin-top: 8vh;*/
-/*    margin-left: 16%;*/
-/*    background-color: #1b1c1c;*/
-/*    font-family: "Oswald";*/
-/*    height: 92vh;*/
-/*}*/
-/*.playlist-name {*/
-/*    margin-top: 2%;*/
-/*    color: white;*/
-/*    text-align: center;*/
-/*}*/
-/*@media screen and (max-width: 768px) {*/
-/*    .main{*/
-/*        margin-left: 0;*/
-/*        margin-top: 4vh;*/
-/*        height: 96vh;*/
-/*    }*/
-/*}*/
+.playlist__page__wrapper {
+    width: 100%;
+    height: auto;
+}
+.playlist__name {
+    position: relative;
+    margin-top: 10px;
+    text-align: center;
+}

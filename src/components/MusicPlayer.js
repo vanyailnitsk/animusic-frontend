@@ -19,7 +19,7 @@ const MusicPlayer = observer(() => {
     const [volume, setVolume] = useState(0.25);
     const {musicStore} = useContext(Context)
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
-    const [currentTime, setCurrentTime] = useState();
+    const [currentTime, setCurrentTime] = useState(0);
     const [repeatStatus, setrepeatStatus] = useState(false)
     const [duration, setDuration] = useState(0);
 

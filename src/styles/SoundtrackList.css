@@ -1,6 +1,6 @@
-.main-soundtracklist {
-    margin-top: 2%;
+.soundtracklist__wrapper {
+    margin-top: 10px;
     width: 100%;
-    background-color: #1b1c1c;
-    padding-bottom: 2vh;
+    background-color: transparent;
+    position: relative;
 }
