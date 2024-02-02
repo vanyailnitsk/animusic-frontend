@@ -9,6 +9,10 @@ import playButton from '../images/playButton.png'
 import trackImg from '../images/trackImg.jpeg'
 import repeatButton from '../images/repeatButton.png'
 import addButton from '../images/addButton.png'
+import loudSound from '../images/icons8-громкий-звук-100.png'
+import mediumSound from '../images/icons8-средняя-громкость-100.png'
+import littleSound from '../images/icons8-низкая-громкость-100.png'
+import noSound from '../images/icons8-нет-звука-100.png'
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {isMobile} from 'react-device-detect';
@@ -66,6 +70,20 @@ const MusicPlayer = observer(() => {
             audioElement.volume = newVolume;
         }
     };
+    const changeVolumeIcon = (volume) =>{
+        if (volume ===0){
+            return noSound
+        }
+        else if (volume <= 0.3){
+            return littleSound
+        }
+        else if (volume <= 0.6){
+            return mediumSound
+        }
+        else{
+            return loudSound
+        }
+    }
 
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
@@ -109,7 +127,7 @@ const MusicPlayer = observer(() => {
                 <img src={trackImg} alt="" className='track__img'/>
                 {musicStore.currentTrack &&
                     <div className='track__name'>
-                        <span className={musicStore.currentTrack.originalTitle.length > 20? "scrolling" : null }>{musicStore.currentTrack.originalTitle}</span>
+                        <span className={musicStore.currentTrack.originalTitle.length > 20? "scrolling" : "" }>{musicStore.currentTrack.originalTitle}</span>
                         <span>{musicStore.currentTrack.animeTitle}</span>
                     </div>
                 }
@@ -153,21 +171,18 @@ const MusicPlayer = observer(() => {
                 </div>
             </div>
 
-            {/*<div className="info-timebar">*/}
 
-            {/*</div>*/}
-            {/*<div className="volume-bar">*/}
-            {/*    <img className="volume-icon" src='' alt=""/>*/}
-            {/*    <input*/}
-            {/*        type="range"*/}
-            {/*        min="0"*/}
-            {/*        max="1"*/}
-            {/*        step="0.01"*/}
-            {/*        value={volume}*/}
-            {/*        onChange={handleVolumeChange}*/}
-            {/*        className="volume-progress"*/}
-            {/*    />*/}
-            {/*</div>*/}
+            <div className="volume__bar">
+                <img className="volume__icon" src={changeVolumeIcon(volume)} alt=""/>
+                <input
+                    type="range"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value={volume}
+                    onChange={handleVolumeChange}
+                />
+            </div>
         </div>
     );
 });
