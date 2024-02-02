@@ -26,9 +26,7 @@
     cursor: pointer;
     width: 119px;
     transition: .3s;
-}
-.nav_title:last-child{
-    opacity: 60%;
+    opacity: 70%;
 }
 .nav_title span{
     margin-left: 14px;
