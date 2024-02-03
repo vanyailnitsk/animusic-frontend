@@ -50,7 +50,6 @@ const AnimePage = () => {
                     <Playlists playlists={playlists} handleNavigate={handleNavigate}/>
                 </div>
             }
-
         </div>
     );
 };

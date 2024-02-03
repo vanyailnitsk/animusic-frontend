@@ -1,8 +1,7 @@
 .main__content__wrapper{
     position: relative;
     overflow: hidden;
-    width: 1060px;
-    grid-column: 2;
+    width: 100%;
     grid-row: 1 / span 2;
     height: calc(86vh + 10px);
     border-radius: 7px;
