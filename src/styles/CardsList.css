@@ -10,3 +10,9 @@
     margin-top: 33px;
     margin-inline: auto;
 }
+@media screen and (min-width: 1920px){
+    .cardslist__wrapper{
+        width: 1332px;
+        grid-template-columns:318px 318px 318px 318px;
+    }
+}
