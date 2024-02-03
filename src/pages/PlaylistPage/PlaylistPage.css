@@ -1,5 +1,6 @@
 .playlist__page__wrapper {
     width: 100%;
+    position: relative;
     height: auto;
 }
 .playlist__name {
