@@ -1,0 +1,72 @@
+.soundtrack__container {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-block:5px;
+    margin-bottom: 3px;
+    width: 100%;
+    background: transparent;
+    transition: 0.2s linear;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.soundtrack__container.playing {
+    background-color: #333333;
+}
+.soundtrack__container:hover{
+    background-color: #595959;
+}
+.soundtrack__container:hover > .soundtrack__toggle__play{
+    opacity: 1;
+}
+.soundtrack__container:hover > .soundtrack__add{
+    opacity: 1;
+}
+
+.soundtrack__toggle__play {
+    display: flex;
+    opacity: 0;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    transition: .2s ease;
+}
+.soundtrack__toggle__play img {
+    width: 18px;
+}
+.soundtrack__image{
+    width: 40px;
+}
+.title {
+    margin: 0 0 0 10px;
+    font-size: 17px;
+    white-space: nowrap;
+}
+.original__title {
+    font-size: 17px;
+    white-space: nowrap;
+    position: absolute;
+    width: 250px;
+    text-align: left;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.soundtrack__add {
+    position: absolute;
+    right: 20px;
+    opacity: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.soundtrack__add img{
+    width: 20px;
+    height: 20px;
+}
+

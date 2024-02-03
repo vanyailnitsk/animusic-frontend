@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Container, Form} from "react-bootstrap";
-import '../style/UploadSoundtrack.css'
+import '../styles/UploadSoundtrack.css'
 import {createSoundtrackFromYoutube} from "../services/api/audio";
 import {getAnimeNavs} from "../services/api/anime";
-import '../style/CreateSoundtrack.css'
+import '../styles/CreateSoundtrack.css'
 const CreateSoundtrack = () => {
     const [soundtrackData, setSoundtrackData] = useState({
         originalTitle: '',

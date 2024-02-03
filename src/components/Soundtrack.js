@@ -1,10 +1,12 @@
 import React, {useContext} from "react";
-import "../style/Soundtrack.css";
-import playButton from "../images/play-button.png"
-import pauseButton from "../images/pause-button.png"
-import flowSign from "../images/flowSign.jpeg"
+import "../styles/Soundtrack.css";
 import {Context} from "../index";
+import trackImg from '../images/trackImg.jpeg'
+import Pause from '../images/soundtrack-pause.png'
+import Play from '../images/soundtrack-play.png'
+import addButton from '../images/addButton.png'
 import {observer} from "mobx-react-lite";
+
 
 const Soundtrack = observer(({soundtrackData, playlist, index}) => {
     const {musicStore} = useContext(Context)
@@ -17,26 +19,21 @@ const Soundtrack = observer(({soundtrackData, playlist, index}) => {
             musicStore.togglePlayPause()
         }
     };
-    const soundtrackContainerStyles = () => {
-        const classNames = ['soundtrack-container'];
-        if (musicStore.trackEquals(soundtrackData) && musicStore.isPlaying) {
-            classNames.push('playing');
-        }
-        return classNames.join(' ');
-    }
-
     return (
-        <div className={soundtrackContainerStyles()} onClick={playTrackHandler}>
-            <button className="soundtrack-play-button">
+        <div className={`soundtrack__container ${musicStore.trackEquals(soundtrackData)? "playing" : ""}`} onClick={playTrackHandler}>
+            <button className="soundtrack__toggle__play">
                 {musicStore.trackEquals(soundtrackData) && musicStore.isPlaying ? (
-                    <img src={pauseButton} alt="Pause"/>
+                    <img src={Pause} alt="Pause"/>
                 ) : (
-                    <img src={playButton} alt="Play"/>
+                    <img src={Play} alt="Play"/>
                 )}
             </button>
-                <img src={flowSign} alt="" className="soundtrack-image"/>
-                <h3 className="soundtrack-anime">{soundtrackData.animeTitle}</h3>
-                <p className="soundtrack-title">{soundtrackData.originalTitle}</p>
+                <img src={trackImg} alt="" className="soundtrack__image"/>
+                <h3 className="title">{soundtrackData.animeTitle}</h3>
+                <p className="original__title">{soundtrackData.originalTitle}</p>
+                <button className="soundtrack__add" onClick={(e)=> e.stopPropagation()}>
+                    <img src={addButton} alt="" />
+                </button>
         </div>
     );
 });

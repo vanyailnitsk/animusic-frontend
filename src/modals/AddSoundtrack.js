@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../style/AddSoundtrack.css'
+import '../styles/AddSoundtrack.css'
 import {getAllAnime} from "../services/api/anime";
 import {createSoundtrackFromFile, createSoundtrackFromYoutube} from "../services/api/audio";
 

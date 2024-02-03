@@ -1,0 +1,9 @@
+.playlist__page__wrapper {
+    width: 100%;
+    height: auto;
+}
+.playlist__name {
+    position: relative;
+    margin-top: 10px;
+    text-align: center;
+}
