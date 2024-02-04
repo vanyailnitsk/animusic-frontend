@@ -42,7 +42,7 @@ const AnimePage = () => {
                 />
             </div>
             {!isLoadingImage &&
-                <div>
+                <div >
                     <div className="title__follow">
                         <h1>{animeData.title}</h1>
                         <img src={followButton} alt=""/>

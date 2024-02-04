@@ -1,13 +1,13 @@
 .playlists{
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-inline: auto;
     width: 922px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin-left: 30px;
     height: 202px;
+    margin-top: 50px;
     display: grid;
     grid-template-columns:1fr 1fr 1fr 1fr;
     gap:54px;
-    margin-top: 10px;
     justify-content: space-between;
 }

@@ -1,7 +1,8 @@
 .anime__page__wrapper{
     position: relative;
     width: 100%;
-    height: auto;
+    min-height: 87vh;
+    overflow: hidden;
 }
 .anime__banner{
     position: relative;
@@ -11,6 +12,7 @@
     overflow: hidden;
     height: 259px;
 }
+
 .anime__banner img{
     width: 100%;
     height: 100%;

@@ -1,6 +1,7 @@
 .home__page__wrapper{
     width: 100%;
-    height: auto;
+    min-height: 100%;
+    overflow: hidden;
 }
 .logo{
     margin-top: 10px;

@@ -5,7 +5,7 @@ const PlaylistCard = ({name,playlist,handleNavigate}) => {
     return (
         <div className="playlist__card__wrapper" onClick={() => handleNavigate(playlist.id)}>
             <img src={playListCard} alt=""/>
-            <span>{name}</span>
+            <span className={{display:'block'}}>{name}</span>
         </div>
     );
 };
