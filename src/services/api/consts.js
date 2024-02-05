@@ -2,3 +2,5 @@ export const animeBannerUrl = process.env.REACT_APP_API_URL + '/anime/images/ban
 export const playlistBannerUrl = process.env.REACT_APP_API_URL + '/playlist/images/banner/'
 
 export const animeCardUrl = process.env.REACT_APP_API_URL + '/anime/images/card/'
+
+export const soundtrackImageUrl = process.env.REACT_APP_API_URL + '/soundtracks/images/'

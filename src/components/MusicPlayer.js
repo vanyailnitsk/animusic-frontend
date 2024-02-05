@@ -6,7 +6,6 @@ import rewindButton from '../images/rewindButton.png'
 import nextButton from '../images/next.png'
 import shuffleButton from '../images/shuffleButton.png'
 import playButton from '../images/playButton.png'
-import trackImg from '../images/trackImg.jpeg'
 import repeatButton from '../images/repeatButton.png'
 import addButton from '../images/addButton.png'
 import loudSound from '../images/icons8-громкий-звук-100.png'
@@ -18,6 +17,7 @@ import {Context} from "../index";
 import {formatTime} from "../tools/FormatTime";
 import {isMobile} from 'react-device-detect';
 import repeatButtonActive from '../images/repeatButtonActive.png'
+import {soundtrackImageUrl} from "../services/api/consts";
 
 const MusicPlayer = observer(() => {
     const audioRef = useRef(null);
@@ -27,7 +27,7 @@ const MusicPlayer = observer(() => {
     const [currentTime, setCurrentTime] = useState(0);
     const [repeatStatus, setrepeatStatus] = useState(false)
     const [duration, setDuration] = useState(0);
-
+    const trackImgUrl = soundtrackImageUrl + musicStore.currentTrack.id
     useEffect(() => {
         if (isMobile) {
             setVolume(1);
@@ -119,7 +119,7 @@ const MusicPlayer = observer(() => {
     return (
         <div className="music__player__wrapper">
             <div className='current__track'>
-                <img src={trackImg} alt="" className='track__img'/>
+                <img src={trackImgUrl} alt="" className='track__img'/>
                 {musicStore.currentTrack &&
                     <div className='track__name'>
                         <span className={musicStore.currentTrack.originalTitle.length > 20? "scrolling" : "" }>{musicStore.currentTrack.originalTitle}</span>

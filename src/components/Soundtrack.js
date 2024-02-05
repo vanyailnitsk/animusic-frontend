@@ -7,10 +7,12 @@ import Play from '../images/soundtrack-play.png'
 import addButton from '../images/addButton.png'
 import {formatTime} from "../tools/FormatTime";
 import {observer} from "mobx-react-lite";
+import {soundtrackImageUrl} from "../services/api/consts";
 
 
 const Soundtrack = observer(({soundtrackData, playlist, index}) => {
     const {musicStore} = useContext(Context)
+    const trackImageUrl = soundtrackImageUrl + soundtrackData.id
     const playTrackHandler = () => {
         if (!musicStore.trackEquals(soundtrackData)) {
             musicStore.setPlaylist(playlist)
@@ -31,7 +33,7 @@ const Soundtrack = observer(({soundtrackData, playlist, index}) => {
                     <img src={Play} alt="Play"/>
                 )}
             </button>
-            <img src={trackImg} alt="" className="soundtrack__image"/>
+            <img src={trackImageUrl} alt="" className="soundtrack__image"/>
             <h3 className="title">{soundtrackData.animeTitle}</h3>
             <p className="original__title">{soundtrackData.originalTitle}</p>
             <button className="soundtrack__add" onClick={(e) => e.stopPropagation()}>
