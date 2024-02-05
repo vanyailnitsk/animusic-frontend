@@ -15,6 +15,7 @@ import littleSound from '../images/icons8-низкая-громкость-100.pn
 import noSound from '../images/icons8-нет-звука-100.png'
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
+import {formatTime} from "../tools/FormatTime";
 import {isMobile} from 'react-device-detect';
 import repeatButtonActive from '../images/repeatButtonActive.png'
 
@@ -84,12 +85,6 @@ const MusicPlayer = observer(() => {
             return loudSound
         }
     }
-
-    const formatTime = (seconds) => {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = Math.floor(seconds % 60);
-        return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
-    };
     const handleTimeUpdate = (event) => {
         setCurrentTime(event.target.currentTime);
     };

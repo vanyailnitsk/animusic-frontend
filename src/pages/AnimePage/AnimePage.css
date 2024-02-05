@@ -25,6 +25,9 @@
     align-items: center;
     margin-top: 10px;
 }
+.title__follow h1{
+    font-size: 2.5vw;
+}
 .title__follow img{
     position: absolute;
     right: 5px;

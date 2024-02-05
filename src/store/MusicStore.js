@@ -41,7 +41,6 @@ class MusicStore {
             this._trackIndex=0
         }
     }
-
     get playlist() {
         return this._playlist
     }

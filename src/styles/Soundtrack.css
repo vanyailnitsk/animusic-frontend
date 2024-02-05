@@ -14,13 +14,16 @@
     user-select: none;
 }
 .soundtrack__container.playing {
-    background-color: #333333;
-}
-.soundtrack__container:hover{
     background-color: #595959;
 }
-.soundtrack__container:hover > .soundtrack__toggle__play{
-    opacity: 1;
+.soundtrack__container:hover{
+    background-color: #333333;
+}
+.soundtrack__container:hover > .soundtrack__toggle__play img{
+    display: block;
+}
+.soundtrack__container:hover > .soundtrack__toggle__play span{
+    display: none;
 }
 .soundtrack__container:hover > .soundtrack__add{
     opacity: 1;
@@ -28,39 +31,44 @@
 
 .soundtrack__toggle__play {
     display: flex;
-    opacity: 0;
     width: 40px;
     align-items: center;
     justify-content: center;
     background-color: transparent;
     border: none;
+    text-align: center;
     transition: .2s ease;
 }
 .soundtrack__toggle__play img {
     width: 18px;
+    display: none;
+}
+.soundtrack__toggle__play span{
+    display: block;
+    color: #808080;
+    width: 18px;
 }
 .soundtrack__image{
     width: 40px;
+    height: 40px;
 }
 .title {
     margin: 0 0 0 10px;
-    font-size: 17px;
+    font-size: 15px;
+    width: 20vw;
     white-space: nowrap;
 }
 .original__title {
-    font-size: 17px;
+    font-size: 15px;
     white-space: nowrap;
-    position: absolute;
-    width: 250px;
+    width: 27vw;
+    margin-left: 7vw;
+    margin-block: auto;
     text-align: left;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
 .soundtrack__add {
-    position: absolute;
-    right: 20px;
     opacity: 0;
+    margin-left: 7vw;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -68,5 +76,11 @@
 .soundtrack__add img{
     width: 20px;
     height: 20px;
+}
+
+.track__duration{
+    font-size: 15px;
+    margin-left: 1.5vw;
+    color: #808080;
 }
 
