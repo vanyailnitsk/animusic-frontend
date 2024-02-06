@@ -9,3 +9,11 @@
     gap: 10px;
     position: fixed;
 }
+
+@media screen and (max-width: 1080px) and (max-height: 2400px){
+    .main__wrapper{
+        display: grid;
+        grid-template-columns:15% calc(85% - 10px);
+        grid-template-rows:auto 1fr auto;
+    }
+}

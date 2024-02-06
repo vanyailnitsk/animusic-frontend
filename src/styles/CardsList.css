@@ -28,9 +28,10 @@
         grid-template-columns:318px 318px;
     }
 }
-@media screen and (max-width: 375px){
+
+@media screen and (max-width: 1080px) and (max-height: 2400px){
     .cardslist__wrapper{
         width: 318px;
-        grid-template-columns:318px;
+        grid-template-columns: 318px;
     }
 }

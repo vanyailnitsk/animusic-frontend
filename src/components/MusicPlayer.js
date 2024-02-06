@@ -25,9 +25,8 @@ const MusicPlayer = observer(() => {
     const {musicStore} = useContext(Context)
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
     const [currentTime, setCurrentTime] = useState(0);
-    const [repeatStatus, setrepeatStatus] = useState(false)
+    const [repeatStatus, setRepeatStatus] = useState(false)
     const [duration, setDuration] = useState(0);
-    const trackImgUrl = soundtrackImageUrl + musicStore.currentTrack.id
     useEffect(() => {
         if (isMobile) {
             setVolume(1);
@@ -104,7 +103,7 @@ const MusicPlayer = observer(() => {
     const toggleRepeat = () => {
         if (audioRef.current) {
             audioRef.current.loop = !repeatStatus;
-            setrepeatStatus(audioRef.current.loop)
+            setRepeatStatus(audioRef.current.loop)
         }
     }
     const playNextTrack = () => {
@@ -118,8 +117,8 @@ const MusicPlayer = observer(() => {
     });
     return (
         <div className="music__player__wrapper">
-            <div className='current__track'>
-                <img src={trackImgUrl} alt="" className='track__img'/>
+            <div className={musicStore.currentTrack ? 'current__track' : 'hidden'}>
+                <img src={musicStore.currentTrack && soundtrackImageUrl + musicStore.currentTrack.id} alt="" className='track__img'/>
                 {musicStore.currentTrack &&
                     <div className='track__name'>
                         <span className={musicStore.currentTrack.originalTitle.length > 20? "scrolling" : "" }>{musicStore.currentTrack.originalTitle}</span>
@@ -128,7 +127,7 @@ const MusicPlayer = observer(() => {
                 }
                 <img src={addButton} alt="" className='add__track'/>
             </div>
-            <div className='player'>
+            <div className={musicStore.currentTrack ? 'player' : 'player block'}>
                 <div className='player__buttons'>
                     <button><img src={shuffleButton} alt="" style={{width: 24, height: 24}}/></button>
                     <button onClick={playPreviousTrack}><img src={rewindButton} alt="" style={{width: 27, height: 27}}/>
@@ -167,7 +166,7 @@ const MusicPlayer = observer(() => {
             </div>
 
 
-            <div className="volume__bar">
+            <div className={musicStore.currentTrack ? 'volume__bar' : 'volume__bar block'}>
                 <img className="volume__icon" src={changeVolumeIcon(volume)} alt=""/>
                 <input
                     type="range"

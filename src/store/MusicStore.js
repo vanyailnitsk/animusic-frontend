@@ -57,9 +57,6 @@ class MusicStore {
     get currentTrack() {
         return this._playlist[this._trackIndex]
     }
-    get repeat() {
-        return this._isRepeat;
-    }
 }
 
 export default MusicStore;

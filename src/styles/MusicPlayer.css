@@ -17,6 +17,13 @@
     flex-wrap: nowrap;
     margin-left: 25px;
 }
+.hidden{
+    display: none;
+}
+.block{
+    pointer-events: none;
+    opacity: .7;
+}
 .track__img{
     width: 50px;
     height: 50px;
@@ -176,4 +183,18 @@
     white-space: nowrap; /* Запретить перенос текста на новую строку */
     overflow: hidden; /* Скрыть часть текста, выходящую за пределы блока */
     animation: scrollText 10s linear infinite;
+}
+@media screen and (max-width: 1080px) and (max-height: 2400px){
+    .player{
+        display: none;
+    }
+    .volume__bar{
+        display: none;
+    }
+    .current__track{
+        width: 100%;
+    }
+    .add__track{
+        right: 30px;
+    }
 }

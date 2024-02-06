@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     min-height: 87vh;
-    overflow: hidden;
+    height: auto;
 }
 .anime__banner{
     position: relative;
@@ -48,3 +48,13 @@
     overflow: hidden;
 }
 
+@media screen and (max-width: 1080px) and (max-height: 2400px){
+    .title__follow h1{
+        font-size: 25px;
+    }
+    .title__follow img{
+        width: 20px;
+        height: 20px;
+        right: 10px;
+    }
+}
