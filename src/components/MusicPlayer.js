@@ -6,7 +6,6 @@ import rewindButton from '../images/rewindButton.png'
 import nextButton from '../images/next.png'
 import shuffleButton from '../images/shuffleButton.png'
 import playButton from '../images/playButton.png'
-import trackImg from '../images/trackImg.jpeg'
 import repeatButton from '../images/repeatButton.png'
 import addButton from '../images/addButton.png'
 import loudSound from '../images/icons8-громкий-звук-100.png'
@@ -15,8 +14,10 @@ import littleSound from '../images/icons8-низкая-громкость-100.pn
 import noSound from '../images/icons8-нет-звука-100.png'
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
+import {formatTime} from "../tools/FormatTime";
 import {isMobile} from 'react-device-detect';
 import repeatButtonActive from '../images/repeatButtonActive.png'
+import {soundtrackImageUrl} from "../services/api/consts";
 
 const MusicPlayer = observer(() => {
     const audioRef = useRef(null);
@@ -24,9 +25,8 @@ const MusicPlayer = observer(() => {
     const {musicStore} = useContext(Context)
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
     const [currentTime, setCurrentTime] = useState(0);
-    const [repeatStatus, setrepeatStatus] = useState(false)
+    const [repeatStatus, setRepeatStatus] = useState(false)
     const [duration, setDuration] = useState(0);
-
     useEffect(() => {
         if (isMobile) {
             setVolume(1);
@@ -84,12 +84,6 @@ const MusicPlayer = observer(() => {
             return loudSound
         }
     }
-
-    const formatTime = (seconds) => {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = Math.floor(seconds % 60);
-        return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
-    };
     const handleTimeUpdate = (event) => {
         setCurrentTime(event.target.currentTime);
     };
@@ -109,7 +103,7 @@ const MusicPlayer = observer(() => {
     const toggleRepeat = () => {
         if (audioRef.current) {
             audioRef.current.loop = !repeatStatus;
-            setrepeatStatus(audioRef.current.loop)
+            setRepeatStatus(audioRef.current.loop)
         }
     }
     const playNextTrack = () => {
@@ -123,8 +117,8 @@ const MusicPlayer = observer(() => {
     });
     return (
         <div className="music__player__wrapper">
-            <div className='current__track'>
-                <img src={trackImg} alt="" className='track__img'/>
+            <div className={musicStore.currentTrack ? 'current__track' : 'hidden'}>
+                <img src={musicStore.currentTrack && soundtrackImageUrl + musicStore.currentTrack.id} alt="" className='track__img'/>
                 {musicStore.currentTrack &&
                     <div className='track__name'>
                         <span className={musicStore.currentTrack.originalTitle.length > 20? "scrolling" : "" }>{musicStore.currentTrack.originalTitle}</span>
@@ -133,7 +127,7 @@ const MusicPlayer = observer(() => {
                 }
                 <img src={addButton} alt="" className='add__track'/>
             </div>
-            <div className='player'>
+            <div className={musicStore.currentTrack ? 'player' : 'player block'}>
                 <div className='player__buttons'>
                     <button><img src={shuffleButton} alt="" style={{width: 24, height: 24}}/></button>
                     <button onClick={playPreviousTrack}><img src={rewindButton} alt="" style={{width: 27, height: 27}}/>
@@ -172,7 +166,7 @@ const MusicPlayer = observer(() => {
             </div>
 
 
-            <div className="volume__bar">
+            <div className={musicStore.currentTrack ? 'volume__bar' : 'volume__bar block'}>
                 <img className="volume__icon" src={changeVolumeIcon(volume)} alt=""/>
                 <input
                     type="range"

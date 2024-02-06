@@ -1,13 +1,23 @@
 .playlists{
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-inline: auto;
     width: 922px;
-    height: 202px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin-left: 30px;
+    margin-top: 50px;
     display: grid;
     grid-template-columns:1fr 1fr 1fr 1fr;
     gap:54px;
-    margin-top: 10px;
     justify-content: space-between;
+}
+@media screen and (max-width: 1080px) and (max-height: 2400px){
+    .playlists{
+        width: 190px;
+        margin-inline: auto;
+        display: grid;
+        height: auto;
+        gap:30px;
+        margin-top:10px;
+        grid-template-columns:190px;
+    }
 }

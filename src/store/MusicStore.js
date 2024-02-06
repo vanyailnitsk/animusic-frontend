@@ -41,7 +41,6 @@ class MusicStore {
             this._trackIndex=0
         }
     }
-
     get playlist() {
         return this._playlist
     }
@@ -57,9 +56,6 @@ class MusicStore {
     }
     get currentTrack() {
         return this._playlist[this._trackIndex]
-    }
-    get repeat() {
-        return this._isRepeat;
     }
 }
 
