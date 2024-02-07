@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {getAllAnime} from "../../services/api/anime";
 import "./HomePage.css"
 import AnimeCard from "../../components/AnimeCard";

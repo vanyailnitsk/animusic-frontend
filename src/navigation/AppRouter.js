@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Main from "../components/Main";
 import Homepage from '../pages/Home/Homepage';
 import AnimePage from '../pages/AnimePage/AnimePage';
-import {ANIME_MANAGE, ANIME_ROUTE, HOME_ROUTE, PLAYLIST_ROUTE, SEARCH__ROUTE, SOUNDTRACK_MANAGE} from "./routes";
+import {ANIME_MANAGE, ANIME_ROUTE, HOME_ROUTE, PLAYLIST_ROUTE, SEARCH_ROUTE, SOUNDTRACK_MANAGE} from "./routes";
 import PlaylistPage from "../pages/PlaylistPage/PlaylistPage";
 import MusicPlayer from "../components/MusicPlayer";
 import SoundtrackManager from "../pages/SoundtrackManager";
@@ -20,7 +20,7 @@ function AppRouter() {
                 <Route path={ANIME_MANAGE} element={<Main page={<AnimeManager/>}/>}/>
                 <Route path={PLAYLIST_ROUTE} element={<Main page={<PlaylistPage/>}/>}/>
                 <Route path={SOUNDTRACK_MANAGE} element={<Main page={<SoundtrackManager/>}/>}/>
-                <Route path={SEARCH__ROUTE} element={<Main page={<SearchPage/>}/>}/>
+                <Route path={SEARCH_ROUTE} element={<Main page={<SearchPage/>}/>}/>
             </Routes>
         </BrowserRouter>
     );
