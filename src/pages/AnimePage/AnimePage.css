@@ -10,8 +10,7 @@
     border-top-left-radius:7px;
     border-top-right-radius:7px;
     overflow: hidden;
-    height: auto;
-    max-height: 269px;
+    height: 269px;
 }
 
 .anime__banner img{
@@ -56,5 +55,8 @@
         width: 20px;
         height: 20px;
         right: 10px;
+    }
+    .anime__banner{
+        max-height: 150px;
     }
 }

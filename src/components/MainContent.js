@@ -1,11 +1,12 @@
 import React from 'react';
 import '../styles/MainContent.css'
-import avatar from '../images/avatar.jpeg'
+import menu from '../images/menu.png'
 import DataCore from "./DataCore";
 
-const MainContent = ({page}) => {
+const MainContent = ({page,setMenuActive,menuActive}) => {
     return (
-        <div className='main__content__wrapper'>
+        <div className={ menuActive? 'main__content__wrapper background__blur' : 'main__content__wrapper'}>
+            <img src={menu} alt="" className={menuActive? 'hidden' : 'menu'} onClick={()=> setMenuActive(!menuActive)}/>
             <DataCore page={page}/>
         </div>
     );

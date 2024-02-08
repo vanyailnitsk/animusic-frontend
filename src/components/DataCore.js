@@ -2,7 +2,8 @@ import React from 'react';
 import '../styles/DataCore.css'
 import avatar from "../images/avatar.jpeg";
 
-const DataCore = ({page}) => {
+const DataCore = ({page,setMenuActive}) => {
+
     return (
         <div className='data__core__wrapper'>
             <div className='profile__picture__wrapper'>

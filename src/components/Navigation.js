@@ -3,17 +3,21 @@ import '../styles/Navigation.css'
 import homeIcon from '../images/home.png'
 import searchIcon from '../images/search.png'
 import {useNavigate} from "react-router-dom";
-import {HOME_ROUTE, SEARCH__ROUTE} from "../navigation/routes";
-const Navigation = () => {
+import {HOME_ROUTE, SEARCH_ROUTE} from "../navigation/routes";
+const Navigation = ({menuActive,setMenuActive}) => {
     const navigate = useNavigate();
+    const handleRoute = (route) =>{
+        navigate(route)
+        setMenuActive(false)
+    }
     return (
-        <div className='navigation__wrapper'>
+        <div className={menuActive? 'navigation__wrapper menu__active' : 'navigation__wrapper'}>
             <div className="nav__block">
-                <div className='nav_title' onClick={() => navigate(HOME_ROUTE)}>
+                <div className='nav_title' onClick={() =>handleRoute(HOME_ROUTE)}>
                     <img style={{width:26}} src={homeIcon} alt=""/>
                     <span>Home</span>
                 </div>
-                <div className='nav_title' onClick={() => navigate(SEARCH__ROUTE)}>
+                <div className='nav_title' onClick={() => handleRoute(SEARCH_ROUTE)}>
                     <img style={{width:26}} src={searchIcon} alt=""/>
                     <span>Search</span>
                 </div>

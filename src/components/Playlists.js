@@ -5,7 +5,7 @@ const Playlists = ({playlists,handleNavigate}) => {
     return (
         <div className="playlists">
             {playlists.map(playlist => (
-                <PlaylistCard  name={playlist.name} playlist={playlist} handleNavigate={handleNavigate}/>
+                <PlaylistCard  name={playlist.name} playlist={playlist} handleNavigate={handleNavigate} key={playlist.id}/>
             ))}
         </div>
     );

@@ -16,3 +16,22 @@
     font-weight: 500;
     color:#fff;
 }
+.menu__active{
+    transform: translateX(3%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    -webkit-box-shadow: 4px 4px 5px -2px rgba(213, 217, 219, 0.2);
+    -moz-box-shadow: 4px 4px 5px -2px rgba(213, 217, 219, 0.2);
+    box-shadow: 4px 4px 5px -2px rgba(213, 217, 219, 0.2);
+    border:1px solid black;
+}
+.background__blur{
+    filter: blur(5px);
+    pointer-events: none;
+}
+.hidden{
+    z-index: 2;
+    transform: translateX(-100%);
+}
