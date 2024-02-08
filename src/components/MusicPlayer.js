@@ -115,6 +115,15 @@ const MusicPlayer = observer(() => {
     navigator.mediaSession.setActionHandler("previoustrack", () => {
         playPreviousTrack()
     });
+    if (musicStore.currentTrack){
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: musicStore.currentTrack.originalTitle,
+            artist: musicStore.currentTrack.animeTitle,
+            artwork: [
+                { src:soundtrackImageUrl + musicStore.currentTrack.id,   sizes: '512x512',   type: 'image/png' }
+            ]
+        });
+    }
     return (
         <div className="music__player__wrapper">
             <div className={musicStore.currentTrack ? 'current__track' : 'hidden'}>
