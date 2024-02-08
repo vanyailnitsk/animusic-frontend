@@ -252,8 +252,8 @@
     }
     .add__track.active{
         position: absolute;
-        bottom: 40px;
-        right: 35px;
+        bottom: 3vh;
+        right: 4vw;
     }
     .roll__up{
         display: none;
