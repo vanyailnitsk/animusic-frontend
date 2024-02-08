@@ -131,7 +131,7 @@ const MusicPlayer = observer(() => {
             ]
         });
     }
-    if (window.innerWidth === 393) {
+    if (isMobile) {
         return (
             <div className={activePhonePlayer ? "music__player__wrapper active" : "music__player__wrapper"}
                  onClick={!activePhonePlayer? handlePhoneMusicPlayer : null}>
