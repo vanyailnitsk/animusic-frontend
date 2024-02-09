@@ -4,6 +4,7 @@ import homeIcon from '../images/home.png'
 import searchIcon from '../images/search.png'
 import {useNavigate} from "react-router-dom";
 import {HOME_ROUTE, SEARCH_ROUTE} from "../navigation/routes";
+import close from "../images/close.png";
 const Navigation = ({menuActive,setMenuActive}) => {
     const navigate = useNavigate();
     const handleRoute = (route) =>{
@@ -12,6 +13,9 @@ const Navigation = ({menuActive,setMenuActive}) => {
     }
     return (
         <div className={menuActive? 'navigation__wrapper menu__active' : 'navigation__wrapper'}>
+            <button className={menuActive? 'close__button' : 'hidden'}  onClick={() => setMenuActive(false)}>
+                <img src={close} alt="" />
+            </button>
             <div className="nav__block">
                 <div className='nav_title' onClick={() =>handleRoute(HOME_ROUTE)}>
                     <img style={{width:26}} src={homeIcon} alt=""/>

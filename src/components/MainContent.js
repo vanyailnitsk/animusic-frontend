@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/MainContent.css'
 import menu from '../images/menu.png'
+import close from '../images/close.png'
 import DataCore from "./DataCore";
 
 const MainContent = ({page,setMenuActive,menuActive}) => {

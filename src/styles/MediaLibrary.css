@@ -14,7 +14,7 @@
     .media__library__wrapper{
         transform: translateX(-110%);
         box-shadow: none;
-        width: 130px;
+        width: 37vw;
         z-index: 101;
         position: absolute;
         margin-top: calc(11vh + 10px);
