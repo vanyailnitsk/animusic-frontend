@@ -49,6 +49,7 @@
         width: 180px;
     }
     .header__soundracklist img{
-        margin-left: 20px;
+        position: absolute;
+        right: 10vw;
     }
 }

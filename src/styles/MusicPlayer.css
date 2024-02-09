@@ -225,7 +225,8 @@
         display: flex;
         justify-content: space-between;
         width: 70%;
-        margin-top: 10vh;
+        position: absolute;
+        bottom: 4vh;
     }
     .time__bar.active{
         margin-top: 5vh;
@@ -236,6 +237,7 @@
         width: 100%;
         display: flex;
         margin-top: 10vh;
+        height: 8vh;
         align-items: center;
         margin-inline: 0;
     }
@@ -252,8 +254,8 @@
     }
     .add__track.active{
         position: absolute;
-        bottom: 3vh;
-        right: 4vw;
+        top: 30px;
+        right: 30px;
     }
     .roll__up{
         display: none;
