@@ -39,7 +39,7 @@ const Soundtrack = observer(({soundtrackData, playlist, index}) => {
             <button className="soundtrack__add" onClick={(e) => e.stopPropagation()}>
                 <img src={addButton} alt=""/>
             </button>
-            <span className='track__duration'>{formatTime(100)}</span>
+            <span className='track__duration'>{formatTime(soundtrackData.duration)}</span>
         </div>
     );
 });

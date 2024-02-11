@@ -27,7 +27,7 @@ const MusicPlayer = observer(() => {
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
     const [currentTime, setCurrentTime] = useState(0);
     const [repeatStatus, setRepeatStatus] = useState(false)
-    const [duration, setDuration] = useState(0);
+    const [duration, setDuration] = useState(musicStore.currentTrack ? musicStore.currentTrack.duration : 0);
     const [activePhonePlayer, setActivePhonePlayer] = useState(false)
     useEffect(() => {
         if (isMobile) {
@@ -48,7 +48,7 @@ const MusicPlayer = observer(() => {
     useEffect(() => {
         const onTimeUpdate = () => {
             setCurrentTime(audioRef.current.currentTime);
-            setDuration(audioRef.current.duration || 0);
+            setDuration(musicStore.currentTrack.duration)
         };
         if (audioRef.current) {
             audioRef.current.addEventListener("timeupdate", onTimeUpdate);
@@ -155,7 +155,7 @@ const MusicPlayer = observer(() => {
                         <input
                             type="range"
                             min="0"
-                            max={duration}
+                            max={audioRef.current? audioRef.current.duration : 0}
                             step="1"
                             value={currentTime}
                             onChange={handleSeek}
@@ -228,7 +228,7 @@ const MusicPlayer = observer(() => {
                             <input
                                 type="range"
                                 min="0"
-                                max={duration}
+                                max={audioRef.current? audioRef.current.duration : 0}
                                 step="1"
                                 value={currentTime}
                                 onChange={handleSeek}
