@@ -272,3 +272,8 @@
         margin-inline: auto;
     }
 }
+@media screen and (max-height: 480px) and (orientation: landscape){
+    .music__player__wrapper{
+        display: none;
+    }
+}
