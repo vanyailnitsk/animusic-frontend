@@ -16,7 +16,7 @@ import noSound from '../images/icons8-нет-звука-100.png'
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {formatTime} from "../tools/FormatTime";
-import {isMobile} from 'react-device-detect';
+import {isMobile, isTablet} from 'react-device-detect';
 import repeatButtonActive from '../images/repeatButtonActive.png'
 import {soundtrackImageUrl} from "../services/api/consts";
 
@@ -32,6 +32,9 @@ const MusicPlayer = observer(() => {
     useEffect(() => {
         if (isMobile) {
             setVolume(1);
+        }
+        if (isTablet){
+            setVolume(1)
         }
         if (audioRef) {
             if (audioRef.current) {

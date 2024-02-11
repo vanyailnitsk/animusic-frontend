@@ -22,14 +22,14 @@
         grid-template-columns:318px 318px 318px;
     }
 }
-@media screen and (max-width: 1024px){
+@media screen and (min-width: 656px) and (max-width: 994px){
     .cardslist__wrapper{
         width: 656px;
         grid-template-columns:318px 318px;
     }
 }
 
-@media screen and (max-width: 1080px) and (max-height: 2400px){
+@media screen and (min-width: 320px) and (max-width: 655px){
     .cardslist__wrapper{
         width: 318px;
         grid-template-columns: 318px;

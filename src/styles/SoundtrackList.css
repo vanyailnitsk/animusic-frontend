@@ -38,7 +38,8 @@
 .header__soundracklist img{
     width: 20px;
     height: 20px;
-    margin-left: calc(8.5vw + 20px);
+    position: absolute;
+    right: 10vw;
 }
 @media screen and (max-width: 1080px) and (max-height: 2400px){
     .anime__title__header{
@@ -48,8 +49,5 @@
         margin-left: 40px;
         width: 180px;
     }
-    .header__soundracklist img{
-        position: absolute;
-        right: 10vw;
-    }
+
 }

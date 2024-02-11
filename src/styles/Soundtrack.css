@@ -81,11 +81,12 @@
 
 .track__duration{
     font-size: 15px;
-    margin-left: 1.5vw;
-    color: #808080;
+    position: absolute;
+    right: 10vw;
+    color:#808080;
 }
 
-@media screen and (max-width: 1080px) and (max-height: 2400px){
+@media screen and (max-width: 759px){
     .original__title{
         display: none;
     }
