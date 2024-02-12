@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {getAnimeInfo} from "../../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
 import "./AnimePage.css"
-import followButton from '../../images/follow.png'
+import followButton from '../../icons/follow.png'
 import Playlists from "../../components/Playlists";
 import {animeBannerUrl} from "../../services/api/consts";
 

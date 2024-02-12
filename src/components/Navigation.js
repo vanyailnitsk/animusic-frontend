@@ -1,10 +1,9 @@
 import React from 'react';
 import '../styles/Navigation.css'
-import homeIcon from '../images/home.png'
-import searchIcon from '../images/search.png'
+import homeIcon from '../icons/home.png'
+import searchIcon from '../icons/search.png'
 import {useNavigate} from "react-router-dom";
 import {HOME_ROUTE, SEARCH_ROUTE} from "../navigation/routes";
-import close from "../images/close.png";
 const Navigation = ({menuActive,setMenuActive}) => {
     const navigate = useNavigate();
     const handleRoute = (route) =>{

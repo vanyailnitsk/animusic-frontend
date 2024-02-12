@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import '../styles/Main.css'
 import Navigation from "./Navigation";
 import MediaLibrary from "./MediaLibrary";

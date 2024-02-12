@@ -69,7 +69,8 @@
 }
 .soundtrack__add {
     opacity: 0;
-    margin-left: 7vw;
+    position: absolute;
+    right: 13vw;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -82,7 +83,7 @@
 .track__duration{
     font-size: 15px;
     position: absolute;
-    right: 10vw;
+    right: 7vw;
     color:#808080;
 }
 
@@ -106,6 +107,6 @@
     .track__duration{
         font-size: 13px;
         position: absolute;
-        right: 10vw;
+        right: 7vw;
     }
 }

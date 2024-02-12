@@ -1,9 +1,9 @@
 import React, {useContext} from "react";
 import "../styles/Soundtrack.css";
 import {Context} from "../index";
-import Pause from '../images/soundtrack-pause.png'
-import Play from '../images/soundtrack-play.png'
-import addButton from '../images/addButton.png'
+import Pause from '../icons/soundtrack-pause.png'
+import Play from '../icons/soundtrack-play.png'
+import addButton from '../icons/addButton.png'
 import {formatTime} from "../tools/FormatTime";
 import {observer} from "mobx-react-lite";
 import {soundtrackImageUrl} from "../services/api/consts";

@@ -2,7 +2,7 @@ import React from 'react';
 import Soundtrack from "./Soundtrack";
 import "../styles/SoundtrackList.css"
 import {observer} from "mobx-react-lite";
-import clock from '../images/clock.png'
+import clock from '../icons/clock.png'
 
 const SoundtrackList = observer(({soundtracks}) => {
     return (
@@ -11,7 +11,9 @@ const SoundtrackList = observer(({soundtracks}) => {
                 <span>#</span>
                 <span className="anime__title__header">Anime title</span>
                 <span className="original__title__header">Original title</span>
-                <img src={clock} alt=""/>
+                <div className='clock__icon'>
+                    <img src={clock} alt=""/>
+                </div>
             </div>
             {soundtracks.map((soundtrack,index) => (
                 <Soundtrack
