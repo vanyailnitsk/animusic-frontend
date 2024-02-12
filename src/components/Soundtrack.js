@@ -1,7 +1,6 @@
 import React, {useContext} from "react";
 import "../styles/Soundtrack.css";
 import {Context} from "../index";
-import trackImg from '../images/trackImg.jpeg'
 import Pause from '../images/soundtrack-pause.png'
 import Play from '../images/soundtrack-play.png'
 import addButton from '../images/addButton.png'
