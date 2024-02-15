@@ -1,10 +1,9 @@
 import React, {useContext} from "react";
 import "../styles/Soundtrack.css";
 import {Context} from "../index";
-import trackImg from '../images/trackImg.jpeg'
-import Pause from '../images/soundtrack-pause.png'
-import Play from '../images/soundtrack-play.png'
-import addButton from '../images/addButton.png'
+import Pause from '../icons/soundtrack-pause.png'
+import Play from '../icons/soundtrack-play.png'
+import addButton from '../icons/addButton.png'
 import {formatTime} from "../tools/FormatTime";
 import {observer} from "mobx-react-lite";
 import {soundtrackImageUrl} from "../services/api/consts";
@@ -39,7 +38,7 @@ const Soundtrack = observer(({soundtrackData, playlist, index}) => {
             <button className="soundtrack__add" onClick={(e) => e.stopPropagation()}>
                 <img src={addButton} alt=""/>
             </button>
-            <span className='track__duration'>{formatTime(100)}</span>
+            <span className='track__duration'>{formatTime(soundtrackData.duration)}</span>
         </div>
     );
 });

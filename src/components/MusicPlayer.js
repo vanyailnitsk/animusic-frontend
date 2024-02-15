@@ -1,23 +1,23 @@
 import React, {useContext, useEffect, useRef, useState} from "react";
 
 import "../styles/MusicPlayer.css"
-import pauseButton from '../images/pauseButton.png'
-import rewindButton from '../images/rewindButton.png'
-import rollUp from '../images/rollUp.png'
-import nextButton from '../images/next.png'
-import shuffleButton from '../images/shuffleButton.png'
-import playButton from '../images/playButton.png'
-import repeatButton from '../images/repeatButton.png'
-import addButton from '../images/addButton.png'
-import loudSound from '../images/icons8-громкий-звук-100.png'
-import mediumSound from '../images/icons8-средняя-громкость-100.png'
-import littleSound from '../images/icons8-низкая-громкость-100.png'
-import noSound from '../images/icons8-нет-звука-100.png'
+import pauseButton from '../icons/pauseButton.png'
+import rewindButton from '../icons/rewindButton.png'
+import rollUp from '../icons/rollUp.png'
+import nextButton from '../icons/next.png'
+import shuffleButton from '../icons/shuffleButton.png'
+import playButton from '../icons/playButton.png'
+import repeatButton from '../icons/repeatButton.png'
+import addButton from '../icons/addButton.png'
+import loudSound from '../icons/icons8-громкий-звук-100.png'
+import mediumSound from '../icons/icons8-средняя-громкость-100.png'
+import littleSound from '../icons/icons8-низкая-громкость-100.png'
+import noSound from '../icons/icons8-нет-звука-100.png'
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 import {formatTime} from "../tools/FormatTime";
-import {isMobile} from 'react-device-detect';
-import repeatButtonActive from '../images/repeatButtonActive.png'
+import {isMobile, isTablet} from 'react-device-detect';
+import repeatButtonActive from '../icons/repeatButtonActive.png'
 import {soundtrackImageUrl} from "../services/api/consts";
 
 const MusicPlayer = observer(() => {
@@ -27,11 +27,14 @@ const MusicPlayer = observer(() => {
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
     const [currentTime, setCurrentTime] = useState(0);
     const [repeatStatus, setRepeatStatus] = useState(false)
-    const [duration, setDuration] = useState(0);
+    const [duration, setDuration] = useState(musicStore.currentTrack ? musicStore.currentTrack.duration : 0);
     const [activePhonePlayer, setActivePhonePlayer] = useState(false)
     useEffect(() => {
         if (isMobile) {
             setVolume(1);
+        }
+        if (isTablet){
+            setVolume(1)
         }
         if (audioRef) {
             if (audioRef.current) {
@@ -48,7 +51,7 @@ const MusicPlayer = observer(() => {
     useEffect(() => {
         const onTimeUpdate = () => {
             setCurrentTime(audioRef.current.currentTime);
-            setDuration(audioRef.current.duration || 0);
+            setDuration(musicStore.currentTrack.duration)
         };
         if (audioRef.current) {
             audioRef.current.addEventListener("timeupdate", onTimeUpdate);
@@ -155,7 +158,7 @@ const MusicPlayer = observer(() => {
                         <input
                             type="range"
                             min="0"
-                            max={duration}
+                            max={audioRef.current? audioRef.current.duration : 0}
                             step="1"
                             value={currentTime}
                             onChange={handleSeek}
@@ -228,7 +231,7 @@ const MusicPlayer = observer(() => {
                             <input
                                 type="range"
                                 min="0"
-                                max={duration}
+                                max={audioRef.current? audioRef.current.duration : 0}
                                 step="1"
                                 value={currentTime}
                                 onChange={handleSeek}

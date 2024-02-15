@@ -15,6 +15,10 @@
     justify-content: center;
     font-weight: 500;
     color:#fff;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .menu__active{
     transform: translateX(3%);
