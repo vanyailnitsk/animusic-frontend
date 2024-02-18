@@ -1,7 +1,8 @@
 import React from 'react';
 import PlaylistCard from "./PlaylistCard";
 import '../styles/Playlists.css'
-const Playlists = ({playlists,handleNavigate}) => {
+import {PlaylistsProps} from "../interfaces/Playlists";
+const Playlists = ({playlists,handleNavigate} : PlaylistsProps) => {
     return (
         <div className="playlists">
             {playlists.map(playlist => (

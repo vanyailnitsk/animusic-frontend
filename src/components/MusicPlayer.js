@@ -23,7 +23,7 @@ import {soundtrackImageUrl} from "../services/api/consts";
 const MusicPlayer = observer(() => {
     const audioRef = useRef(null);
     const [volume, setVolume] = useState(0.25);
-    const {musicStore} = useContext(Context)
+    const musicStore = useContext(Context)
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
     const [currentTime, setCurrentTime] = useState(0);
     const [repeatStatus, setRepeatStatus] = useState(false)

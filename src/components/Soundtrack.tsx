@@ -6,11 +6,12 @@ import Play from '../icons/soundtrack-play.png'
 import addButton from '../icons/addButton.png'
 import {formatTime} from "../tools/FormatTime";
 import {observer} from "mobx-react-lite";
+import {SoundtrackProps} from "../interfaces/Soundtracks";
 import {soundtrackImageUrl} from "../services/api/consts";
 
 
-const Soundtrack = observer(({soundtrackData, playlist, index}) => {
-    const {musicStore} = useContext(Context)
+const Soundtrack = observer(({soundtrackData, playlist, index} : SoundtrackProps) => {
+    const musicStore = useContext(Context)
     const trackImageUrl = soundtrackImageUrl + soundtrackData.id
     const playTrackHandler = () => {
         if (!musicStore.trackEquals(soundtrackData)) {

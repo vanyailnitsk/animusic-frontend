@@ -3,15 +3,16 @@ import SoundtrackList from "../../components/SoundtrackList";
 import {useParams} from "react-router-dom";
 import {getPlaylistById} from "../../services/api/tracks";
 import "./PlaylistPage.css"
+import {ISoundtrack} from "../../interfaces/Soundtracks";
 import {playlistBannerUrl} from "../../services/api/consts";
-
+import {IPlaylist} from "../../interfaces/Playlists";
 
 const PlaylistPage = () => {
-    const {id} = useParams()
-    const [playlist, setPlaylist] = useState({})
-    const [soundtracks, setSoundtracks] = useState([])
+    const {id}  = useParams()
+    const [playlist, setPlaylist] = useState<Partial<IPlaylist>>({})
+    const [soundtracks, setSoundtracks] = useState<ISoundtrack[]>([])
     const bannerUrl = playlistBannerUrl + id;
-    const [isLoadingImage, setIsLoadingImage] = useState(true)
+    const [isLoadingImage, setIsLoadingImage] = useState<boolean>(true)
     useEffect(() => {
         getPlaylistById(id)
             .then(data => {

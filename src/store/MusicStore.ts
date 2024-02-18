@@ -1,19 +1,24 @@
 import {makeAutoObservable} from "mobx";
+import {IMusicStore} from "../interfaces/IMusicStore";
+import {ISoundtrack} from "../interfaces/Soundtracks";
 
-class MusicStore {
-    constructor() {
+class MusicStore implements IMusicStore{
+    private _playlist: ISoundtrack[];
+    private _trackIndex: number;
+    private _isPlaying: boolean;
+    constructor(){
         this._playlist = JSON.parse(localStorage.getItem("playlist")) || []
         this._trackIndex = JSON.parse(localStorage.getItem("currentTrackIndex")) || 0
         this._isPlaying = false
         makeAutoObservable(this)
     }
 
-    setPlaylist(playlist) {
+    setPlaylist(playlist : ISoundtrack[]) {
         this._playlist = playlist
         localStorage.setItem("playlist", JSON.stringify(playlist));
     }
 
-    setTrackIndex(index) {
+    setTrackIndex(index:number) {
         this._trackIndex = index
 
         localStorage.setItem("currentTrackIndex", JSON.stringify(index));
@@ -22,7 +27,7 @@ class MusicStore {
     togglePlayPause() {
         this._isPlaying=!this._isPlaying
     }
-    setIsPlaying(bool) {
+    setIsPlaying(bool: boolean) {
         this._isPlaying=bool
     }
     nextTrack() {
@@ -45,16 +50,16 @@ class MusicStore {
         return this._playlist
     }
 
-    get trackIndex() {
+    get trackIndex():number {
         return this._trackIndex
     }
-    get isPlaying() {
+    get isPlaying():boolean {
         return this._isPlaying
     }
-    trackEquals(track) {
+    trackEquals(track : ISoundtrack):boolean {
         return JSON.stringify(this.currentTrack)===JSON.stringify(track)
     }
-    get currentTrack() {
+    get currentTrack() :ISoundtrack{
         return this._playlist[this._trackIndex]
     }
 }

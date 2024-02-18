@@ -5,19 +5,21 @@ import "./AnimePage.css"
 import followButton from '../../icons/follow.png'
 import Playlists from "../../components/Playlists";
 import {animeBannerUrl} from "../../services/api/consts";
+import {IPlaylist} from "../../interfaces/Playlists";
+import {IAnime} from "../../interfaces/Anime";
 
 const AnimePage = () => {
     const {id} = useParams()
-    const [animeData, setAnimeData] = useState({})
-    const [playlists, setPlaylists] = useState([])
+    const [animeData, setAnimeData] = useState<Partial<IAnime>>({})
+    const [playlists, setPlaylists] = useState<IPlaylist[]>([])
     const navigate = useNavigate();
     const [isLoadingImage, setIsLoadingImage] = useState(true)
     const bannerUrl = animeBannerUrl + id;
     useEffect(() => {
         getAnimeInfo(id)
-            .then(data => {
-                setAnimeData(data.data);
-                return data.data.playlists
+            .then(response => {
+                setAnimeData(response.data);
+                return response.data.playlists
             })
             .then(playlistsData => {
                 setPlaylists(playlistsData)
@@ -25,10 +27,9 @@ const AnimePage = () => {
             .catch((error) => console.log(error))
     }, [id]);
 
-    const handleNavigate = (playlistId) => {
+    const handleNavigate = (playlistId : number) => {
         navigate(`/playlist/${playlistId}`)
     }
-
     return (
         <div className="anime__page__wrapper">
             <div className='blur'>
