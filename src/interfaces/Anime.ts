@@ -10,5 +10,4 @@ export interface IAnime{
     releaseYear : string
     studio : string | null
     title : string
-
 }

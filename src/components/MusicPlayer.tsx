@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, {MouseEventHandler, useContext, useEffect, useRef, useState} from "react";
 
 import "../styles/MusicPlayer.css"
 import pauseButton from '../icons/pauseButton.png'
@@ -20,15 +20,16 @@ import {isMobile, isTablet} from 'react-device-detect';
 import repeatButtonActive from '../icons/repeatButtonActive.png'
 import {soundtrackImageUrl} from "../services/api/consts";
 
+
 const MusicPlayer = observer(() => {
-    const audioRef = useRef(null);
-    const [volume, setVolume] = useState(0.25);
+    const audioRef = useRef<HTMLAudioElement>(null);
+    const [volume, setVolume] = useState<number>(0.25);
     const musicStore = useContext(Context)
     const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
-    const [currentTime, setCurrentTime] = useState(0);
-    const [repeatStatus, setRepeatStatus] = useState(false)
-    const [duration, setDuration] = useState(musicStore.currentTrack ? musicStore.currentTrack.duration : 0);
-    const [activePhonePlayer, setActivePhonePlayer] = useState(false)
+    const [currentTime, setCurrentTime] = useState<number>(0);
+    const [repeatStatus, setRepeatStatus] = useState<boolean>(false)
+    const [duration, setDuration] = useState<number>(musicStore.currentTrack ? musicStore.currentTrack.duration : 0);
+    const [activePhonePlayer, setActivePhonePlayer] = useState<boolean>(false)
     useEffect(() => {
         if (isMobile) {
             setVolume(1);
@@ -36,7 +37,7 @@ const MusicPlayer = observer(() => {
         if (isTablet){
             setVolume(1)
         }
-        if (audioRef) {
+        if (audioRef.current) {
             if (audioRef.current) {
                 audioRef.current.volume = volume
             }
@@ -49,29 +50,35 @@ const MusicPlayer = observer(() => {
     }, [musicStore.isPlaying])
 
     useEffect(() => {
+        const audioElement = audioRef.current;
+
         const onTimeUpdate = () => {
-            setCurrentTime(audioRef.current.currentTime);
+            if (audioElement){
+                setCurrentTime(audioElement.currentTime);
+            }
             setDuration(musicStore.currentTrack.duration)
         };
-        if (audioRef.current) {
-            audioRef.current.addEventListener("timeupdate", onTimeUpdate);
+        if (audioElement) {
+            audioElement.addEventListener("timeupdate", onTimeUpdate);
             return () => {
-                audioRef.current.removeEventListener("timeupdate", onTimeUpdate);
+                if (audioElement){
+                    audioElement.removeEventListener("timeupdate", onTimeUpdate);
+                }
             };
         }
 
     }, []);
-    const playPauseHandler = () => {
+    const playPauseHandler = () : void => {
         musicStore.togglePlayPause()
     };
-    const handlePlay = () => {
+    const handlePlay = () : void => {
         musicStore.setIsPlaying(true)
     };
 
-    const handlePause = () => {
+    const handlePause = () : void => {
         musicStore.setIsPlaying(false);
     };
-    const handleVolumeChange = (event) => {
+    const handleVolumeChange = (event :React.ChangeEvent<HTMLInputElement>) : void => {
         const newVolume = parseFloat(event.target.value);
         setVolume(newVolume);
 
@@ -80,7 +87,7 @@ const MusicPlayer = observer(() => {
             audioElement.volume = newVolume;
         }
     };
-    const changeVolumeIcon = (volume) => {
+    const changeVolumeIcon = (volume : number) : string => {
         if (volume === 0) {
             return noSound
         } else if (volume <= 0.3) {
@@ -91,38 +98,42 @@ const MusicPlayer = observer(() => {
             return loudSound
         }
     }
-    const handleTimeUpdate = (event) => {
+    const handleTimeUpdate = (event : React.ChangeEvent<HTMLAudioElement>) : void => {
         setCurrentTime(event.target.currentTime);
     };
-    const handleSeek = (event) => {
-        const time = event.target.value;
-        audioRef.current.currentTime = time;
+    const handleSeek = (event : React.ChangeEvent<HTMLInputElement>) : void => {
+        const time : number = +event.target.value;
+        if (audioRef.current){
+            audioRef.current.currentTime = time;
+        }
         setCurrentTime(time);
     };
-    const playPreviousTrack = () => {
-        if (musicStore.trackIndex > 0 && audioRef.current.currentTime < 4) {
+    const playPreviousTrack = () : void => {
+        if (musicStore.trackIndex > 0 && audioRef.current && audioRef.current.currentTime < 4) {
             musicStore.previousTrack()
         } else {
-            audioRef.current.currentTime = 0;
-            setCurrentTime(0)
+            if (audioRef.current){
+                audioRef.current.currentTime = 0;
+                setCurrentTime(0)
+            }
         }
     };
-    const toggleRepeat = () => {
+    const toggleRepeat = () : void => {
         if (audioRef.current) {
             audioRef.current.loop = !repeatStatus;
             setRepeatStatus(audioRef.current.loop)
         }
     }
-    const playNextTrack = () => {
+    const playNextTrack = () : void => {
         musicStore.nextTrack()
     };
-    const handlePhoneMusicPlayer = () => {
+    const handlePhoneMusicPlayer = () : void => {
         setActivePhonePlayer(!activePhonePlayer)
     }
-    navigator.mediaSession.setActionHandler("nexttrack", () => {
+    navigator.mediaSession.setActionHandler("nexttrack", () : void => {
         playNextTrack()
     });
-    navigator.mediaSession.setActionHandler("previoustrack", () => {
+    navigator.mediaSession.setActionHandler("previoustrack", () : void => {
         playPreviousTrack()
     });
     if (musicStore.currentTrack) {
@@ -137,7 +148,7 @@ const MusicPlayer = observer(() => {
     if (isMobile) {
         return (
             <div className={activePhonePlayer ? "music__player__wrapper active" : "music__player__wrapper"}
-                 onClick={!activePhonePlayer? handlePhoneMusicPlayer : null}>
+                 onClick={!activePhonePlayer? handlePhoneMusicPlayer : undefined}>
                 <img src={musicStore.currentTrack && soundtrackImageUrl + musicStore.currentTrack.id} alt=""
                      className={activePhonePlayer ? 'track__img active' : 'track__img'}/>
                 <img src={addButton} alt="" className={activePhonePlayer? 'add__track active' : 'add__track'}/>
