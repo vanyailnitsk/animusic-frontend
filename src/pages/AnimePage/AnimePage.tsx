@@ -10,7 +10,7 @@ import {IAnime} from "../../interfaces/Anime";
 
 const AnimePage = () => {
     const {id} = useParams()
-    const [animeData, setAnimeData] = useState<Partial<IAnime>>({})
+    const [animeData, setAnimeData] = useState<IAnime | null>(null)
     const [playlists, setPlaylists] = useState<IPlaylist[]>([])
     const navigate = useNavigate();
     const [isLoadingImage, setIsLoadingImage] = useState(true)
@@ -42,8 +42,8 @@ const AnimePage = () => {
                     onError={() => setIsLoadingImage(false)}
                 />
             </div>
-            {!isLoadingImage &&
-                <div >
+            {!isLoadingImage && animeData &&
+                <div>
                     <div className="title__follow">
                         <h1>{animeData.title}</h1>
                         <img src={followButton} alt=""/>

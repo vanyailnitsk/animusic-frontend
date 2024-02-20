@@ -9,8 +9,6 @@ import {IMusicStore} from "./interfaces/IMusicStore";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export const Context = createContext<IMusicStore>(new MusicStore());
 root.render(
-    <Context.Provider value={new MusicStore()}>
     <App/>
-    </Context.Provider>
 );
 

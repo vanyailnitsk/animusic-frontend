@@ -9,7 +9,7 @@ import {IPlaylist} from "../../interfaces/Playlists";
 
 const PlaylistPage = () => {
     const {id}  = useParams()
-    const [playlist, setPlaylist] = useState<Partial<IPlaylist>>({})
+    const [playlist, setPlaylist] = useState<IPlaylist | null>(null)
     const [soundtracks, setSoundtracks] = useState<ISoundtrack[]>([])
     const bannerUrl = playlistBannerUrl + id;
     const [isLoadingImage, setIsLoadingImage] = useState<boolean>(true)
@@ -38,11 +38,12 @@ const PlaylistPage = () => {
                     onError={() => setIsLoadingImage(false)}
                 />
             </div>
-            {!isLoadingImage &&
+            {!isLoadingImage && playlist &&
                 <div>
                     <h1 className="playlist__name">{playlist.name}</h1>
                     <SoundtrackList soundtracks={soundtracks}/>
                 </div>
+
             }
         </div>
     );
