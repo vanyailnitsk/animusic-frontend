@@ -7,8 +7,8 @@ class MusicStore implements IMusicStore{
     private _trackIndex: number;
     private _isPlaying: boolean;
     constructor(){
-        this._playlist = JSON.parse(localStorage.getItem("playlist")) || []
-        this._trackIndex = JSON.parse(localStorage.getItem("currentTrackIndex")) || 0
+        this._playlist = JSON.parse(localStorage.getItem("playlist") || '{}')
+        this._trackIndex = JSON.parse(localStorage.getItem("currentTrackIndex") || '[{}]')
         this._isPlaying = false
         makeAutoObservable(this)
     }
