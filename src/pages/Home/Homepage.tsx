@@ -1,13 +1,13 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {getAllAnime} from "../../services/api/anime";
 import "./HomePage.css"
-import AnimeCard from "../../components/AnimeCard";
-import {useFetching} from "../../hooks/useFetching";
+import {useFetching, useFetchingResult} from "../../hooks/useFetching";
 import CardsList from "../../components/CardsList";
+import {IAnime} from "../../interfaces/Anime";
 
 const Homepage = () => {
-    const [animeCards,setAnimeCards] = useState([])
-    const [fetchAnime,isLoading,error] = useFetching(async () => {
+    const [animeCards,setAnimeCards] = useState<IAnime[]>([])
+    const {fetching :fetchAnime,isLoading,error} : useFetchingResult= useFetching(async () => {
         const response = await getAllAnime()
         setAnimeCards(response.data)
     })
@@ -25,7 +25,7 @@ const Homepage = () => {
             </div>
             {!isLoading
                 ? <CardsList animeCards={animeCards}/>
-                : null
+                : <div>{error}</div>
             }
         </div>
     );
