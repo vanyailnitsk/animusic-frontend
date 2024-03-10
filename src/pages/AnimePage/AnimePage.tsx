@@ -4,7 +4,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import "./AnimePage.css"
 import followButton from '../../icons/follow.png'
 import Playlists from "../../components/Playlists";
-import {animeBannerUrl} from "../../services/api/consts";
+import {animeBannerUrl, storageUrl} from "../../services/api/consts";
 import {IPlaylist} from "../../interfaces/Playlists";
 import {IAnime} from "../../interfaces/Anime";
 
@@ -14,7 +14,7 @@ const AnimePage = () => {
     const [playlists, setPlaylists] = useState<IPlaylist[]>([])
     const navigate = useNavigate();
     const [isLoadingImage, setIsLoadingImage] = useState(true)
-    const bannerUrl = animeBannerUrl + id;
+
     useEffect(() => {
         getAnimeInfo(id)
             .then(response => {
@@ -33,11 +33,11 @@ const AnimePage = () => {
     return (
         <div className="anime__page__wrapper">
             <div className='blur'>
-                <img src={bannerUrl} alt=""/>
+                <img src={storageUrl+animeData?.bannerImagePath} alt=""/>
             </div>
             <div className="anime__banner">
                 <img
-                    src={bannerUrl} alt="Banner"
+                    src={storageUrl+animeData?.bannerImagePath} alt="Banner"
                     onLoad={() => setIsLoadingImage(false)}
                     onError={() => setIsLoadingImage(false)}
                 />

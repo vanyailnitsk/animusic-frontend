@@ -18,14 +18,13 @@ import {Context} from "../index";
 import {formatTime} from "../tools/FormatTime";
 import {isMobile, isTablet} from 'react-device-detect';
 import repeatButtonActive from '../icons/repeatButtonActive.png'
-import {soundtrackImageUrl} from "../services/api/consts";
+import {soundtrackImageUrl, storageUrl} from "../services/api/consts";
 
 
 const MusicPlayer = observer(() => {
     const audioRef = useRef<HTMLAudioElement>(null);
     const [volume, setVolume] = useState<number>(0.25);
     const musicStore = useContext(Context)
-    const audioUrl = process.env.REACT_APP_API_URL + '/soundtracks/play/';
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [repeatStatus, setRepeatStatus] = useState<boolean>(false)
     const [duration, setDuration] = useState<number>(musicStore.currentTrack ? musicStore.currentTrack.duration : 0);
@@ -149,13 +148,14 @@ const MusicPlayer = observer(() => {
         return (
             <div className={activePhonePlayer ? "music__player__wrapper active" : "music__player__wrapper"}
                  onClick={!activePhonePlayer? handlePhoneMusicPlayer : undefined}>
-                <img src={musicStore.currentTrack && soundtrackImageUrl + musicStore.currentTrack.id} alt=""
+                <img
+                    src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg")} alt=""
                      className={activePhonePlayer ? 'track__img active' : 'track__img'}/>
                 <img src={addButton} alt="" className={activePhonePlayer? 'add__track active' : 'add__track'}/>
                 <img src={rollUp} alt="" className={activePhonePlayer? 'roll__up active' : 'roll__up'} onClick={handlePhoneMusicPlayer}/>
                 <div className={activePhonePlayer ? "time__bar active" : "time__bar"}>
                     <audio ref={audioRef}
-                           src={musicStore.currentTrack && audioUrl + musicStore.currentTrack.id}
+                           src={musicStore.currentTrack && storageUrl + musicStore.currentTrack.id}
                            autoPlay
                            onEnded={playNextTrack}
                            onTimeUpdate={handleTimeUpdate}
@@ -200,7 +200,7 @@ const MusicPlayer = observer(() => {
         return (
             <div className="music__player__wrapper">
                 <div className={musicStore.currentTrack ? 'current__track' : 'hidden'}>
-                    <img src={musicStore.currentTrack && soundtrackImageUrl + musicStore.currentTrack.id} alt=""
+                    <img src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg")} alt=""
                          className='track__img'/>
                     {musicStore.currentTrack &&
                         <div className='track__name'>
@@ -228,7 +228,7 @@ const MusicPlayer = observer(() => {
                     </div>
                     <div className="time__bar">
                         <audio ref={audioRef}
-                               src={musicStore.currentTrack && audioUrl + musicStore.currentTrack.id}
+                               src={musicStore.currentTrack && storageUrl + musicStore.currentTrack.audioFile}
                                autoPlay
                                onEnded={playNextTrack}
                                onTimeUpdate={handleTimeUpdate}
