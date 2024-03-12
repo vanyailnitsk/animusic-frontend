@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/DataCore.css'
-import avatar from "../icons/avatar.jpeg";
+import './DataCore.css'
+import avatar from "../../icons/avatar.jpeg";
 
 const DataCore = ({page,setMenuActive}) => {
 

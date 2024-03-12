@@ -1,9 +1,9 @@
 import React from 'react';
-import Soundtrack from "./Soundtrack";
-import "../styles/SoundtrackList.css"
+import Soundtrack from "../Soundtrack/Soundtrack";
+import "./SoundtrackList.css"
 import {observer} from "mobx-react-lite";
 // import clock from '../icons/clock.png'
-import {SoundtrackListProps} from '../interfaces/Soundtracks'
+import {SoundtrackListProps} from '../../models/Soundtracks'
 const SoundtrackList = observer(({soundtracks} :SoundtrackListProps) => {
     return (
         <div className="soundtracklist__wrapper">

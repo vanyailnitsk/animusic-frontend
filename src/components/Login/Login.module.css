@@ -1,0 +1,12 @@
+.login__wrapper{
+    width: 600px;
+    height: 200px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+input{
+    height: 50px;
+    outline: none;
+}

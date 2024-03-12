@@ -1,8 +1,8 @@
 import React from 'react';
-import '../styles/AnimeCard.css'
+import './AnimeCard.css'
 import {useNavigate} from "react-router-dom";
-import {AnimeCardProps} from "../interfaces/AnimeCards";
-import {storageUrl} from "../services/api/consts";
+import {AnimeCardProps} from "../../models/AnimeCards";
+import {storageUrl} from "../../services/api/consts";
 
 const AnimeCard = ({card} : AnimeCardProps) => {
     const navigate = useNavigate();

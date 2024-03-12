@@ -1,30 +1,30 @@
 import React, {MouseEventHandler, useContext, useEffect, useRef, useState} from "react";
 
-import "../styles/MusicPlayer.css"
-import pauseButton from '../icons/pauseButton.png'
-import rewindButton from '../icons/rewindButton.png'
-import rollUp from '../icons/rollUp.png'
-import nextButton from '../icons/next.png'
-import shuffleButton from '../icons/shuffleButton.png'
-import playButton from '../icons/playButton.png'
-import repeatButton from '../icons/repeatButton.png'
-import addButton from '../icons/addButton.png'
-import loudSound from '../icons/icons8-громкий-звук-100.png'
-import mediumSound from '../icons/icons8-средняя-громкость-100.png'
-import littleSound from '../icons/icons8-низкая-громкость-100.png'
-import noSound from '../icons/icons8-нет-звука-100.png'
+import "./MusicPlayer.css"
+import pauseButton from '../../icons/pauseButton.png'
+import rewindButton from '../../icons/rewindButton.png'
+import rollUp from '../../icons/rollUp.png'
+import nextButton from '../../icons/next.png'
+import shuffleButton from '../../icons/shuffleButton.png'
+import playButton from '../../icons/playButton.png'
+import repeatButton from '../../icons/repeatButton.png'
+import addButton from '../../icons/addButton.png'
+import loudSound from '../../icons/icons8-громкий-звук-100.png'
+import mediumSound from '../../icons/icons8-средняя-громкость-100.png'
+import littleSound from '../../icons/icons8-низкая-громкость-100.png'
+import noSound from '../../icons/icons8-нет-звука-100.png'
 import {observer} from "mobx-react-lite";
-import {Context} from "../index";
-import {formatTime} from "../tools/FormatTime";
+import {Context} from "../../index";
+import {formatTime} from "../../tools/FormatTime";
 import {isMobile, isTablet} from 'react-device-detect';
-import repeatButtonActive from '../icons/repeatButtonActive.png'
-import {soundtrackImageUrl, storageUrl} from "../services/api/consts";
+import repeatButtonActive from '../../icons/repeatButtonActive.png'
+import {soundtrackImageUrl, storageUrl} from "../../services/api/consts";
 
 
 const MusicPlayer = observer(() => {
     const audioRef = useRef<HTMLAudioElement>(null);
     const [volume, setVolume] = useState<number>(0.25);
-    const musicStore = useContext(Context)
+    const {musicStore} = useContext(Context)
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [repeatStatus, setRepeatStatus] = useState<boolean>(false)
     const [duration, setDuration] = useState<number>(musicStore.currentTrack ? musicStore.currentTrack.duration : 0);

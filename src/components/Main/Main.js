@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import '../styles/Main.css'
-import Navigation from "./Navigation";
-import MediaLibrary from "./MediaLibrary";
-import MainContent from "./MainContent";
+import './Main.css'
+import Navigation from "../Navigation/Navigation";
+import MediaLibrary from "../MediaLibrary/MediaLibrary";
+import MainContent from "../MainContent/MainContent";
 
 
 const Main = ({page}) => {

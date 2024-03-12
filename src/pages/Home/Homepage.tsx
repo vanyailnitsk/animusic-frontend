@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {getAllAnime} from "../../services/api/anime";
 import "./HomePage.css"
 import {useFetching, useFetchingResult} from "../../hooks/useFetching";
-import CardsList from "../../components/CardsList";
-import {IAnime} from "../../interfaces/Anime";
+import CardsList from "../../components/CardList/CardsList";
+import {IAnime} from "../../models/Anime";
 
 const Homepage = () => {
     const [animeCards,setAnimeCards] = useState<IAnime[]>([])
@@ -11,6 +11,7 @@ const Homepage = () => {
         const response = await getAllAnime()
         setAnimeCards(response.data)
     })
+    console.log(animeCards)
     useEffect(() => {
         fetchAnime()
     }, []);
