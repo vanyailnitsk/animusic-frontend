@@ -1,18 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 import styles from './Login.module.css'
 import {z} from 'zod'
 import {zodResolver} from "@hookform/resolvers/zod";
+import {Context} from "../../index";
 const schema = z.object({
     email: z.string().email(),
-    password: z.string().min(8)
+    password: z.string().min(4)
 })
 
 type FormFields = z.infer<typeof schema>
 const Login = () => {
+    const {userStore} = useContext(Context)
     const {register, handleSubmit, setError, formState: {errors,isSubmitting}} = useForm<FormFields>({resolver:zodResolver(schema)})
     const onSubmit: SubmitHandler<FormFields> = (data) => {
-        console.log(data)
+        userStore.login(data.email, data.password)
     }
     return (
         <form className={styles.login__wrapper} onSubmit={handleSubmit(onSubmit)}>
@@ -32,7 +34,7 @@ const Login = () => {
             {errors.password && (
                 <div>{errors.password.message}</div>
             )}
-            <button type="submit">Log in</button>
+            <button type="submit" disabled={isSubmitting}>{isSubmitting? 'Loading...' : 'Log in'}</button>
         </form>
     );
 };
