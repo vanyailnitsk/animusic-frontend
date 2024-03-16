@@ -1,4 +1,4 @@
-.login__wrapper{
+.signup__wrapper{
     width: 600px;
     height: 200px;
     border-radius: 5px;
@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
-.login__wrapper input{
-    height: 50px;
+.signup__wrapper input{
+    height: 40px;
     outline: none;
 }

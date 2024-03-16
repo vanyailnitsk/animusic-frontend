@@ -4,7 +4,7 @@ import {AxiosResponse} from "axios";
 
 
 export default class UserService{
-    static fetchUsers():Promise<AxiosResponse<IUser[]>>{
-        return $host.get<IUser[]>('/users')
+    static fetchUsers():Promise<AxiosResponse<IUser>>{
+        return $host.get<IUser>('/users')
     }
 }
