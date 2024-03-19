@@ -24,7 +24,7 @@ import {soundtrackImageUrl, storageUrl} from "../../services/api/consts";
 const MusicPlayer = observer(() => {
     const audioRef = useRef<HTMLAudioElement>(null);
     const [volume, setVolume] = useState<number>(0.25);
-    const {musicStore} = useContext(Context)
+    const {musicStore, userStore} = useContext(Context)
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [repeatStatus, setRepeatStatus] = useState<boolean>(false)
     const [duration, setDuration] = useState<number>(musicStore.currentTrack ? musicStore.currentTrack.duration : 0);
@@ -33,7 +33,7 @@ const MusicPlayer = observer(() => {
         if (isMobile) {
             setVolume(1);
         }
-        if (isTablet){
+        if (isTablet) {
             setVolume(1)
         }
         if (audioRef.current) {
@@ -52,7 +52,7 @@ const MusicPlayer = observer(() => {
         const audioElement = audioRef.current;
 
         const onTimeUpdate = () => {
-            if (audioElement){
+            if (audioElement) {
                 setCurrentTime(audioElement.currentTime);
             }
             setDuration(musicStore.currentTrack.duration)
@@ -60,24 +60,24 @@ const MusicPlayer = observer(() => {
         if (audioElement) {
             audioElement.addEventListener("timeupdate", onTimeUpdate);
             return () => {
-                if (audioElement){
+                if (audioElement) {
                     audioElement.removeEventListener("timeupdate", onTimeUpdate);
                 }
             };
         }
 
     }, []);
-    const playPauseHandler = () : void => {
+    const playPauseHandler = (): void => {
         musicStore.togglePlayPause()
     };
-    const handlePlay = () : void => {
+    const handlePlay = (): void => {
         musicStore.setIsPlaying(true)
     };
 
-    const handlePause = () : void => {
+    const handlePause = (): void => {
         musicStore.setIsPlaying(false);
     };
-    const handleVolumeChange = (event :React.ChangeEvent<HTMLInputElement>) : void => {
+    const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const newVolume = parseFloat(event.target.value);
         setVolume(newVolume);
 
@@ -86,7 +86,7 @@ const MusicPlayer = observer(() => {
             audioElement.volume = newVolume;
         }
     };
-    const changeVolumeIcon = (volume : number) : string => {
+    const changeVolumeIcon = (volume: number): string => {
         if (volume === 0) {
             return noSound
         } else if (volume <= 0.3) {
@@ -97,42 +97,42 @@ const MusicPlayer = observer(() => {
             return loudSound
         }
     }
-    const handleTimeUpdate = (event : React.ChangeEvent<HTMLAudioElement>) : void => {
+    const handleTimeUpdate = (event: React.ChangeEvent<HTMLAudioElement>): void => {
         setCurrentTime(event.target.currentTime);
     };
-    const handleSeek = (event : React.ChangeEvent<HTMLInputElement>) : void => {
-        const time : number = +event.target.value;
-        if (audioRef.current){
+    const handleSeek = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const time: number = +event.target.value;
+        if (audioRef.current) {
             audioRef.current.currentTime = time;
         }
         setCurrentTime(time);
     };
-    const playPreviousTrack = () : void => {
+    const playPreviousTrack = (): void => {
         if (musicStore.trackIndex > 0 && audioRef.current && audioRef.current.currentTime < 4) {
             musicStore.previousTrack()
         } else {
-            if (audioRef.current){
+            if (audioRef.current) {
                 audioRef.current.currentTime = 0;
                 setCurrentTime(0)
             }
         }
     };
-    const toggleRepeat = () : void => {
+    const toggleRepeat = (): void => {
         if (audioRef.current) {
             audioRef.current.loop = !repeatStatus;
             setRepeatStatus(audioRef.current.loop)
         }
     }
-    const playNextTrack = () : void => {
+    const playNextTrack = (): void => {
         musicStore.nextTrack()
     };
-    const handlePhoneMusicPlayer = () : void => {
+    const handlePhoneMusicPlayer = (): void => {
         setActivePhonePlayer(!activePhonePlayer)
     }
-    navigator.mediaSession.setActionHandler("nexttrack", () : void => {
+    navigator.mediaSession.setActionHandler("nexttrack", (): void => {
         playNextTrack()
     });
-    navigator.mediaSession.setActionHandler("previoustrack", () : void => {
+    navigator.mediaSession.setActionHandler("previoustrack", (): void => {
         playPreviousTrack()
     });
     if (musicStore.currentTrack) {
@@ -144,15 +144,17 @@ const MusicPlayer = observer(() => {
             ]
         });
     }
-    if (isMobile) {
+    if (isMobile && userStore.isAuth) {
         return (
             <div className={activePhonePlayer ? "music__player__wrapper active" : "music__player__wrapper"}
-                 onClick={!activePhonePlayer? handlePhoneMusicPlayer : undefined}>
+                 onClick={!activePhonePlayer ? handlePhoneMusicPlayer : undefined}>
                 <img
-                    src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg")} alt=""
-                     className={activePhonePlayer ? 'track__img active' : 'track__img'}/>
-                <img src={addButton} alt="" className={activePhonePlayer? 'add__track active' : 'add__track'}/>
-                <img src={rollUp} alt="" className={activePhonePlayer? 'roll__up active' : 'roll__up'} onClick={handlePhoneMusicPlayer}/>
+                    src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg")}
+                    alt=""
+                    className={activePhonePlayer ? 'track__img active' : 'track__img'}/>
+                <img src={addButton} alt="" className={activePhonePlayer ? 'add__track active' : 'add__track'}/>
+                <img src={rollUp} alt="" className={activePhonePlayer ? 'roll__up active' : 'roll__up'}
+                     onClick={handlePhoneMusicPlayer}/>
                 <div className={activePhonePlayer ? "time__bar active" : "time__bar"}>
                     <audio ref={audioRef}
                            src={musicStore.currentTrack && storageUrl + musicStore.currentTrack.id}
@@ -169,7 +171,7 @@ const MusicPlayer = observer(() => {
                         <input
                             type="range"
                             min="0"
-                            max={audioRef.current? audioRef.current.duration : 0}
+                            max={audioRef.current ? audioRef.current.duration : 0}
                             step="1"
                             value={currentTime}
                             onChange={handleSeek}
@@ -178,8 +180,9 @@ const MusicPlayer = observer(() => {
                     <div className="total__time">{formatTime(duration)}</div>
                 </div>
                 {musicStore.currentTrack &&
-                    <div className={activePhonePlayer? 'track__name active' : 'track__name'}>
-                        <span className={musicStore.currentTrack.originalTitle.length > 20 ? "scrolling" : ""}>{musicStore.currentTrack.originalTitle}</span>
+                    <div className={activePhonePlayer ? 'track__name active' : 'track__name'}>
+                        <span
+                            className={musicStore.currentTrack.originalTitle.length > 20 ? "scrolling" : ""}>{musicStore.currentTrack.originalTitle}</span>
                         <span>{musicStore.currentTrack.animeTitle}</span>
                     </div>
                 }
@@ -197,75 +200,82 @@ const MusicPlayer = observer(() => {
             </div>
         );
     } else {
-        return (
-            <div className="music__player__wrapper">
-                <div className={musicStore.currentTrack ? 'current__track' : 'hidden'}>
-                    <img src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg")} alt=""
-                         className='track__img'/>
-                    {musicStore.currentTrack &&
-                        <div className='track__name'>
+        if (userStore.isAuth) {
+            return (
+                <div className="music__player__wrapper">
+                    <div className={musicStore.currentTrack ? 'current__track' : 'hidden'}>
+                        <img
+                            src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg")}
+                            alt=""
+                            className='track__img'/>
+                        {musicStore.currentTrack &&
+                            <div className='track__name'>
                             <span
                                 className={musicStore.currentTrack.originalTitle.length > 20 ? "scrolling" : ""}>{musicStore.currentTrack.originalTitle}</span>
-                            <span>{musicStore.currentTrack.animeTitle}</span>
-                        </div>
-                    }
-                    <img src={addButton} alt="" className='add__track'/>
-                </div>
-                <div className={musicStore.currentTrack ? 'player' : 'player block'}>
-                    <div className='player__buttons'>
-                        <button><img src={shuffleButton} alt="" style={{width: 24, height: 24}}/></button>
-                        <button onClick={playPreviousTrack}><img src={rewindButton} alt=""
+                                <span>{musicStore.currentTrack.animeTitle}</span>
+                            </div>
+                        }
+                        <img src={addButton} alt="" className='add__track'/>
+                    </div>
+                    <div className={musicStore.currentTrack ? 'player' : 'player block'}>
+                        <div className='player__buttons'>
+                            <button><img src={shuffleButton} alt="" style={{width: 24, height: 24}}/></button>
+                            <button onClick={playPreviousTrack}><img src={rewindButton} alt=""
+                                                                     style={{width: 27, height: 27}}/>
+                            </button>
+                            <button onClick={playPauseHandler}><img
+                                src={musicStore.isPlaying ? pauseButton : playButton}
+                                alt=""
+                                style={{width: 40, height: 40}}/></button>
+                            <button onClick={playNextTrack}><img src={nextButton} alt=""
                                                                  style={{width: 27, height: 27}}/>
-                        </button>
-                        <button onClick={playPauseHandler}><img src={musicStore.isPlaying ? pauseButton : playButton}
+                            </button>
+                            <button onClick={toggleRepeat}><img src={repeatStatus ? repeatButtonActive : repeatButton}
                                                                 alt=""
-                                                                style={{width: 40, height: 40}}/></button>
-                        <button onClick={playNextTrack}><img src={nextButton} alt="" style={{width: 27, height: 27}}/>
-                        </button>
-                        <button onClick={toggleRepeat}><img src={repeatStatus ? repeatButtonActive : repeatButton}
-                                                            alt=""
-                                                            style={{width: 27, height: 27}}/></button>
-                    </div>
-                    <div className="time__bar">
-                        <audio ref={audioRef}
-                               src={musicStore.currentTrack && storageUrl + musicStore.currentTrack.audioFile}
-                               autoPlay
-                               onEnded={playNextTrack}
-                               onTimeUpdate={handleTimeUpdate}
-                               onPlay={handlePlay}
-                               onPause={handlePause}
-                               preload="auto"
-                        >
-                        </audio>
-                        <div className="current__time">{formatTime(currentTime)}</div>
-                        <div className="progress__bar">
-                            <input
-                                type="range"
-                                min="0"
-                                max={audioRef.current? audioRef.current.duration : 0}
-                                step="1"
-                                value={currentTime}
-                                onChange={handleSeek}
-                            />
+                                                                style={{width: 27, height: 27}}/></button>
                         </div>
-                        <div className="total__time">{formatTime(duration)}</div>
+                        <div className="time__bar">
+                            <audio ref={audioRef}
+                                   src={musicStore.currentTrack && storageUrl + musicStore.currentTrack.audioFile}
+                                   autoPlay
+                                   onEnded={playNextTrack}
+                                   onTimeUpdate={handleTimeUpdate}
+                                   onPlay={handlePlay}
+                                   onPause={handlePause}
+                                   preload="auto"
+                            >
+                            </audio>
+                            <div className="current__time">{formatTime(currentTime)}</div>
+                            <div className="progress__bar">
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max={audioRef.current ? audioRef.current.duration : 0}
+                                    step="1"
+                                    value={currentTime}
+                                    onChange={handleSeek}
+                                />
+                            </div>
+                            <div className="total__time">{formatTime(duration)}</div>
+                        </div>
+                    </div>
+
+
+                    <div className={musicStore.currentTrack ? 'volume__bar' : 'volume__bar block'}>
+                        <img className="volume__icon" src={changeVolumeIcon(volume)} alt=""/>
+                        <input
+                            type="range"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                            value={volume}
+                            onChange={handleVolumeChange}
+                        />
                     </div>
                 </div>
+            );
+        }
 
-
-                <div className={musicStore.currentTrack ? 'volume__bar' : 'volume__bar block'}>
-                    <img className="volume__icon" src={changeVolumeIcon(volume)} alt=""/>
-                    <input
-                        type="range"
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        value={volume}
-                        onChange={handleVolumeChange}
-                    />
-                </div>
-            </div>
-        );
     }
 });
 

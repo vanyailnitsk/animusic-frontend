@@ -27,7 +27,7 @@ function AppRouter() {
     const {userStore} = useContext(Context)
     return (
         <BrowserRouter>
-            {/*<MusicPlayer/>*/}
+            <MusicPlayer/>
                 <Routes>
                     <Route path={LOGIN} element={userStore.isAuth ? <Navigate to={HOME_ROUTE} replace /> : <Login />} />
                     <Route path={SIGN_UP} element={userStore.isAuth ? <Navigate to={HOME_ROUTE} replace /> : <SignUp />} />
