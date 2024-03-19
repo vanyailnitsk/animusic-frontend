@@ -12,11 +12,13 @@ function App() {
             userStore.checkAuth()
         }
     }, [userStore]);
-    return (
-        <div className='app'>
-            <AppRouter/>
-        </div>
-    );
+    if(!userStore.isAuthInProgress){
+        return (
+            <div className='app'>
+                <AppRouter/>
+            </div>
+        );
+    }
 }
 
 export default observer(App);
