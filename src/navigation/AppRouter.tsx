@@ -24,12 +24,13 @@ import PrivateRoute from "./privateRoute";
 import {Context} from "../index";
 
 function AppRouter() {
+    const {userStore} = useContext(Context)
     return (
         <BrowserRouter>
             {/*<MusicPlayer/>*/}
                 <Routes>
-                    <Route path={LOGIN} element={localStorage.getItem('token') ? <Navigate to={HOME_ROUTE} replace /> : <Login />} />
-                    <Route path={SIGN_UP} element={localStorage.getItem('token') ? <Navigate to={HOME_ROUTE} replace /> : <SignUp />} />
+                    <Route path={LOGIN} element={userStore.isAuth ? <Navigate to={HOME_ROUTE} replace /> : <Login />} />
+                    <Route path={SIGN_UP} element={userStore.isAuth ? <Navigate to={HOME_ROUTE} replace /> : <SignUp />} />
                     <Route element={<PrivateRoute/>}>
                         <Route path={HOME_ROUTE} element={<Main page={<Homepage/>}/>}/>
                         <Route path={ANIME_ROUTE} element={<Main page={<AnimePage/>}/>}/>

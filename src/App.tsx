@@ -11,7 +11,7 @@ function App() {
         if(localStorage.getItem('token')){
             userStore.checkAuth()
         }
-    }, []);
+    }, [userStore]);
     return (
         <div className='app'>
             <AppRouter/>
