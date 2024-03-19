@@ -7,7 +7,7 @@ import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import logo from "../../icons/logo.ico";
 import {useNavigate} from "react-router-dom";
-import {LOGIN} from "../../navigation/routes";
+import {HOME_ROUTE, LOGIN} from "../../navigation/routes";
 const schema = z.object({
     username:z.string(),
     email: z.string().email(),
@@ -19,8 +19,9 @@ const SignUp = () => {
     const {userStore} = useContext(Context)
     const navigate = useNavigate()
     const {register, handleSubmit, setError, formState: {errors,isSubmitting}} = useForm<FormFields>({resolver:zodResolver(schema)})
-    const onSubmit: SubmitHandler<FormFields> = (data) => {
-        userStore.registration(data.username,data.email, data.password)
+    const onSubmit: SubmitHandler<FormFields> = async (data) => {
+        await userStore.registration(data.username,data.email, data.password)
+        navigate(HOME_ROUTE, {replace:true})
     }
     return (
         <div className={styles.signup__wrapper}>

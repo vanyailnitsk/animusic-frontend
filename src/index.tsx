@@ -16,6 +16,8 @@ export const Context = createContext<State>({
     musicStore
 });
 root.render(
-    <App/>
+    <Context.Provider value={ {userStore, musicStore} }>
+        <App/>
+    </Context.Provider>
 );
 

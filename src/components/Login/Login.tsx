@@ -6,20 +6,21 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {Context} from "../../index";
 import logo from '../../icons/logo.ico'
 import {observer} from "mobx-react-lite";
-import {Navigate, useNavigate} from "react-router-dom";
-import {SIGN_UP} from "../../navigation/routes";
+import {useNavigate} from "react-router-dom";
+import {HOME_ROUTE, SIGN_UP} from "../../navigation/routes";
 const schema = z.object({
     email: z.string().email(),
     password: z.string().min(4)
 })
 
 type FormFields = z.infer<typeof schema>
-const Login = () => {
+const Login = observer(() => {
     const {userStore} = useContext(Context)
     const navigate = useNavigate()
     const {register, handleSubmit, setError, formState: {errors,isSubmitting}} = useForm<FormFields>({resolver:zodResolver(schema)})
-    const onSubmit: SubmitHandler<FormFields> = (data) => {
-        userStore.login(data.email, data.password)
+    const onSubmit: SubmitHandler<FormFields> = async (data) => {
+        await userStore.login(data.email, data.password)
+        navigate(HOME_ROUTE, {replace:true})
     }
     return (
         <div className={styles.login__wrapper}>
@@ -53,6 +54,6 @@ const Login = () => {
             </form>
         </div>
     );
-};
+});
 
-export default observer(Login);
+export default Login;
