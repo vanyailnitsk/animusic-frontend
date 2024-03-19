@@ -11,7 +11,6 @@ const Homepage = () => {
         const response = await getAllAnime()
         setAnimeCards(response.data)
     })
-    console.log(animeCards)
     useEffect(() => {
         fetchAnime()
     }, []);

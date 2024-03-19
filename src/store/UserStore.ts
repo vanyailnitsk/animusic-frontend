@@ -5,35 +5,37 @@ import axios from "axios";
 import {AuthResponse} from "../models/response/AuthResponse";
 
 export default class UserStore {
-    user = {};
-    isAuth = false
-    isAuthInProgress = false
+    user : IUser | null = null;
+    isAuth:boolean = false
+    isAuthInProgress:boolean = false
     constructor() {
         makeAutoObservable(this)
     }
     setAuth(bool:boolean){
         this.isAuth = bool;
     }
-    setUser(user : IUser | {}){
+    setAuthProgress(bool:boolean){
+        this.isAuthInProgress =  bool
+    }
+    setUser(user : IUser | null){
         this.user = user
     }
     async login(email:string,password:string){
-        this.isAuthInProgress = true
+        this.setAuthProgress(true)
         try{
             const response = await AuthService.login(email,password)
-            console.log(response)
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
             this.setUser(response.data.user)
         } catch (e : unknown){
             console.log(e)
         } finally {
-            this.isAuthInProgress = false
+            this.setAuthProgress(false)
         }
 
     }
     async registration(username:string, email:string,password:string){
-        this.isAuthInProgress = true
+        this.setAuthProgress(true)
         try{
             const response = await AuthService.registration(username,email,password)
             localStorage.setItem('token', response.data.accessToken)
@@ -42,32 +44,33 @@ export default class UserStore {
         } catch (e : any){
             console.log(e.response?.data?.message)
         } finally {
-            this.isAuthInProgress = false
+            this.setAuthProgress(false)
         }
     }
     async logout(){
-        this.isAuthInProgress = true
+        this.setAuthProgress(true)
         try{
             const response = await AuthService.logout()
             localStorage.removeItem('token')
             this.setAuth(false)
-            this.setUser({})
+            this.setUser(null)
         } catch (e : any){
             console.log(e.response?.data?.message)
         } finally {
-            this.isAuthInProgress = false
+            this.setAuthProgress(false)
         }
     }
     async checkAuth(){
-        this.isAuthInProgress = true
+        this.setAuthProgress(true)
         try{
             const response = await axios.post<AuthResponse>(`${process.env.REACT_APP_API_URL}/auth/refresh`,{},{withCredentials:true})
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
+            this.setUser(response.data.user)
         } catch (e : any){
             console.log(e.response?.data?.message)
         } finally {
-            this.isAuthInProgress = false
+            this.setAuthProgress(false)
         }
     }
 }

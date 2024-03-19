@@ -47,7 +47,6 @@ const MusicPlayer = observer(() => {
             }
         }
     }, [musicStore.isPlaying])
-
     useEffect(() => {
         const audioElement = audioRef.current;
 
