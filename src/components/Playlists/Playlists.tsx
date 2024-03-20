@@ -1,7 +1,7 @@
 import React from 'react';
-import PlaylistCard from "./PlaylistCard";
-import '../styles/Playlists.css'
-import {PlaylistsProps} from "../interfaces/Playlists";
+import PlaylistCard from "../PlaylistCard/PlaylistCard";
+import './Playlists.css'
+import {PlaylistsProps} from "../../models/Playlists";
 const Playlists = ({playlists,handleNavigate} : PlaylistsProps) => {
     return (
         <div className="playlists">

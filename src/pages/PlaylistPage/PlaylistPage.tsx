@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import SoundtrackList from "../../components/SoundtrackList";
+import SoundtrackList from "../../components/SoundtrackList/SoundtrackList";
 import {useParams} from "react-router-dom";
 import {getPlaylistById} from "../../services/api/tracks";
 import "./PlaylistPage.css"
-import {ISoundtrack} from "../../interfaces/Soundtracks";
+import {ISoundtrack} from "../../models/Soundtracks";
 import {playlistBannerUrl, storageUrl} from "../../services/api/consts";
-import {IPlaylist} from "../../interfaces/Playlists";
+import {IPlaylist} from "../../models/Playlists";
 
 const PlaylistPage = () => {
     const {id}  = useParams()

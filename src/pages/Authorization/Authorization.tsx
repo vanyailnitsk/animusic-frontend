@@ -1,0 +1,17 @@
+import React, {useContext} from 'react';
+import Login from "../../components/Login/Login";
+import styles from './Authorization.module.css'
+import SignUp from "../../components/SignUp/SignUp";
+import {Context} from "../../index";
+const Authorization = () => {
+    const {userStore} = useContext(Context)
+    return (
+        <div className={styles.authorization__wrapper}>
+            <Login/>
+            <SignUp/>
+            <button onClick={() => localStorage.removeItem('token')}>Logout</button>
+        </div>
+    );
+};
+
+export default Authorization;

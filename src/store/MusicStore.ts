@@ -1,8 +1,7 @@
 import {makeAutoObservable} from "mobx";
-import {IMusicStore} from "../interfaces/IMusicStore";
-import {ISoundtrack} from "../interfaces/Soundtracks";
+import {ISoundtrack} from "../models/Soundtracks";
 
-class MusicStore implements IMusicStore{
+class MusicStore{
     private _playlist: ISoundtrack[];
     private _trackIndex: number;
     private _isPlaying: boolean;

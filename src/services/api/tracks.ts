@@ -1,5 +1,5 @@
 import {$host} from "./index";
-import {IPlaylist} from "../../interfaces/Playlists";
+import {IPlaylist} from "../../models/Playlists";
 
 export const getPlaylistsByAnimeId = async (animeId : string) => {
     const {data} = await $host.get<IPlaylist>('playlist/by-anime/' + animeId);

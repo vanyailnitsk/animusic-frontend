@@ -3,10 +3,10 @@ import {getAnimeInfo} from "../../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
 import "./AnimePage.css"
 import followButton from '../../icons/follow.png'
-import Playlists from "../../components/Playlists";
+import Playlists from "../../components/Playlists/Playlists";
 import {animeBannerUrl, storageUrl} from "../../services/api/consts";
-import {IPlaylist} from "../../interfaces/Playlists";
-import {IAnime} from "../../interfaces/Anime";
+import {IPlaylist} from "../../models/Playlists";
+import {IAnime} from "../../models/Anime";
 
 const AnimePage = () => {
     const {id} = useParams()
@@ -14,7 +14,6 @@ const AnimePage = () => {
     const [playlists, setPlaylists] = useState<IPlaylist[]>([])
     const navigate = useNavigate();
     const [isLoadingImage, setIsLoadingImage] = useState(true)
-
     useEffect(() => {
         getAnimeInfo(id)
             .then(response => {
