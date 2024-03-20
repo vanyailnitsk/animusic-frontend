@@ -40,7 +40,7 @@
     opacity: 1;
 }
 
-@media screen and (max-width: 1280px) and (max-height: 2400px){
+@media screen and (max-width: 980px) and (max-height: 2400px){
     .navigation__wrapper{
         box-shadow: none;
         position: absolute;

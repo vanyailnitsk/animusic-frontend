@@ -41,7 +41,7 @@ const PlaylistPage = () => {
             {!isLoadingImage && playlist &&
                 <div>
                     <h1 className="playlist__name">{playlist.name}</h1>
-                    <SoundtrackList soundtracks={soundtracks}/>
+                    <SoundtrackList soundtracks={soundtracks} />
                 </div>
 
             }

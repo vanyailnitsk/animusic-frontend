@@ -1,6 +1,6 @@
 import React from 'react';
 import './MediaLibrary.css'
-const MediaLibrary = ({menuActive,setMenuActive}) => {
+const MediaLibrary = ({menuActive}) => {
     return (
         <div className={menuActive? 'media__library__wrapper menu__active' : 'media__library__wrapper'}>
 

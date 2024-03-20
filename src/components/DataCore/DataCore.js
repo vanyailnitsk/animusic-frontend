@@ -2,7 +2,7 @@ import React from 'react';
 import './DataCore.css'
 import avatar from "../../icons/avatar.jpeg";
 
-const DataCore = ({page,setMenuActive}) => {
+const DataCore = ({page}) => {
 
     return (
         <div className='data__core__wrapper'>
