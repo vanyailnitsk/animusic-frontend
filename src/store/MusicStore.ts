@@ -1,8 +1,9 @@
 import {makeAutoObservable} from "mobx";
 import {ISoundtrack} from "../models/Soundtracks";
+import {IPlaylist} from "../models/Playlists";
 
 class MusicStore{
-    private _playlist: ISoundtrack[];
+    private _playlist: IPlaylist;
     private _trackIndex: number;
     private _isPlaying: boolean;
     constructor(){
@@ -12,7 +13,7 @@ class MusicStore{
         makeAutoObservable(this)
     }
 
-    setPlaylist(playlist : ISoundtrack[]) {
+    setPlaylist(playlist : IPlaylist) {
         this._playlist = playlist
         localStorage.setItem("playlist", JSON.stringify(playlist));
     }
@@ -31,7 +32,7 @@ class MusicStore{
     }
     nextTrack() {
         const nextIndex = this._trackIndex + 1;
-        if (nextIndex < this._playlist.length) {
+        if (nextIndex < this._playlist.soundtracks.length) {
             this._trackIndex++;
         } else {
             this._trackIndex=0
@@ -58,8 +59,12 @@ class MusicStore{
     trackEquals(track : ISoundtrack):boolean {
         return JSON.stringify(this.currentTrack)===JSON.stringify(track)
     }
-    get currentTrack() :ISoundtrack{
-        return this._playlist[this._trackIndex]
+    get currentTrack() : ISoundtrack | undefined {
+        if (this._playlist && this._playlist.soundtracks && this._playlist.soundtracks.length > this._trackIndex && this._trackIndex >= 0) {
+            return this._playlist.soundtracks[this._trackIndex];
+        } else {
+            return undefined;
+        }
     }
 }
 

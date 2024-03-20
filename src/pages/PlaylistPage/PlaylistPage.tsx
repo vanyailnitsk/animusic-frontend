@@ -15,9 +15,9 @@ const PlaylistPage = () => {
     const [isLoadingImage, setIsLoadingImage] = useState<boolean>(true)
     useEffect(() => {
         getPlaylistById(id)
-            .then(data => {
-                setPlaylist(data)
-                return data.soundtracks
+            .then(playlist => {
+                setPlaylist(playlist)
+                return playlist.soundtracks
             })
             .then(soundtracksData => {
                 setSoundtracks(soundtracksData);
@@ -41,7 +41,7 @@ const PlaylistPage = () => {
             {!isLoadingImage && playlist &&
                 <div>
                     <h1 className="playlist__name">{playlist.name}</h1>
-                    <SoundtrackList soundtracks={soundtracks} />
+                    <SoundtrackList playlist={playlist} />
                 </div>
 
             }

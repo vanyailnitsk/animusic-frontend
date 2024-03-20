@@ -1,3 +1,5 @@
+import {IPlaylist} from "./Playlists";
+
 export interface ISoundtrack {
     id: number
     animeName:string
@@ -8,10 +10,10 @@ export interface ISoundtrack {
     originalTitle:string
 }
 export interface SoundtrackListProps {
-    soundtracks: ISoundtrack[]
+    playlist: IPlaylist
 }
 export interface SoundtrackProps{
     soundtrackData: ISoundtrack
-    playlist: ISoundtrack[]
+    playlist: IPlaylist
     index:number
 }
