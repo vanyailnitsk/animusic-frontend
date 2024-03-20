@@ -19,10 +19,13 @@ import {formatTime} from "../../tools/FormatTime";
 import {isMobile, isTablet} from 'react-device-detect';
 import repeatButtonActive from '../../icons/repeatButtonActive.png'
 import {soundtrackImageUrl, storageUrl} from "../../services/api/consts";
+import {useNavigate} from "react-router-dom";
+import {PLAYLIST_ROUTE} from "../../navigation/routes";
 
 
 const MusicPlayer = observer(() => {
     const audioRef = useRef<HTMLAudioElement>(null);
+    const navigate = useNavigate()
     const [volume, setVolume] = useState<number>(0.25);
     const {musicStore, userStore} = useContext(Context)
     const [currentTime, setCurrentTime] = useState<number>(0);
@@ -54,7 +57,9 @@ const MusicPlayer = observer(() => {
             if (audioElement) {
                 setCurrentTime(audioElement.currentTime);
             }
-            setDuration(musicStore.currentTrack.duration)
+            if (musicStore.currentTrack){
+                setDuration(musicStore.currentTrack.duration)
+            }
         };
         if (audioElement) {
             audioElement.addEventListener("timeupdate", onTimeUpdate);
@@ -202,7 +207,7 @@ const MusicPlayer = observer(() => {
         if (userStore.isAuth) {
             return (
                 <div className="music__player__wrapper">
-                    <div className={musicStore.currentTrack ? 'current__track' : 'hidden'}>
+                    <div className={musicStore.currentTrack ? 'current__track' : 'hidden'} onClick={() => navigate(`/playlist/${musicStore.playlist.id}`)}>
                         <img
                             src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg")}
                             alt=""

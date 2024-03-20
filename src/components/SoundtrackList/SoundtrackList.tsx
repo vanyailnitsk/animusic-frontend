@@ -4,7 +4,7 @@ import "./SoundtrackList.css"
 import {observer} from "mobx-react-lite";
 // import clock from '../icons/clock.png'
 import {SoundtrackListProps} from '../../models/Soundtracks'
-const SoundtrackList = observer(({soundtracks} :SoundtrackListProps) => {
+const SoundtrackList = observer(({playlist} :SoundtrackListProps) => {
     return (
         <div className="soundtracklist__wrapper">
             <div className='header__soundracklist'>
@@ -15,11 +15,11 @@ const SoundtrackList = observer(({soundtracks} :SoundtrackListProps) => {
                     {/*<img src={clock} alt=""/>*/}
                 </div>
             </div>
-            {soundtracks.map((soundtrack,index) => (
+            {playlist.soundtracks.map((soundtrack,index) => (
                 <Soundtrack
                     key={soundtrack.id}
                     soundtrackData={soundtrack}
-                    playlist={soundtracks}
+                    playlist={playlist}
                     index={index}
                 />
             ))}
