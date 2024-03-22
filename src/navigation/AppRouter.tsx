@@ -5,7 +5,7 @@ import Homepage from '../pages/Home/Homepage';
 import AnimePage from '../pages/AnimePage/AnimePage';
 import {
     ANIME_MANAGE,
-    ANIME_ROUTE,
+    ANIME_ROUTE, FAVORITES,
     HOME_ROUTE,
     LOGIN,
     PLAYLIST_ROUTE,
@@ -22,6 +22,7 @@ import Login from "../components/Login/Login";
 import SignUp from "../components/SignUp/SignUp";
 import PrivateRoute from "./privateRoute";
 import {Context} from "../index";
+import UserPlaylistPage from "../pages/UserPlaylistPage/UserPlaylistPage";
 
 function AppRouter() {
     const {userStore} = useContext(Context)
@@ -38,6 +39,7 @@ function AppRouter() {
                         <Route path={PLAYLIST_ROUTE} element={<Main page={<PlaylistPage/>}/>}/>
                         <Route path={SOUNDTRACK_MANAGE} element={<Main page={<SoundtrackManager/>}/>}/>
                         <Route path={SEARCH_ROUTE} element={<Main page={<SearchPage/>}/>}/>
+                        <Route path={FAVORITES} element={<Main page={<UserPlaylistPage/>}/>}/>
                     </Route>
                 </Routes>
         </BrowserRouter>

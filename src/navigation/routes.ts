@@ -6,3 +6,5 @@ export const SOUNDTRACK_MANAGE = '/soundtrack-manage'
 export const SEARCH_ROUTE = '/search'
 export const LOGIN = '/login'
 export const SIGN_UP = '/sign-up'
+
+export const FAVORITES = '/favorites'
