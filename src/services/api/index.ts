@@ -14,10 +14,8 @@ $host.interceptors.response.use(
             try {
                 const response = await axios.post<AuthResponse>(`${process.env.REACT_APP_API_URL}/auth/refresh`, {}, { withCredentials: true })
                 localStorage.setItem('token', response.data.accessToken)
-                // Попытка выполнить запрос снова
                 return $host.request(originalRequest)
             } catch (e) {
-                // Если запрос на обновление токена также возвращает 401, выдать ошибку аутентификации
                 console.log('Ошибка обновления токена или токен истек')
                 throw error
             }
