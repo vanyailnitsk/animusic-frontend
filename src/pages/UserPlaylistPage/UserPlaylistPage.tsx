@@ -4,6 +4,7 @@ import {FAVORITES} from "../../navigation/routes";
 import {getFavoritesTracks} from "../../services/api/tracks";
 import SoundtrackList from "../../components/SoundtrackList/SoundtrackList";
 
+
 const UserPlaylistPage = () => {
     const location = useLocation()
     const [playlist, setPlaylist] = useState()
