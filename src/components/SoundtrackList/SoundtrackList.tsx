@@ -17,8 +17,8 @@ const SoundtrackList = observer(({playlist} :SoundtrackListProps) => {
             </div>
             {playlist.soundtracks.map((soundtrack,index) => (
                 <Soundtrack
-                    key={soundtrack.id}
-                    soundtrackData={soundtrack}
+                    key={soundtrack.soundtrack.id}
+                    soundtrackData={soundtrack.soundtrack}
                     playlist={playlist}
                     index={index}
                 />

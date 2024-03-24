@@ -1,5 +1,5 @@
 import {makeAutoObservable} from "mobx";
-import {ISoundtrack} from "../models/Soundtracks";
+import {ISoundtrack, SoundtrackData} from "../models/Soundtracks";
 import {IPlaylist} from "../models/Playlists";
 
 class MusicStore{
@@ -56,12 +56,12 @@ class MusicStore{
     get isPlaying():boolean {
         return this._isPlaying
     }
-    trackEquals(track : ISoundtrack):boolean {
+    trackEquals(track : SoundtrackData):boolean {
         return JSON.stringify(this.currentTrack)===JSON.stringify(track)
     }
-    get currentTrack() : ISoundtrack | undefined {
+    get currentTrack(): SoundtrackData | undefined  {
         if (this._playlist && this._playlist.soundtracks && this._playlist.soundtracks.length > this._trackIndex && this._trackIndex >= 0) {
-            return this._playlist.soundtracks[this._trackIndex];
+            return this._playlist.soundtracks[this._trackIndex].soundtrack;
         } else {
             return undefined;
         }
