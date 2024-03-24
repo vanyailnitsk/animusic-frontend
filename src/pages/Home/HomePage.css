@@ -11,11 +11,6 @@
     font-family: Pacifico;
     font-size: 25px;
 }
-.greeting{
-    width:98%;
-    margin-inline:auto;
-    margin-top:10px;
-}
 @media screen and (max-width: 1080px) and (max-height: 2400px){
     .greeting{
         width: 96%;
