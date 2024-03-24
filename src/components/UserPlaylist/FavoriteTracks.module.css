@@ -13,8 +13,9 @@
 }
 .favorite__tracks__content{
     width: 90%;
-    height: 90%;
+    height: 50px;
     display: flex;
+    position: relative;
     align-items: center;
 }
 .favorite__tracks__content img{
