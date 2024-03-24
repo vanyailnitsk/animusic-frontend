@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import {FAVORITES} from "../../navigation/routes";
-import {getFavoritesTracks} from "../../services/api/tracks";
 import SoundtrackList from "../../components/SoundtrackList/SoundtrackList";
+import {getFavoritesTracks} from "../../services/api/tracks";
 
 
 const UserPlaylistPage = () => {
