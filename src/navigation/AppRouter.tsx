@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import { SkeletonTheme } from 'react-loading-skeleton';
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import Main from "../components/Main/Main";
 import Homepage from '../pages/Home/Homepage';
@@ -27,6 +28,7 @@ import UserPlaylistPage from "../pages/UserPlaylistPage/UserPlaylistPage";
 function AppRouter() {
     const {userStore} = useContext(Context)
     return (
+        <SkeletonTheme baseColor="#313131" highlightColor="#525252">
         <BrowserRouter>
             <MusicPlayer/>
                 <Routes>
@@ -43,6 +45,7 @@ function AppRouter() {
                     </Route>
                 </Routes>
         </BrowserRouter>
+        </SkeletonTheme>
     );
 }
 
