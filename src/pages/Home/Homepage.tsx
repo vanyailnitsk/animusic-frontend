@@ -25,7 +25,7 @@ const Homepage = () => {
             </div>
             {!error?
                 (!isLoading?
-                        <CardsList animeCards={animeCards}/>
+                         <CardsList animeCards={animeCards}/>
                         :<SkeletonCardList/>
                 )
                 : <div>{error}</div>
