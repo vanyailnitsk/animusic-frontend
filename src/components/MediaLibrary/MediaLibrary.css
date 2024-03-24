@@ -1,5 +1,7 @@
 .media__library__wrapper{
     width: 100%;
+    display: flex;
+    justify-content: center;
     grid-column: 1;
     grid-row: 2;
     height: 75vh;

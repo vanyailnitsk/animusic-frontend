@@ -4,9 +4,9 @@ import {AuthResponse} from "../models/response/AuthResponse";
 
 export default class AuthService {
     static async login(email: string, password: string) : Promise<AxiosResponse<AuthResponse>>{
-        return $host.post<AuthResponse>('/auth/login',JSON.stringify({email, password}),{
-            headers:{
-                "Content-Type":"application/json"
+        return $host.post<AuthResponse>('/auth/login',JSON.stringify({email, password}), {
+            headers: {
+                "Content-Type": "application/json"
             }
         })
     }

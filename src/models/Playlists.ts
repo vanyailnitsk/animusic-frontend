@@ -16,3 +16,7 @@ export interface PlaylistCardProps{
     playlist: IPlaylist
     handleNavigate(playlistId : number):void
 }
+
+export interface UserPlaylist{
+
+}

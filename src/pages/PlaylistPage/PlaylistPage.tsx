@@ -10,17 +10,13 @@ import {IPlaylist} from "../../models/Playlists";
 const PlaylistPage = () => {
     const {id}  = useParams()
     const [playlist, setPlaylist] = useState<IPlaylist | null>(null)
-    const [soundtracks, setSoundtracks] = useState<ISoundtrack[]>([])
     const bannerUrl = storageUrl+playlist?.bannerLink
-    const [isLoadingImage, setIsLoadingImage] = useState<boolean>(true)
+    const [isLoadingImage, setIsLoadingImage] = useState<boolean>(false)
     useEffect(() => {
         getPlaylistById(id)
             .then(playlist => {
                 setPlaylist(playlist)
                 return playlist.soundtracks
-            })
-            .then(soundtracksData => {
-                setSoundtracks(soundtracksData);
             })
             .catch(error => {
                 console.log(error)
