@@ -1,4 +1,4 @@
-.playlists{
+.playlists__skeleton{
     width: 922px;
     position: absolute;
     right: 0;
@@ -6,12 +6,11 @@
     margin-left: 30px;
     margin-top: 50px;
     display: grid;
-    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-template-columns:190px 190px 190px 190px;
     gap:54px;
-    justify-content: space-between;
 }
 @media screen and (min-width: 320px) and (max-width: 409px){
-    .playlists{
+    .playlists__skeleton{
         width: 190px;
         margin-inline: auto;
         display: grid;
@@ -22,7 +21,7 @@
     }
 }
 @media screen and (min-width: 410px) and (max-width: 655px){
-    .playlists{
+    .playlists__skeleton{
         width: 410px;
         margin-inline: auto;
         display: grid;
@@ -32,8 +31,8 @@
         grid-template-columns:190px 190px;
     }
 }
-@media screen and (min-width: 656px) and (max-width: 1290px){
-    .playlists{
+@media screen and (min-width: 656px) and (max-width: 994px){
+    .playlists__skeleton{
         width: 630px;
         margin-inline: auto;
         display: grid;
@@ -41,16 +40,5 @@
         gap:30px;
         margin-top:10px;
         grid-template-columns:190px 190px 190px;
-    }
-}
-@media screen and (min-width: 922px) and (max-width: 980px){
-    .playlists{
-        width: 922px;
-        margin-inline: auto;
-        display: grid;
-        height: auto;
-        gap:30px;
-        margin-top:10px;
-        grid-template-columns:190px 190px 190px 190px;
     }
 }
