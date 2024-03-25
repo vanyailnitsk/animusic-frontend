@@ -3,7 +3,7 @@ import PlaylistCardSkeleton from "../../PlaylistCard/Skeleton/PlaylistCardSkelet
 import styles from './style.module.css'
 const PlaylistsSkeleton = () => {
     return (
-        <div className={styles.playlists__skeleton}>
+        <div className={styles.playlists_skeleton}>
             {[...Array(4)].map((_, index) => (
                 <PlaylistCardSkeleton key={index} />
             ))}
