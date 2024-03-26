@@ -13,7 +13,6 @@ const UserPlaylistPage = () => {
             getFavoritesTracks()
                 .then(playlist => {
                     setPlaylist(playlist)
-                    console.log(playlist)
                     return playlist.soundtracks
                 })
                 .catch(error => {

@@ -1,6 +1,8 @@
 import {makeAutoObservable} from "mobx";
 import {ISoundtrack, SoundtrackData} from "../models/Soundtracks";
 import {IPlaylist} from "../models/Playlists";
+import AuthService from "../services/AuthService";
+import MusicService from "../services/MusicService";
 
 class MusicStore{
     private _playlist: IPlaylist;
@@ -17,7 +19,9 @@ class MusicStore{
         this._playlist = playlist
         localStorage.setItem("playlist", JSON.stringify(playlist));
     }
-
+    addToFavorite(TrackId:number){
+        MusicService.addToFavorite(TrackId)
+    }
     setTrackIndex(index:number) {
         this._trackIndex = index
 
