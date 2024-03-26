@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {MouseEventHandler, useContext} from 'react';
 import {storageUrl} from "../../../services/api/consts";
 import addButton from "../../../icons/addButton.png";
 import {Context} from "../../../index";
@@ -7,6 +7,12 @@ import {useNavigate} from "react-router-dom";
 const CurrentTrack = () => {
     const {musicStore} = useContext(Context)
     const navigate = useNavigate()
+    const addTrack: MouseEventHandler<HTMLImageElement> = (e) => {
+        e.stopPropagation();
+        if (musicStore.currentTrack?.id) {
+            musicStore.addToFavorite(musicStore.currentTrack.id);
+        }
+    };
     return (
         <div className={musicStore.currentTrack ? 'current__track' : 'hidden'}>
             <img
@@ -21,7 +27,7 @@ const CurrentTrack = () => {
                     <span>{musicStore.currentTrack.animeTitle}</span>
                 </div>
             }
-            <img src={addButton} alt="" className='add__track' onClick={(e) => e.stopPropagation()}/>
+            <img src={addButton} alt="" className='add__track' onClick={addTrack}/>
         </div>
     );
 };
