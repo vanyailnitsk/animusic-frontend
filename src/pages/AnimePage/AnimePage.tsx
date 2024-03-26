@@ -42,9 +42,8 @@ const AnimePage = () => {
                 : null
                 }
                 <img
-                    src={storageUrl+animeData?.bannerImagePath} alt="Banner"
+                    src={storageUrl+animeData?.bannerImagePath} alt=""
                     onLoad={() => setIsLoadingImage(false)}
-                    onError={() => setIsLoadingImage(false)}
                 />
             </div>
             {isLoadingImage?

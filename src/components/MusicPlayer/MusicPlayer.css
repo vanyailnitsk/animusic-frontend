@@ -54,7 +54,10 @@
     text-align: left;
     white-space: nowrap;
 }
-
+.track__name span:first-child:hover{
+    cursor: pointer;
+    text-decoration: underline white;
+}
 .track__name span:last-child{
     position: absolute;
     bottom: 0;
