@@ -8,11 +8,11 @@ import {storageUrl} from "../../services/api/consts";
 
 const AnimeCard = ({card} : AnimeCardProps) => {
     const navigate = useNavigate();
-    const [loading,setLoading] = useState<boolean>(false)
+    const [loading,setLoading] = useState<boolean>(true)
     const imageUrl = storageUrl+card.cardImagePath
     return (
         <div className="anime__card" onClick={() => navigate('/anime/'+card.id)}>
-            {!loading?
+            {loading?
                 (
                     <div style={{position:"absolute"}}>
                         <Skeleton style={{width:290,height:160,position:'absolute',left:14,right:14,top:14}}/>
@@ -20,7 +20,7 @@ const AnimeCard = ({card} : AnimeCardProps) => {
                 )
                 : null
             }
-            <img  src={imageUrl} alt="" onLoad={() => setLoading(true)}/>
+            <img  src={imageUrl} alt="" onLoad={() => setLoading(false)}/>
             <span>{card.title}</span>
         </div>
     );

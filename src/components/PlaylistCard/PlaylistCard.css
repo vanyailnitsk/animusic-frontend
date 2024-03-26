@@ -3,6 +3,7 @@
     height: 201px;
     background: #161515;
     display: flex;
+    position: relative;
     transition: .2s linear;
     flex-wrap: wrap;
     justify-content: center;
@@ -13,6 +14,7 @@
 .playlist__card__wrapper img {
     width: 150px;
     height: 150px;
+    border-radius: 7px;
     margin-top: 13px;
 }
 .playlist__card__wrapper:hover{

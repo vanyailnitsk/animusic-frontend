@@ -19,13 +19,11 @@ import {formatTime} from "../../tools/FormatTime";
 import {isMobile, isTablet} from 'react-device-detect';
 import repeatButtonActive from '../../icons/repeatButtonActive.png'
 import {soundtrackImageUrl, storageUrl} from "../../services/api/consts";
-import {useNavigate} from "react-router-dom";
-import {PLAYLIST_ROUTE} from "../../navigation/routes";
+import CurrentTrack from "./CurrentTrack/CurrentTrack";
 
 
 const MusicPlayer = observer(() => {
     const audioRef = useRef<HTMLAudioElement>(null);
-    const navigate = useNavigate()
     const [volume, setVolume] = useState<number>(0.25);
     const {musicStore, userStore} = useContext(Context)
     const [currentTime, setCurrentTime] = useState<number>(0);
@@ -207,20 +205,7 @@ const MusicPlayer = observer(() => {
         if (userStore.isAuth) {
             return (
                 <div className="music__player__wrapper">
-                    <div className={musicStore.currentTrack ? 'current__track' : 'hidden'} onClick={() => navigate(`/playlist/${musicStore.playlist.id}`)}>
-                        <img
-                            src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg")}
-                            alt=""
-                            className='track__img'/>
-                        {musicStore.currentTrack &&
-                            <div className='track__name'>
-                            <span
-                                className={musicStore.currentTrack.originalTitle.length > 20 ? "scrolling" : ""}>{musicStore.currentTrack.originalTitle}</span>
-                                <span>{musicStore.currentTrack.animeTitle}</span>
-                            </div>
-                        }
-                        <img src={addButton} alt="" className='add__track'/>
-                    </div>
+                    <CurrentTrack/>
                     <div className={musicStore.currentTrack ? 'player' : 'player block'}>
                         <div className='player__buttons'>
                             <button><img src={shuffleButton} alt="" style={{width: 24, height: 24}}/></button>
