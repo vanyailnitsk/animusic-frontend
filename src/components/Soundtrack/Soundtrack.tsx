@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {MouseEventHandler, useContext} from "react";
 import "./Soundtrack.css";
 import {Context} from "../../index";
 import Pause from '../../icons/soundtrack-pause.png'
@@ -22,6 +22,13 @@ const Soundtrack = observer(({soundtrackData, playlist, index} : SoundtrackProps
             musicStore.togglePlayPause()
         }
     };
+    const addTrack: MouseEventHandler<HTMLButtonElement> = (e) => {
+        e.stopPropagation();
+        const trackId = soundtrackData.id;
+        if (trackId) {
+            musicStore.addToFavorite(trackId);
+        }
+    };
     return (
         <div className={`soundtrack__container ${musicStore.trackEquals(soundtrackData) ? "playing" : ""}`}
              onClick={playTrackHandler}>
@@ -36,7 +43,7 @@ const Soundtrack = observer(({soundtrackData, playlist, index} : SoundtrackProps
             <img src={image} alt="" className="soundtrack__image"/>
             <h3 className="title">{soundtrackData.animeTitle}</h3>
             <p className="original__title">{soundtrackData.originalTitle}</p>
-            <button className="soundtrack__add" onClick={(e) => e.stopPropagation()}>
+            <button className="soundtrack__add" onClick={addTrack}>
                 <img src={addButton} alt=""/>
             </button>
             <span className='track__duration'>{formatTime(soundtrackData.duration)}</span>

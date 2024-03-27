@@ -8,12 +8,16 @@ export interface SoundtrackListProps {
 }
 export interface SoundtrackData{
     id: number
-    animeName:string
     animeTitle:string
     audioFile:string
     duration:number
     imageFile: string | null
     originalTitle:string
+    album:{
+        id:number
+        name:string
+    }
+
 }
 export interface SoundtrackProps{
     soundtrackData: SoundtrackData
