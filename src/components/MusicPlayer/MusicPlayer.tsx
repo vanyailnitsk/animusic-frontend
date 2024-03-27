@@ -161,7 +161,7 @@ const MusicPlayer = observer(() => {
                      onClick={handlePhoneMusicPlayer}/>
                 <div className={activePhonePlayer ? "time__bar active" : "time__bar"}>
                     <audio ref={audioRef}
-                           src={musicStore.currentTrack && storageUrl + musicStore.currentTrack.id}
+                           src={musicStore.currentTrack && storageUrl + musicStore.currentTrack.audioFile}
                            autoPlay
                            onEnded={playNextTrack}
                            onTimeUpdate={handleTimeUpdate}
