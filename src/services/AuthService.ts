@@ -8,6 +8,7 @@ export default class AuthService {
             headers: {
                 "Content-Type": "application/json"
             }
+
         })
     }
     static async registration(username:string,email: string, password: string) : Promise<AxiosResponse<AuthResponse>>{
