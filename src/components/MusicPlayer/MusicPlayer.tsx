@@ -142,7 +142,7 @@ const MusicPlayer = observer(() => {
             title: musicStore.currentTrack.originalTitle,
             artist: musicStore.currentTrack.animeTitle,
             artwork: [
-                {src: soundtrackImageUrl + musicStore.currentTrack.id, sizes: '512x512', type: 'image/png'}
+                {src: musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg"), sizes: '512x512', type: 'image/png'}
             ]
         });
     }
