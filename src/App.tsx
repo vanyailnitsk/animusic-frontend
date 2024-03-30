@@ -26,8 +26,7 @@ function App() {
             setLoading(false);
         }
     }, [userStore]);
-
-    if (!loading) {
+    if (!loading && !userStore.isAuthInProgress) {
         return (
             <div className='app'>
                 <AppRouter />
