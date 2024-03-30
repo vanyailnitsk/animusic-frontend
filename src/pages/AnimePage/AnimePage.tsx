@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {getAnimeInfo} from "../../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
 import "./AnimePage.css"
-import followButton from '../../icons/follow.png'
+import playPlaylist from '../../icons/play-playlist.png'
 import Playlists from "../../components/Playlists/Playlists";
 import {animeBannerUrl, storageUrl} from "../../services/api/consts";
 import {IPlaylist} from "../../models/Playlists";
@@ -41,23 +41,33 @@ const AnimePage = () => {
                     <Skeleton style={{height:'35vh',borderTopRightRadius:7,borderTopLeftRadius:7,position:"absolute",top:0}}/>
                 : null
                 }
+                <div className='overlay'></div>
                 <img
                     src={storageUrl+animeData?.bannerImagePath} alt=""
                     onLoad={() => setIsLoadingImage(false)}
                 />
+                {!isLoadingImage && animeData &&
+                    <div className="anime__title">
+                        <h1>{animeData.title}</h1>
+                    </div>
+
+                }
             </div>
             {isLoadingImage?
                <div>
-                   <Skeleton style={{height:40}} />
                    <PlaylistsSkeleton/>
                </div>
                 :null
             }
             {!isLoadingImage && animeData &&
                 <div>
-                    <div className="title__follow">
-                        <h1>{animeData.title}</h1>
-                        <img src={followButton} alt=""/>
+                    <div className='playlist__actions'>
+                        <button className='play__playlist'>
+                            <img src={playPlaylist} alt=""/>
+                        </button>
+                        <button className='follow__button'>
+                            <span>Follow</span>
+                        </button>
                     </div>
                     <Playlists playlists={playlists} handleNavigate={handleNavigate}/>
                 </div>
