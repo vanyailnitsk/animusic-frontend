@@ -8,16 +8,22 @@ class MusicStore{
     private _playlist: IPlaylist;
     private _trackIndex: number;
     private _isPlaying: boolean;
+    volume: number;
     constructor(){
         this._playlist = JSON.parse(localStorage.getItem("playlist") || '[]')
         this._trackIndex = JSON.parse(localStorage.getItem("currentTrackIndex") || '0')
         this._isPlaying = false
+        this.volume = Number(localStorage.getItem('volume')) || 0.5
         makeAutoObservable(this)
     }
 
     setPlaylist(playlist : IPlaylist) {
         this._playlist = playlist
         localStorage.setItem("playlist", JSON.stringify(playlist));
+    }
+    changeVolume(volume : number) {
+        this.volume = volume
+        localStorage.setItem('volume', this.volume.toString())
     }
     addToFavorite(TrackId:number){
         MusicService.addToFavorite(TrackId)
@@ -27,7 +33,15 @@ class MusicStore{
 
         localStorage.setItem("currentTrackIndex", JSON.stringify(index));
     }
-
+    shufflePlaylist() {
+        const { soundtracks } = this._playlist;
+        const shuffledSoundtracks = [...soundtracks];
+        for (let i = shuffledSoundtracks.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledSoundtracks[i], shuffledSoundtracks[j]] = [shuffledSoundtracks[j], shuffledSoundtracks[i]];
+        }
+        this._playlist.soundtracks = shuffledSoundtracks;
+    }
     togglePlayPause() {
         this._isPlaying=!this._isPlaying
     }

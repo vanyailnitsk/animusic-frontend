@@ -6,6 +6,7 @@ import rewindButton from '../../icons/rewindButton.png'
 import rollUp from '../../icons/rollUp.png'
 import nextButton from '../../icons/next.png'
 import shuffleButton from '../../icons/shuffleButton.png'
+import shuffleActive from '../../icons/shuffle-active.png'
 import playButton from '../../icons/playButton.png'
 import repeatButton from '../../icons/repeatButton.png'
 import addButton from '../../icons/addButton.png'
@@ -18,28 +19,28 @@ import {Context} from "../../index";
 import {formatTime} from "../../tools/FormatTime";
 import {isMobile, isTablet} from 'react-device-detect';
 import repeatButtonActive from '../../icons/repeatButtonActive.png'
-import {soundtrackImageUrl, storageUrl} from "../../services/api/consts";
+import {storageUrl} from "../../services/api/consts";
 import CurrentTrack from "./CurrentTrack/CurrentTrack";
 
 
 const MusicPlayer = observer(() => {
     const audioRef = useRef<HTMLAudioElement>(null);
-    const [volume, setVolume] = useState<number>(0.25);
     const {musicStore, userStore} = useContext(Context)
+    const [isShuffleActive, setIsShuffleActive] = useState(false);
     const [currentTime, setCurrentTime] = useState<number>(0);
     const [repeatStatus, setRepeatStatus] = useState<boolean>(false)
     const [duration, setDuration] = useState<number>(musicStore.currentTrack ? musicStore.currentTrack.duration : 0);
     const [activePhonePlayer, setActivePhonePlayer] = useState<boolean>(false)
     useEffect(() => {
         if (isMobile) {
-            setVolume(1);
+            musicStore.changeVolume(1);
         }
         if (isTablet) {
-            setVolume(1)
+            musicStore.changeVolume(1)
         }
         if (audioRef.current) {
             if (audioRef.current) {
-                audioRef.current.volume = volume
+                audioRef.current.volume = musicStore.volume
             }
             if (musicStore.isPlaying) {
                 audioRef.current.play()
@@ -55,7 +56,7 @@ const MusicPlayer = observer(() => {
             if (audioElement) {
                 setCurrentTime(audioElement.currentTime);
             }
-            if (musicStore.currentTrack){
+            if (musicStore.currentTrack) {
                 setDuration(musicStore.currentTrack.duration)
             }
         };
@@ -69,6 +70,9 @@ const MusicPlayer = observer(() => {
         }
 
     }, []);
+    const toggleShuffle = () => {
+        setIsShuffleActive(!isShuffleActive)
+    }
     const playPauseHandler = (): void => {
         musicStore.togglePlayPause()
     };
@@ -81,7 +85,7 @@ const MusicPlayer = observer(() => {
     };
     const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const newVolume = parseFloat(event.target.value);
-        setVolume(newVolume);
+        musicStore.changeVolume(newVolume);
 
         const audioElement = audioRef.current;
         if (audioElement) {
@@ -208,7 +212,8 @@ const MusicPlayer = observer(() => {
                     <CurrentTrack/>
                     <div className={musicStore.currentTrack ? 'player' : 'player block'}>
                         <div className='player__buttons'>
-                            <button><img src={shuffleButton} alt="" style={{width: 24, height: 24}}/></button>
+                            <button onClick={toggleShuffle}><img src={isShuffleActive ? shuffleActive : shuffleButton}
+                                                                 alt="" style={{width: 24, height: 24}}/></button>
                             <button onClick={playPreviousTrack}><img src={rewindButton} alt=""
                                                                      style={{width: 27, height: 27}}/>
                             </button>
@@ -251,13 +256,13 @@ const MusicPlayer = observer(() => {
 
 
                     <div className={musicStore.currentTrack ? 'volume__bar' : 'volume__bar block'}>
-                        <img className="volume__icon" src={changeVolumeIcon(volume)} alt=""/>
+                        <img className="volume__icon" src={changeVolumeIcon(musicStore.volume)} alt=""/>
                         <input
                             type="range"
                             min="0"
                             max="1"
                             step="0.01"
-                            value={volume}
+                            value={musicStore.volume}
                             onChange={handleVolumeChange}
                         />
                     </div>
