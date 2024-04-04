@@ -28,7 +28,7 @@ export default class UserStore {
             this.setAuth(true)
             this.setUser(response.data.user)
         } catch (e : unknown){
-            console.log(e)
+            throw e
         } finally {
             this.setAuthProgress(false)
         }
