@@ -20,8 +20,13 @@ const SignUp = () => {
     const navigate = useNavigate()
     const {register, handleSubmit, setError, formState: {errors,isSubmitting}} = useForm<FormFields>({resolver:zodResolver(schema)})
     const onSubmit: SubmitHandler<FormFields> = async (data) => {
-        await userStore.registration(data.username,data.email, data.password)
-        navigate(HOME_ROUTE, {replace:true})
+        try {
+            await userStore.registration(data.username,data.email, data.password)
+            navigate(HOME_ROUTE, {replace:true})
+        }
+        catch (e:any){
+            setError('root', { type: 'custom', message: e.response.data.error })
+        }
     }
     return (
         <div className={styles.signup__wrapper}>
@@ -55,6 +60,9 @@ const SignUp = () => {
                         <div>{errors.password.message}</div>
                     )}
                 </div>
+                {errors.root?.message && (
+                    <span>{errors.root.message}</span>
+                )}
                 <button type="submit" disabled={isSubmitting}>{isSubmitting? 'Loading...' : 'Sign up'}</button>
                 <div className={styles.redirection}>
                     <span>Already have an account?</span>
