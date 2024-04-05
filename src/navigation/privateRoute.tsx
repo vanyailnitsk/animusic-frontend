@@ -9,7 +9,7 @@ const PrivateRoute = () => {
     if (userStore.isAuth) {
         return <Outlet/>
     } else {
-        return <Navigate to={LOGIN} replace={true}/>;
+        return <Navigate to={LOGIN} replace/>;
     }
 };
 

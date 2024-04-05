@@ -24,29 +24,32 @@ import SignUp from "../components/SignUp/SignUp";
 import PrivateRoute from "./privateRoute";
 import {Context} from "../index";
 import UserPlaylistPage from "../pages/UserPlaylistPage/UserPlaylistPage";
+import {observer} from "mobx-react-lite";
 
 function AppRouter() {
     const {userStore} = useContext(Context)
     return (
         <SkeletonTheme baseColor="#313131" highlightColor="#525252">
         <BrowserRouter>
-            <MusicPlayer/>
+            {userStore.isAuth && <MusicPlayer/>}
                 <Routes>
                     <Route path={LOGIN} element={userStore.isAuth? <Navigate to={HOME_ROUTE} replace /> : <Login />} />
                     <Route path={SIGN_UP} element={userStore.isAuth? <Navigate to={HOME_ROUTE} replace /> : <SignUp />} />
-                    <Route element={<PrivateRoute/>}>
-                        <Route path={HOME_ROUTE} element={<Main page={<Homepage/>}/>}/>
-                        <Route path={ANIME_ROUTE} element={<Main page={<AnimePage/>}/>}/>
-                        <Route path={ANIME_MANAGE} element={<Main page={<AnimeManager/>}/>}/>
-                        <Route path={PLAYLIST_ROUTE} element={<Main page={<PlaylistPage/>}/>}/>
-                        <Route path={SOUNDTRACK_MANAGE} element={<Main page={<SoundtrackManager/>}/>}/>
-                        <Route path={SEARCH_ROUTE} element={<Main page={<SearchPage/>}/>}/>
-                        <Route path={FAVORITES} element={<Main page={<UserPlaylistPage/>}/>}/>
-                    </Route>
+                    {!userStore.isAuthInProgress && (
+                        <Route element={<PrivateRoute/>}>
+                            <Route path={HOME_ROUTE} element={<Main page={<Homepage/>}/>}/>
+                            <Route path={ANIME_ROUTE} element={<Main page={<AnimePage/>}/>}/>
+                            <Route path={ANIME_MANAGE} element={<Main page={<AnimeManager/>}/>}/>
+                            <Route path={PLAYLIST_ROUTE} element={<Main page={<PlaylistPage/>}/>}/>
+                            <Route path={SOUNDTRACK_MANAGE} element={<Main page={<SoundtrackManager/>}/>}/>
+                            <Route path={SEARCH_ROUTE} element={<Main page={<SearchPage/>}/>}/>
+                            <Route path={FAVORITES} element={<Main page={<UserPlaylistPage/>}/>}/>
+                        </Route>
+                    )}
                 </Routes>
         </BrowserRouter>
         </SkeletonTheme>
     );
 }
 
-export default AppRouter;
+export default observer(AppRouter);
