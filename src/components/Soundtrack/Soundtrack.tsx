@@ -12,7 +12,7 @@ import {soundtrackImageUrl, storageUrl} from "../../services/api/consts";
 
 const Soundtrack = observer(({soundtrackData, listening_queue, index} : SoundtrackProps) => {
     const {musicStore} = useContext(Context)
-    const image = storageUrl + (soundtrackData.imageFile || "images/track-img.jpeg")
+    const image = storageUrl + (soundtrackData.image?.source || "images/track-img.jpeg")
     const playTrackHandler = () => {
         if (!musicStore.trackEquals(soundtrackData)) {
             musicStore.setPlaylist(listening_queue)

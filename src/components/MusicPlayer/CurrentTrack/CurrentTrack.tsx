@@ -16,7 +16,7 @@ const CurrentTrack = () => {
     return (
         <div className={musicStore.currentTrack ? 'current__track' : 'hidden'}>
             <img
-                src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg")}
+                src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.image?.source || "images/track-img.jpeg")}
                 alt=""
                 className='track__img'/>
             {musicStore.currentTrack &&

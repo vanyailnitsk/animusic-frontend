@@ -1,7 +1,11 @@
 import {IAlbums} from "./Albums";
+import {Image} from "./image";
 
 export interface IAnime{
-    bannerImagePath : string
+    banner: {
+        color:string,
+        image: Image
+    },
     cardImagePath : string
     description : string | null
     folderName : string

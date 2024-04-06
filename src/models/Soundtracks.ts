@@ -1,5 +1,6 @@
 import {IAlbums} from "./Albums";
 import {PlaylistSoundtrack} from "./UserPlaylists";
+import {Image} from "./image";
 
 export interface ISoundtrack {
     soundtrack: SoundtrackData
@@ -12,7 +13,7 @@ export interface SoundtrackData{
     animeTitle:string
     audioFile:string
     duration:number
-    imageFile: string | null
+    image: Image | null
     originalTitle:string
     saved:boolean
     album:IAlbums

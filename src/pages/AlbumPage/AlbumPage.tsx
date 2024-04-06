@@ -10,7 +10,7 @@ import {Album} from "../../models/Albums";
 const AlbumPage = () => {
     const {id}  = useParams()
     const [album, setAlbum] = useState<Album | null>(null)
-    const bannerUrl = storageUrl+album?.coverArt?.imageUrl
+    const bannerUrl = storageUrl+album?.coverArt?.image.source
     const [isLoadingImage, setIsLoadingImage] = useState<boolean>(false)
     useEffect(() => {
         getAlbumById(id)

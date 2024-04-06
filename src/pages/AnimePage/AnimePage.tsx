@@ -34,7 +34,7 @@ const AnimePage = () => {
     return (
         <div className="anime__page__wrapper">
             <div className='blur'>
-                <img src={storageUrl+animeData?.bannerImagePath} alt=""/>
+                <img src={storageUrl+animeData?.banner.image.source} alt=""/>
             </div>
             <div className="anime__banner">
                 {isLoadingImage?
@@ -43,7 +43,7 @@ const AnimePage = () => {
                 }
                 <div className='overlay'></div>
                 <img
-                    src={storageUrl+animeData?.bannerImagePath} alt=""
+                    src={storageUrl+animeData?.banner.image.source} alt=""
                     onLoad={() => setIsLoadingImage(false)}
                 />
                 {!isLoadingImage && animeData &&
