@@ -6,7 +6,7 @@ export interface IAnime{
         color:string,
         image: Image
     },
-    cardImagePath : string
+    cardImage : Image
     description : string | null
     folderName : string
     id : number
