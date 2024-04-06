@@ -10,12 +10,12 @@ import {SoundtrackProps} from "../../models/Soundtracks";
 import {soundtrackImageUrl, storageUrl} from "../../services/api/consts";
 
 
-const Soundtrack = observer(({soundtrackData, playlist, index} : SoundtrackProps) => {
+const Soundtrack = observer(({soundtrackData, listening_queue, index} : SoundtrackProps) => {
     const {musicStore} = useContext(Context)
     const image = storageUrl + (soundtrackData.imageFile || "images/track-img.jpeg")
     const playTrackHandler = () => {
         if (!musicStore.trackEquals(soundtrackData)) {
-            musicStore.setPlaylist(playlist)
+            musicStore.setPlaylist(listening_queue)
             musicStore.setTrackIndex(index)
             musicStore.setIsPlaying(true)
         } else {

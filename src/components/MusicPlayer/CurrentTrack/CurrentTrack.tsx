@@ -22,7 +22,7 @@ const CurrentTrack = () => {
             {musicStore.currentTrack &&
                 <div className='track__name'>
                             <span
-                                onClick={() => navigate(`/playlist/${musicStore.currentTrack?.album.id}`)}
+                                onClick={() => navigate(`/album/${musicStore.currentTrack?.album.id}`)}
                                 className={musicStore.currentTrack.originalTitle.length > 20 ? "scrolling" : ""}>{musicStore.currentTrack.originalTitle}</span>
                     <span>{musicStore.currentTrack.animeTitle}</span>
                 </div>

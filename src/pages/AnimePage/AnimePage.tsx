@@ -3,33 +3,33 @@ import {getAnimeInfo} from "../../services/api/anime";
 import {useNavigate, useParams} from "react-router-dom";
 import "./AnimePage.css"
 import playPlaylist from '../../icons/play-playlist.png'
-import Playlists from "../../components/Playlists/Playlists";
+import Albums from "../../components/Albums/Albums";
 import {storageUrl} from "../../services/api/consts";
-import {IPlaylist} from "../../models/Playlists";
+import {IAlbums} from "../../models/Albums";
 import {IAnime} from "../../models/Anime";
-import PlaylistsSkeleton from "../../components/Playlists/Skeleton/PlaylistsSkeleton";
+import AlbumsSkeleton from "../../components/Albums/Skeleton/AlbumsSkeleton";
 import Skeleton from "react-loading-skeleton";
 
 const AnimePage = () => {
     const {id} = useParams()
     const [animeData, setAnimeData] = useState<IAnime | null>(null)
-    const [playlists, setPlaylists] = useState<IPlaylist[]>([])
+    const [albums, setAlbums] = useState<IAlbums[]>([])
     const navigate = useNavigate();
     const [isLoadingImage, setIsLoadingImage] = useState(true)
     useEffect(() => {
         getAnimeInfo(id)
             .then(response => {
                 setAnimeData(response.data);
-                return response.data.playlists
+                return response.data.albums
             })
-            .then(playlistsData => {
-                setPlaylists(playlistsData)
+            .then(albums => {
+                setAlbums(albums)
             })
             .catch((error) => console.log(error))
     }, [id]);
 
-    const handleNavigate = (playlistId : number) => {
-        navigate(`/playlist/${playlistId}`)
+    const handleNavigate = (albumId : number) => {
+        navigate(`/album/${albumId}`)
     }
     return (
         <div className="anime__page__wrapper">
@@ -55,7 +55,7 @@ const AnimePage = () => {
             </div>
             {isLoadingImage?
                <div>
-                   <PlaylistsSkeleton/>
+                   <AlbumsSkeleton/>
                </div>
                 :null
             }
@@ -69,7 +69,7 @@ const AnimePage = () => {
                             <span>Follow</span>
                         </button>
                     </div>
-                    <Playlists playlists={playlists} handleNavigate={handleNavigate}/>
+                    <Albums albums={albums} handleNavigate={handleNavigate}/>
                 </div>
             }
         </div>

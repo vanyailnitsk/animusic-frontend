@@ -1,22 +1,22 @@
 import React, {useEffect, useState} from 'react';
 import SoundtrackList from "../../components/SoundtrackList/SoundtrackList";
 import {useParams} from "react-router-dom";
-import {getPlaylistById} from "../../services/api/tracks";
-import "./PlaylistPage.css"
+import {getAlbumById} from "../../services/api/tracks";
+import "./AlbumPage.css"
 import {ISoundtrack} from "../../models/Soundtracks";
-import {playlistBannerUrl, storageUrl} from "../../services/api/consts";
-import {IPlaylist} from "../../models/Playlists";
+import {storageUrl} from "../../services/api/consts";
+import {Album} from "../../models/Albums";
 
-const PlaylistPage = () => {
+const AlbumPage = () => {
     const {id}  = useParams()
-    const [playlist, setPlaylist] = useState<IPlaylist | null>(null)
-    const bannerUrl = storageUrl+playlist?.bannerLink
+    const [album, setAlbum] = useState<Album | null>(null)
+    const bannerUrl = storageUrl+album?.coverArt?.imageUrl
     const [isLoadingImage, setIsLoadingImage] = useState<boolean>(false)
     useEffect(() => {
-        getPlaylistById(id)
-            .then(playlist => {
-                setPlaylist(playlist)
-                return playlist.soundtracks
+        getAlbumById(id)
+            .then(album => {
+                setAlbum(album.data)
+                return album.data
             })
             .catch(error => {
                 console.log(error)
@@ -34,10 +34,10 @@ const PlaylistPage = () => {
                     onError={() => setIsLoadingImage(false)}
                 />
             </div>
-            {!isLoadingImage && playlist &&
+            {!isLoadingImage && album &&
                 <div>
-                    <h1 className="playlist__name">{playlist.name}</h1>
-                    <SoundtrackList playlist={playlist} />
+                    <h1 className="playlist__name">{album?.name}</h1>
+                    <SoundtrackList soundtracks={album.soundtracks} />
                 </div>
 
             }
@@ -45,4 +45,4 @@ const PlaylistPage = () => {
     );
 };
 
-export default PlaylistPage;
+export default AlbumPage;

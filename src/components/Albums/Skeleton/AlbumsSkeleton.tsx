@@ -1,14 +1,14 @@
 import React from 'react';
-import PlaylistCardSkeleton from "../../PlaylistCard/Skeleton/PlaylistCardSkeleton";
+import AlbumCardSkeleton from "../../AlbumCard/Skeleton/AlbumCardSkeleton";
 import styles from './style.module.css'
-const PlaylistsSkeleton = () => {
+const AlbumsSkeleton = () => {
     return (
         <div className={styles.playlists_skeleton}>
             {[...Array(4)].map((_, index) => (
-                <PlaylistCardSkeleton key={index} />
+                <AlbumCardSkeleton key={index} />
             ))}
         </div>
     );
 };
 
-export default PlaylistsSkeleton;
+export default AlbumsSkeleton;

@@ -1,4 +1,4 @@
-import {IPlaylist} from "./Playlists";
+import {IAlbums} from "./Albums";
 
 export interface IAnime{
     bannerImagePath : string
@@ -6,7 +6,7 @@ export interface IAnime{
     description : string | null
     folderName : string
     id : number
-    playlists : IPlaylist[]
+    albums : IAlbums[]
     releaseYear : string
     studio : string | null
     title : string
