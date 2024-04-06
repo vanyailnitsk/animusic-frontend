@@ -9,7 +9,7 @@ import {storageUrl} from "../../services/api/consts";
 const AnimeCard = ({card} : AnimeCardProps) => {
     const navigate = useNavigate();
     const [loading,setLoading] = useState<boolean>(true)
-    const imageUrl = storageUrl+card.cardImagePath
+    const imageUrl = storageUrl+card.cardImage.source
     return (
         <div className="anime__card" onClick={() => navigate('/anime/'+card.id)}>
             {loading?
