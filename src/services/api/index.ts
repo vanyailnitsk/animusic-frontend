@@ -6,6 +6,7 @@ const $host = axios.create({
     baseURL: process.env.REACT_APP_API_URL
 })
 const $auth_host = axios.create({
+    withCredentials: true,
     baseURL: process.env.REACT_APP_API_URL
 })
 $host.interceptors.response.use(

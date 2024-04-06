@@ -146,7 +146,7 @@ const MusicPlayer = observer(() => {
             title: musicStore.currentTrack.originalTitle,
             artist: musicStore.currentTrack.animeTitle,
             artwork: [
-                {src: musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg"), sizes: '512x512', type: 'image/png'}
+                {src: musicStore.currentTrack && storageUrl + (musicStore.currentTrack.image?.source || "images/track-img.jpeg"), sizes: '512x512', type: 'image/png'}
             ]
         });
     }
@@ -155,7 +155,7 @@ const MusicPlayer = observer(() => {
             <div className={activePhonePlayer ? "music__player__wrapper active" : "music__player__wrapper"}
                  onClick={!activePhonePlayer ? handlePhoneMusicPlayer : undefined}>
                 <img
-                    src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.imageFile || "images/track-img.jpeg")}
+                    src={musicStore.currentTrack && storageUrl + (musicStore.currentTrack.image?.source || "images/track-img.jpeg")}
                     alt=""
                     className={activePhonePlayer ? 'track__img active' : 'track__img'}/>
                 <img src={addButton} alt="" className={activePhonePlayer ? 'add__track active' : 'add__track'}/>

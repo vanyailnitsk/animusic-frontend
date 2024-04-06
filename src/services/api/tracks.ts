@@ -1,12 +1,20 @@
 import {$host} from "./index";
-import {IPlaylist} from "../../models/Playlists";
+import {IAnime} from "../../models/Anime";
+import {Album} from "../../models/Albums";
+import {Playlist} from "../../models/UserPlaylists";
 
-export const getPlaylistById = async (playlistId: string | undefined) => {
-    const {data } = await $host.get<IPlaylist>('playlist/' + playlistId);
-    return data;
+interface getAlbumResponse{
+    data:Album
+}
+interface getFavoritesResponse{
+    data:Playlist
+}
+export const getAlbumById = async (playlistId: string | undefined):Promise<getAlbumResponse> => {
+    const response = await $host.get('albums/' + playlistId);
+    return response;
 }
 
-export const getFavoritesTracks = async () => {
-    const {data} = await $host.get('user-media-library/favourites')
-    return data
+export const getFavorites = async ():Promise<getFavoritesResponse> => {
+    const response = await $host.get('collection')
+    return response
 }

@@ -1,25 +1,23 @@
 import {makeAutoObservable} from "mobx";
 import {ISoundtrack, SoundtrackData} from "../models/Soundtracks";
-import {IPlaylist} from "../models/Playlists";
-import AuthService from "../services/AuthService";
 import MusicService from "../services/MusicService";
 
 class MusicStore{
-    private _playlist: IPlaylist;
+    private _listening_queue: ISoundtrack[];
     private _trackIndex: number;
     private _isPlaying: boolean;
     volume: number;
     constructor(){
-        this._playlist = JSON.parse(localStorage.getItem("playlist") || '[]')
+        this._listening_queue = JSON.parse(localStorage.getItem("listening_queue") || '[]')
         this._trackIndex = JSON.parse(localStorage.getItem("currentTrackIndex") || '0')
         this._isPlaying = false
         this.volume = Number(localStorage.getItem('volume')) || 0.5
         makeAutoObservable(this)
     }
 
-    setPlaylist(playlist : IPlaylist) {
-        this._playlist = playlist
-        localStorage.setItem("playlist", JSON.stringify(playlist));
+    setPlaylist(listening_queue : ISoundtrack[]) {
+        this._listening_queue = listening_queue
+        localStorage.setItem("listening_queue", JSON.stringify(listening_queue));
     }
     changeVolume(volume : number) {
         this.volume = volume
@@ -33,15 +31,6 @@ class MusicStore{
 
         localStorage.setItem("currentTrackIndex", JSON.stringify(index));
     }
-    shufflePlaylist() {
-        const { soundtracks } = this._playlist;
-        const shuffledSoundtracks = [...soundtracks];
-        for (let i = shuffledSoundtracks.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffledSoundtracks[i], shuffledSoundtracks[j]] = [shuffledSoundtracks[j], shuffledSoundtracks[i]];
-        }
-        this._playlist.soundtracks = shuffledSoundtracks;
-    }
     togglePlayPause() {
         this._isPlaying=!this._isPlaying
     }
@@ -50,7 +39,7 @@ class MusicStore{
     }
     nextTrack() {
         const nextIndex = this._trackIndex + 1;
-        if (nextIndex < this._playlist.soundtracks.length) {
+        if (nextIndex < this._listening_queue.length) {
             this._trackIndex++;
         } else {
             this._trackIndex=0
@@ -65,7 +54,7 @@ class MusicStore{
         }
     }
     get playlist() {
-        return this._playlist
+        return this._listening_queue
     }
 
     get trackIndex():number {
@@ -78,8 +67,8 @@ class MusicStore{
         return JSON.stringify(this.currentTrack)===JSON.stringify(track)
     }
     get currentTrack(): SoundtrackData | undefined  {
-        if (this._playlist && this._playlist.soundtracks && this._playlist.soundtracks.length > this._trackIndex && this._trackIndex >= 0) {
-            return this._playlist.soundtracks[this._trackIndex].soundtrack;
+        if (this._listening_queue && this._listening_queue.length > this._trackIndex && this._trackIndex >= 0) {
+            return this._listening_queue[this._trackIndex].soundtrack;
         } else {
             return undefined;
         }

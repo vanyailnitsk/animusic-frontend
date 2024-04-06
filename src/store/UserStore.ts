@@ -3,6 +3,7 @@ import {makeAutoObservable} from "mobx";
 import AuthService from "../services/AuthService";
 import axios from "axios";
 import {AuthResponse} from "../models/response/AuthResponse";
+import {HOME_ROUTE} from "../navigation/routes";
 
 export default class UserStore {
     user : IUser | null = null;
@@ -28,7 +29,7 @@ export default class UserStore {
             this.setAuth(true)
             this.setUser(response.data.user)
         } catch (e : unknown){
-            console.log(e)
+            throw e
         } finally {
             this.setAuthProgress(false)
         }
@@ -42,7 +43,7 @@ export default class UserStore {
             this.setAuth(true)
             this.setUser(response.data.user)
         } catch (e : any){
-            console.log(e.response?.data?.message)
+            throw e
         } finally {
             this.setAuthProgress(false)
         }
@@ -54,6 +55,7 @@ export default class UserStore {
             localStorage.removeItem('token')
             this.setAuth(false)
             this.setUser(null)
+            window.history.pushState(null, '', window.location.pathname)
         } catch (e : any){
             console.log(e.response?.data?.message)
         } finally {

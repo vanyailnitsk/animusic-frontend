@@ -1,26 +1,30 @@
-import {IPlaylist} from "./Playlists";
+import {IAlbums} from "./Albums";
+import {PlaylistSoundtrack} from "./UserPlaylists";
+import {Image} from "./image";
 
 export interface ISoundtrack {
     soundtrack: SoundtrackData
 }
 export interface SoundtrackListProps {
-    playlist: IPlaylist
+    soundtracks: ISoundtrack[] | PlaylistSoundtrack[]
 }
 export interface SoundtrackData{
     id: number
     animeTitle:string
     audioFile:string
     duration:number
-    imageFile: string | null
+    image: Image | null
     originalTitle:string
-    album:{
+    saved:boolean
+    album:IAlbums
+    anime:{
         id:number
-        name:string
+        title:string
     }
 
 }
 export interface SoundtrackProps{
     soundtrackData: SoundtrackData
-    playlist: IPlaylist
+    listening_queue: ISoundtrack[]
     index:number
 }

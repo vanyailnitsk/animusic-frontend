@@ -1,8 +1,11 @@
 import {$host} from "./index";
 import {IAnime} from "../../models/Anime";
-export const getAnimeInfo = async (animeId : string | undefined) => {
-    const {data} = await $host.get<IAnime>('anime/'+animeId);
-    return {data};
+interface getAnimeInfoResponse{
+    data:IAnime
+}
+export const getAnimeInfo = async (animeId : string | undefined) : Promise<getAnimeInfoResponse> => {
+    const data = await $host.get('anime/'+animeId);
+    return data;
 }
 
 

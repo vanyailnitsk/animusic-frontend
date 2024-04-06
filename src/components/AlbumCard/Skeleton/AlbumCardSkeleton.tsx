@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './style.module.css';
 import Skeleton from "react-loading-skeleton";
 
-const PlaylistCardSkeleton = () => {
+const AlbumCardSkeleton = () => {
     return (
             <Skeleton className={styles.playlist__card__skeleton}/>
     );
 };
 
-export default PlaylistCardSkeleton;
+export default AlbumCardSkeleton;
