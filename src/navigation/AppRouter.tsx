@@ -7,8 +7,7 @@ import AnimePage from '../pages/AnimePage/AnimePage';
 import {
     ALBUM_ROUTE,
     ANIME_MANAGE,
-    ANIME_ROUTE,
-    FAVORITES,
+    ANIME_ROUTE, COLLECTION,
     HOME_ROUTE,
     LOGIN,
     SEARCH_ROUTE,
@@ -44,7 +43,7 @@ function AppRouter() {
                             <Route path={ALBUM_ROUTE} element={<Main page={<AlbumPage/>}/>}/>
                             <Route path={SOUNDTRACK_MANAGE} element={<Main page={<SoundtrackManager/>}/>}/>
                             <Route path={SEARCH_ROUTE} element={<Main page={<SearchPage/>}/>}/>
-                            <Route path={FAVORITES} element={<Main page={<UserPlaylistPage/>}/>}/>
+                            <Route path={COLLECTION} element={<Main page={<UserPlaylistPage/>}/>}/>
                         </Route>
                     )}
                 </Routes>

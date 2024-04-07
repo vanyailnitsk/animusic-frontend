@@ -1,4 +1,4 @@
-.playlist__card__wrapper{
+.album__card__wrapper{
     width: 190px;
     height: 201px;
     background: #161515;
@@ -11,15 +11,15 @@
     border: 1px solid rgba(213, 217, 219, 0.2);
     cursor: pointer;
 }
-.playlist__card__wrapper img {
+.album__card__wrapper img {
     width: 150px;
     height: 150px;
     border-radius: 7px;
     margin-top: 13px;
 }
-.playlist__card__wrapper:hover{
+.album__card__wrapper:hover{
     background-color: #2E2E2E;
 }
-.playlist__card__wrapper span{
+.album__card__wrapper span{
     font-size: 15px;
 }

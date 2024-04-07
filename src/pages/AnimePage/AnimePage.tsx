@@ -61,8 +61,8 @@ const AnimePage = () => {
             }
             {!isLoadingImage && animeData &&
                 <div>
-                    <div className='playlist__actions'>
-                        <button className='play__playlist'>
+                    <div className='album__actions'>
+                        <button className='play__album'>
                             <img src={playPlaylist} alt=""/>
                         </button>
                         <button className='follow__button'>

@@ -23,7 +23,7 @@ const AlbumPage = () => {
             })
     }, []);
     return (
-        <div className="playlist__page__wrapper">
+        <div className="album__page__wrapper">
             <div className='blur'>
                 <img src={bannerUrl} alt=""/>
             </div>
@@ -36,7 +36,7 @@ const AlbumPage = () => {
             </div>
             {!isLoadingImage && album &&
                 <div>
-                    <h1 className="playlist__name">{album?.name}</h1>
+                    <h1 className="album__name">{album?.name}</h1>
                     <SoundtrackList soundtracks={album.soundtracks} />
                 </div>
 
