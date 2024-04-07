@@ -3,7 +3,6 @@ import SoundtrackList from "../../components/SoundtrackList/SoundtrackList";
 import {useNavigate, useParams} from "react-router-dom";
 import {getAlbumById} from "../../services/api/tracks";
 import styles from '../AlbumPage/AlbumPage.module.css'
-import playlistImg from '../../icons/playlistcard.jpg'
 import {storageUrl} from "../../services/api/consts";
 import {Album} from "../../models/Albums";
 import AlbumPageHeaderSkeleton from "./Skeleton/AlbumPageHeaderSkeleton";
@@ -33,7 +32,7 @@ const AlbumPage = () => {
                <div className={styles.album__page__header__content}>
                    <div className={styles.album__image}>
                        <img
-                           src={playlistImg} alt="Banner"
+                           src={storageUrl + (album?.coverArt.image.source) } alt="Banner"
                            onLoad={() => setIsLoadingImage(false)}
                            onError={() => setIsLoadingImage(false)}
                        />

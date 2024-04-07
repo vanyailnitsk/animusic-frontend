@@ -4,7 +4,6 @@ import {useNavigate, useParams} from "react-router-dom";
 import playPlaylist from '../../icons/play-playlist.png'
 import Albums from "../../components/Albums/Albums";
 import {storageUrl} from "../../services/api/consts";
-import banner from '../../icons/banner_mock.jpg'
 import {IAlbums} from "../../models/Albums";
 import {IAnime} from "../../models/Anime";
 import styles from './AnimePage.module.css'
@@ -43,8 +42,7 @@ const AnimePage = () => {
                 }
                 <div className={styles.overlay}></div>
                 <img
-                    // src={storageUrl+animeData?.banner.image.source} alt=""
-                    src={banner}
+                    src={storageUrl+animeData?.banner.image.source} alt=""
                     onLoad={() => setIsLoadingImage(false)}
                 />
                 {!isLoadingImage && animeData &&
