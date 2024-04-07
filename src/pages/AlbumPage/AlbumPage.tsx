@@ -30,13 +30,14 @@ const AlbumPage = () => {
         <div className={styles.album__page__wrapper}>
            <div className={styles.album__page__header} style={{background:`linear-gradient(to bottom, ${colors.colorLight}, ${colors.colorDark}`}}>
                <div className={styles.album__page__header__content}>
-                   <div className={styles.album__image}>
-                       <img
-                           src={storageUrl + (album?.coverArt.image.source) } alt="Banner"
-                           onLoad={() => setIsLoadingImage(false)}
-                           onError={() => setIsLoadingImage(false)}
-                       />
-                   </div>
+                   {album?.coverArt && (
+                       <div className={styles.album__image}>
+                           <img
+                               src={storageUrl + (album?.coverArt.image.source) } alt="Banner"
+                               onLoad={() => setIsLoadingImage(false)}
+                           />
+                       </div>
+                   )}
                    {album && (
                    <div className={styles.album__main__info}>
                        <span className={styles.type__content}>Album</span>
