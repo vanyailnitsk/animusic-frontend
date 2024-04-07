@@ -4,7 +4,7 @@ import './Albums.css'
 import {AlbumsProps} from "../../models/Albums";
 const Albums = ({albums,handleNavigate} : AlbumsProps) => {
     return (
-        <div className="playlists">
+        <div className="albums">
             {albums.map(album=> (
                 <AlbumCard name={album.name} id={album.id} handleNavigate={handleNavigate} key={album.id}/>
             ))}

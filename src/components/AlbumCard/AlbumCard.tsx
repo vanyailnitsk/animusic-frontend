@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 const AlbumCard = ({name,id,handleNavigate} : AlbumCardProps) => {
     const [loadingImg,setLoadingImg] = useState(true)
     return (
-        <div className="playlist__card__wrapper" onClick={() => handleNavigate(id)}>
+        <div className="album__card__wrapper" onClick={() => handleNavigate(id)}>
             {loadingImg?
                 <Skeleton style={{width:152,height:152,position:'absolute',top:0,marginTop:13}}/>
                 :null

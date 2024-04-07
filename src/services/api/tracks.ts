@@ -2,7 +2,7 @@ import {$host} from "./index";
 import {IAnime} from "../../models/Anime";
 import {Album} from "../../models/Albums";
 import {Playlist} from "../../models/UserPlaylists";
-
+export const collection = 'collection'
 interface getAlbumResponse{
     data:Album
 }
@@ -15,6 +15,6 @@ export const getAlbumById = async (playlistId: string | undefined):Promise<getAl
 }
 
 export const getFavorites = async ():Promise<getFavoritesResponse> => {
-    const response = await $host.get('collection')
+    const response = await $host.get(collection)
     return response
 }

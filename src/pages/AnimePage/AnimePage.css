@@ -35,7 +35,7 @@
     font-size: 55px;
     margin: 0;
 }
-.playlist__actions{
+.album__actions{
     margin-left: 20px;
     margin-top: 20px;
     width: 150px;
@@ -58,7 +58,7 @@
 .follow__button span{
     font-size: 15px;
 }
-.play__playlist{
+.play__album{
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -66,7 +66,7 @@
     border: none;
     background: transparent;
 }
-.play__playlist img {
+.play__album img {
     width: 100%;
     height: 100%;
 }
