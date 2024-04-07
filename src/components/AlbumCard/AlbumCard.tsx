@@ -3,7 +3,8 @@ import playListCard from "../../icons/playlistcard.jpg"
 import "./AlbumCard.css"
 import {AlbumCardProps} from "../../models/Albums";
 import Skeleton from "react-loading-skeleton";
-const AlbumCard = ({name,id,handleNavigate} : AlbumCardProps) => {
+import {storageUrl} from "../../services/api/consts";
+const AlbumCard = ({name,id,handleNavigate,image} : AlbumCardProps) => {
     const [loadingImg,setLoadingImg] = useState(true)
     return (
         <div className="album__card__wrapper" onClick={() => handleNavigate(id)}>
@@ -11,7 +12,7 @@ const AlbumCard = ({name,id,handleNavigate} : AlbumCardProps) => {
                 <Skeleton style={{width:152,height:152,position:'absolute',top:0,marginTop:13}}/>
                 :null
             }
-            <img src={playListCard} alt="" onLoad={() => setLoadingImg(false)}/>
+            <img src={storageUrl+image} alt="" onLoad={() => setLoadingImg(false)}/>
             <span>{name}</span>
         </div>
     );

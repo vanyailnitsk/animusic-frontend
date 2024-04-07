@@ -13,6 +13,7 @@ export interface AlbumsProps {
 export interface AlbumCardProps{
     name:string
     id: number
+    image:string
     handleNavigate(albumId : number):void
 }
 export interface Album {
