@@ -1,21 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import SoundtrackList from "../../components/SoundtrackList/SoundtrackList";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {getAlbumById} from "../../services/api/tracks";
-import "./AlbumPage.css"
-import {ISoundtrack} from "../../models/Soundtracks";
+import styles from '../AlbumPage/AlbumPage.module.css'
+import playlistImg from '../../icons/playlistcard.jpg'
 import {storageUrl} from "../../services/api/consts";
 import {Album} from "../../models/Albums";
+import AlbumPageHeaderSkeleton from "./Skeleton/AlbumPageHeaderSkeleton";
 
 const AlbumPage = () => {
+    const animeRoute = '/anime/'
     const {id}  = useParams()
     const [album, setAlbum] = useState<Album | null>(null)
+    const navigate = useNavigate()
+    const [colors,setColors] = useState({colorLight:'',colorDark:''})
     const bannerUrl = storageUrl+album?.coverArt?.image.source
     const [isLoadingImage, setIsLoadingImage] = useState<boolean>(false)
     useEffect(() => {
         getAlbumById(id)
             .then(album => {
                 setAlbum(album.data)
+                setColors({colorLight:album.data.coverArt.colors.colorLight, colorDark:album.data.coverArt.colors.colorDark})
                 return album.data
             })
             .catch(error => {
@@ -23,23 +28,35 @@ const AlbumPage = () => {
             })
     }, []);
     return (
-        <div className="album__page__wrapper">
-            <div className='blur'>
-                <img src={bannerUrl} alt=""/>
-            </div>
-            <div className="anime__banner">
-                <img
-                    src={bannerUrl} alt="Banner"
-                    onLoad={() => setIsLoadingImage(false)}
-                    onError={() => setIsLoadingImage(false)}
-                />
+        <div className={styles.album__page__wrapper}>
+           <div className={styles.album__page__header} style={{background:`linear-gradient(to bottom, ${colors.colorLight}, ${colors.colorDark}`}}>
+               <div className={styles.album__page__header__content}>
+                   <div className={styles.album__image}>
+                       <img
+                           src={playlistImg} alt="Banner"
+                           onLoad={() => setIsLoadingImage(false)}
+                           onError={() => setIsLoadingImage(false)}
+                       />
+                   </div>
+                   {album && (
+                   <div className={styles.album__main__info}>
+                       <span className={styles.type__content}>Album</span>
+                       <div className={styles.album__name}>{album?.name}</div>
+
+                           <div>
+                               <span className={styles.anime__title} onClick={() => navigate(animeRoute+album?.anime.id)}>{album?.anime.title}</span>
+                               <span> • </span>
+                               <span style={{fontSize:14}}>{`${album?.soundtracks.length} tracks`}</span>
+                           </div>
+                   </div>
+                   )}
+               </div>
+           </div>
+            <div style={{background:`linear-gradient(to bottom, ${colors.colorDark}, #121212`}} className={styles.album__page__bottom_rgb}>
+
             </div>
             {!isLoadingImage && album &&
-                <div>
-                    <h1 className="album__name">{album?.name}</h1>
                     <SoundtrackList soundtracks={album.soundtracks} />
-                </div>
-
             }
         </div>
     );
