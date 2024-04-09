@@ -11,7 +11,7 @@ export interface IAnime{
     folderName : string
     id : number
     albums : IAlbums[]
-    releaseYear : string
+    releaseYear : number
     studio : string | null
     title : string
 }

@@ -25,7 +25,7 @@ const AlbumPage = () => {
             .catch(error => {
                 console.log(error)
             })
-    }, []);
+    }, [id]);
     return (
         <div className={styles.album__page__wrapper}>
            <div className={styles.album__page__header} style={{background:`linear-gradient(to bottom, ${colors.colorLight}, ${colors.colorDark}`}}>
