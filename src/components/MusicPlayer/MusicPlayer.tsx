@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useContext, useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 
 import "./MusicPlayer.css"
 import pauseButton from '../../icons/pauseButton.png'
@@ -10,13 +10,13 @@ import shuffleActive from '../../icons/shuffle-active.png'
 import playButton from '../../icons/playButton.png'
 import repeatButton from '../../icons/repeatButton.png'
 import addButton from '../../icons/addButton.png'
-import loudSound from '../../icons/icons8-громкий-звук-100.png'
 import mediumSound from '../../icons/icons8-средняя-громкость-100.png'
 import littleSound from '../../icons/icons8-низкая-громкость-100.png'
+// import loudSound from '../../icons/icons8-громкий-звук-100.png'
 import noSound from '../../icons/icons8-нет-звука-100.png'
 import {observer} from "mobx-react-lite";
-import {Context} from "../../index";
-import {formatTime} from "../../tools/FormatTime";
+import {Context} from "../../main.tsx";
+import {formatTime} from "../../tools/FormatTime.ts";
 import {isMobile, isTablet} from 'react-device-detect';
 import repeatButtonActive from '../../icons/repeatButtonActive.png'
 import {storageUrl} from "../../services/api/consts";
@@ -100,7 +100,7 @@ const MusicPlayer = observer(() => {
         } else if (volume <= 0.6) {
             return mediumSound
         } else {
-            return loudSound
+            return
         }
     }
     const handleTimeUpdate = (event: React.ChangeEvent<HTMLAudioElement>): void => {

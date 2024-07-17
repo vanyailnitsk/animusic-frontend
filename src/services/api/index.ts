@@ -3,11 +3,11 @@ import {AuthResponse} from "../../models/response/AuthResponse";
 
 const $host = axios.create({
     withCredentials: true,
-    baseURL: process.env.REACT_APP_API_URL
+    baseURL: import.meta.env.VITE_REACT_APP_API_URL
 })
 const $auth_host = axios.create({
     withCredentials: true,
-    baseURL: process.env.REACT_APP_API_URL
+    baseURL: import.meta.env.VITE_REACT_APP_API_URL
 })
 $host.interceptors.response.use(
     (config) => config,
@@ -16,7 +16,7 @@ $host.interceptors.response.use(
         if (error.response && error.response.status === 401 && error.config && !error.config._isRetry) {
             originalRequest._isRetry = true
             try {
-                const response = await axios.post<AuthResponse>(`${process.env.REACT_APP_API_URL}/auth/refresh`, {}, { withCredentials: true })
+                const response = await axios.post<AuthResponse>(`${import.meta.env.VITE_REACT_APP_API_URL}/auth/refresh`, {}, {withCredentials: true})
                 localStorage.setItem('token', response.data.accessToken)
                 return $host.request(originalRequest)
             } catch (e) {

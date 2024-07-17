@@ -3,11 +3,12 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import styles from './SignUp.module.css'
 import {z} from 'zod'
 import {zodResolver} from "@hookform/resolvers/zod";
-import {Context} from "../../index";
+import {Context} from "../../main.tsx";
 import {observer} from "mobx-react-lite";
 import logo from "../../icons/logo.ico";
 import {useNavigate} from "react-router-dom";
 import {HOME_ROUTE, LOGIN} from "../../navigation/routes";
+
 const schema = z.object({
     username:z.string(),
     email: z.string().email(),

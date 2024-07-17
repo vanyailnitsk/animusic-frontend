@@ -4,23 +4,14 @@ import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import Main from "../components/Main/Main";
 import Homepage from '../pages/Home/Homepage';
 import AnimePage from '../pages/AnimePage/AnimePage';
-import {
-    ALBUM_ROUTE,
-    ANIME_MANAGE,
-    ANIME_ROUTE, COLLECTION,
-    HOME_ROUTE,
-    LOGIN,
-    SEARCH_ROUTE,
-    SIGN_UP,
-    SOUNDTRACK_MANAGE
-} from "./routes";
+import {ALBUM_ROUTE, ANIME_ROUTE, COLLECTION, HOME_ROUTE, LOGIN, SEARCH_ROUTE, SIGN_UP} from "./routes";
 import AlbumPage from "../pages/AlbumPage/AlbumPage";
 import MusicPlayer from "../components/MusicPlayer/MusicPlayer";
 import SearchPage from "../pages/SearchPage/SearchPage";
 import Login from "../components/Login/Login";
 import SignUp from "../components/SignUp/SignUp";
 import PrivateRoute from "./privateRoute";
-import {Context} from "../index";
+import {Context} from "../main.tsx";
 import UserPlaylistPage from "../pages/UserPlaylistPage/UserPlaylistPage";
 import {observer} from "mobx-react-lite";
 

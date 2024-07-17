@@ -1,7 +1,7 @@
 import {Navigate, Outlet} from "react-router-dom";
-import { observer } from "mobx-react-lite";
+import {observer} from "mobx-react-lite";
 import {useContext} from "react";
-import {Context} from "../index";
+import {Context} from "../main.tsx";
 import {LOGIN} from "./routes";
 
 const PrivateRoute = () => {

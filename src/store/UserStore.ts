@@ -3,7 +3,6 @@ import {makeAutoObservable} from "mobx";
 import AuthService from "../services/AuthService";
 import axios from "axios";
 import {AuthResponse} from "../models/response/AuthResponse";
-import {HOME_ROUTE} from "../navigation/routes";
 
 export default class UserStore {
     user : IUser | null = null;
@@ -65,7 +64,7 @@ export default class UserStore {
     async checkAuth(){
         this.setAuthProgress(true)
         try{
-            const response = await axios.post<AuthResponse>(`${process.env.REACT_APP_API_URL}/auth/refresh`,{},{withCredentials:true})
+            const response = await axios.post<AuthResponse>(`${import.meta.env.VITE_REACT_APP_API_URL}/auth/refresh`, {}, {withCredentials: true})
             localStorage.setItem('token', response.data.accessToken)
             this.setAuth(true)
             this.setUser(response.data.user)

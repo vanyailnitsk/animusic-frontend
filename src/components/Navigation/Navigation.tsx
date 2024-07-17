@@ -4,6 +4,7 @@ import homeIcon from '../../icons/home.png'
 import searchIcon from '../../icons/search.png'
 import {useNavigate} from "react-router-dom";
 import {HOME_ROUTE, SEARCH_ROUTE} from "../../navigation/routes";
+
 const Navigation = ({menuActive,setMenuActive}) => {
     const navigate = useNavigate();
     const handleRoute = (route) =>{

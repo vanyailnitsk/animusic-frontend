@@ -1,13 +1,13 @@
 import React, {MouseEventHandler, useContext} from "react";
 import "./Soundtrack.css";
-import {Context} from "../../index";
+import {Context} from "../../main.tsx";
 import Pause from '../../icons/soundtrack-pause.png'
 import Play from '../../icons/soundtrack-play.png'
 import addButton from '../../icons/addButton.png'
 import {formatTime} from "../../tools/FormatTime";
 import {observer} from "mobx-react-lite";
 import {SoundtrackProps} from "../../models/Soundtracks";
-import {soundtrackImageUrl, storageUrl} from "../../services/api/consts";
+import {storageUrl} from "../../services/api/consts";
 
 
 const Soundtrack = observer(({soundtrackData, listening_queue, index} : SoundtrackProps) => {

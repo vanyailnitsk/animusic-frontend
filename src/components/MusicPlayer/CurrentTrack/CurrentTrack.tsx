@@ -1,7 +1,7 @@
 import React, {MouseEventHandler, useContext} from 'react';
 import {storageUrl} from "../../../services/api/consts";
 import addButton from "../../../icons/addButton.png";
-import {Context} from "../../../index";
+import {Context} from "../../../main.tsx";
 import {useNavigate} from "react-router-dom";
 
 const CurrentTrack = () => {

@@ -3,7 +3,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import styles from './Login.module.css'
 import {z} from 'zod'
 import {zodResolver} from "@hookform/resolvers/zod";
-import {Context} from "../../index";
+import {Context} from "../../main.tsx";
 import logo from '../../icons/logo.ico'
 import {observer} from "mobx-react-lite";
 import {useNavigate} from "react-router-dom";

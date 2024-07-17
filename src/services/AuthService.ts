@@ -1,5 +1,5 @@
-import {Axios, AxiosResponse} from "axios";
-import {$auth_host, $host} from "./api";
+import {AxiosResponse} from "axios";
+import {$auth_host} from "./api";
 import {AuthResponse} from "../models/response/AuthResponse";
 
 export default class AuthService {

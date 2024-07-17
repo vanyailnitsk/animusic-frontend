@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import './DataCore.css'
 import avatar from "../../icons/avatar.jpeg";
-import {Context} from "../../index";
+import {Context} from "../../main.js";
 
 
 const DataCore = ({page}) => {
