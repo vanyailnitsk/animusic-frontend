@@ -1,0 +1,1 @@
+export {AnimeCardListSkeleton} from './ui/SkeletonCardList'

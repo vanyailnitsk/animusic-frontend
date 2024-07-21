@@ -1,9 +1,8 @@
-import React, {createContext} from 'react';
+import {createContext} from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import MusicStore from "./store/MusicStore";
-import UserStore from "./store/UserStore";
+import App from "@/app/App";
+import {MusicStore} from "@/shared/store/music";
+import {UserStore} from "@/shared/store/user";
 
 interface State{
     userStore: UserStore,
