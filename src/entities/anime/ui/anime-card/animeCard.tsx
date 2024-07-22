@@ -3,19 +3,18 @@ import styles from './anime-card.module.css'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import {useNavigate} from "react-router-dom";
-import {IAnime} from "@/entities/anime";
-import {storageUrl} from "@/shared/api";
 
 interface AnimeCardProps {
-    card: IAnime;
+    id: number;
+    title: string;
+    cardImageUrl: string;
 }
 
-export const AnimeCard = ({card}: AnimeCardProps) => {
+export const AnimeCard = ({cardImageUrl, title, id}: AnimeCardProps) => {
     const navigate = useNavigate();
     const [loading,setLoading] = useState<boolean>(true)
-    const imageUrl = storageUrl+card.cardImage.source
     return (
-        <div className={styles.anime__card} onClick={() => navigate('/anime/' + card.id)}>
+        <div className={styles.anime__card} onClick={() => navigate('/anime/' + id)}>
             {loading?
                 (
                     <div style={{position:"absolute"}}>
@@ -24,8 +23,8 @@ export const AnimeCard = ({card}: AnimeCardProps) => {
                 )
                 : null
             }
-            <img  src={imageUrl} alt="" onLoad={() => setLoading(false)}/>
-            <span>{card.title}</span>
+            <img src={cardImageUrl} alt="" onLoad={() => setLoading(false)}/>
+            <span>{title}</span>
         </div>
     );
 };
