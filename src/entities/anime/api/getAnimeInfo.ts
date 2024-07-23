@@ -1,11 +1,9 @@
 import {$host} from "@/shared/api";
 import {IAnime} from "@/entities/anime";
+import {AxiosResponse} from "axios";
 
-interface getAnimeInfoResponse {
-    data: IAnime
-}
 
-export const getAnimeInfo = async (animeId: string | undefined): Promise<getAnimeInfoResponse> => {
-    const data = await $host.get('anime/' + animeId);
-    return data;
+export const getAnimeInfo = async (animeId: string): Promise<AxiosResponse<IAnime>> => {
+    const response: AxiosResponse<IAnime> = await $host.get('anime/' + animeId);
+    return response;
 }
