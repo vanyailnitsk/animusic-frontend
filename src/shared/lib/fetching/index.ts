@@ -1,1 +1,1 @@
-export {useFetching} from './useFetching'
+export {useFetching} from './useFetching.ts'
