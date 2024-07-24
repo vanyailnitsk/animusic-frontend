@@ -1,7 +1,6 @@
 .anime__card{
     width: 318px;
     height: 200px;
-    text-align: center;
     background-color: #161515;
     border-radius: 7px;
     border: 1px solid rgba(213, 217, 219, 0.2);
@@ -27,6 +26,14 @@
     bottom: 0;
 }
 
+.anime__card__skeleton {
+    width: 292px;
+    height: 160px;
+    top: 10px;
+    position: absolute;
+    left: 13px;
+    border-radius: 7px;
+}
 .anime__card__title span {
     font-size: 15px;
 }
