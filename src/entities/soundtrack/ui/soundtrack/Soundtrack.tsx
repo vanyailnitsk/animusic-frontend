@@ -6,7 +6,7 @@ import addButton from '@/shared/icons/addButton.png'
 import {observer} from "mobx-react-lite";
 import {Context} from "@/main.tsx";
 import {storageUrl} from "@/shared/api";
-import {formatTime} from "@/shared/lib/time";
+import {formatTime} from "@/shared/lib";
 import {ISoundtrack, SoundtrackData} from "@/entities/soundtrack";
 
 interface SoundtrackProps {

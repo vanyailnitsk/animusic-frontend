@@ -1,10 +1,10 @@
 import styles from './anime-cards-list.module.css'
 import {AnimeCard, getAllAnime} from "@/entities/anime";
-import {useFetching} from "@/shared/lib/fetching";
+import {useFetching} from "@/shared/lib";
 import {storageUrl} from "@/shared/api";
 
 export const AnimeCardsList = () => {
-    const {data, error} = useFetching(async () => getAllAnime(), [])
+    const {data, error} = useFetching(async () => await getAllAnime(), [])
     if (error) {
         return <div>{error}</div>
     }

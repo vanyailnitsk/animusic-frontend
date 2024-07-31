@@ -19,7 +19,7 @@ import {isMobile, isTablet} from 'react-device-detect';
 import repeatButtonActive from '@/shared/icons/repeatButtonActive.png'
 import {Context} from "@/main.tsx";
 import {storageUrl} from "@/shared/api";
-import {formatTime} from "@/shared/lib/time";
+import {formatTime} from "@/shared/lib";
 import {CurrentTrack} from "@/entities/soundtrack";
 
 

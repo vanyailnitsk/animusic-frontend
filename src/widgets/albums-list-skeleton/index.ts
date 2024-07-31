@@ -1,1 +1,0 @@
-export {AlbumsSkeleton} from './ui/AlbumsSkeleton'

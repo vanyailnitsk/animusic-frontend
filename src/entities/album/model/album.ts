@@ -16,5 +16,5 @@ export interface IAlbum {
 export interface IAlbumDto {
     id: number
     name: string
-    coverArt: CoverArt
+    coverArt: null | CoverArt
 }
