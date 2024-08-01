@@ -50,7 +50,7 @@ export const AlbumPage = () => {
                </div>
            </div>
             <div style={{background:`linear-gradient(to bottom, ${colors.colorDark}, #121212`}} className={styles.album__page__bottom_rgb}></div>
-            {!isLoadingImage && album &&
+            {!isLoadingImage && album && album.soundtracks &&
                     <SoundtrackList soundtracks={album.soundtracks} />
             }
         </div>
