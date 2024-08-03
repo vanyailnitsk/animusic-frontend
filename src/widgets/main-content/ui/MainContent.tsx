@@ -1,11 +1,9 @@
-import './MainContent.css'
-import menu from '@/shared/icons/menu.png'
+import styles from './main-content.module.css'
 import {PageWrapper} from "@/shared/ui";
 
-export const MainContent = ({page, setMenuActive, menuActive}) => {
+export const MainContent = ({page}) => {
     return (
-        <div className={ menuActive? 'main__content__wrapper background__blur' : 'main__content__wrapper'}>
-            <img src={menu} alt="" className={menuActive? 'hidden' : 'menu'} onClick={()=> setMenuActive(!menuActive)}/>
+        <div className={styles.main__content__wrapper}>
             <PageWrapper page={page}/>
         </div>
     );

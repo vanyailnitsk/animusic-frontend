@@ -1,8 +1,7 @@
 import "./SoundtrackList.css"
 import {observer} from "mobx-react-lite";
 import clock from '@/shared/icons/clock.png'
-import {PlaylistSoundtrack} from "@/models/UserPlaylists.ts";
-import {ISoundtrack, Soundtrack} from "@/entities/soundtrack";
+import {ISoundtrack, PlaylistSoundtrack, Soundtrack} from "@/entities/soundtrack";
 
 interface SoundtrackListProps {
     soundtracks: ISoundtrack[] | PlaylistSoundtrack[]
