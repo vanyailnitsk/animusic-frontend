@@ -8,7 +8,7 @@ import Skeleton from "react-loading-skeleton";
 
 export const AnimePage = () => {
     const {id} = useParams()
-    const [isLoadingImage, setIsLoadingImage] = useState(true)
+    const [isLoading, setIsLoading] = useState({banner: true, albums: true})
     const [animeData, setAnimeData] = useState<IAnime | null>(null)
     const [color, setColor] = useState('')
     useEffect(() => {
@@ -19,12 +19,14 @@ export const AnimePage = () => {
             })
             .catch((error) => console.log(error))
     }, [id]);
-
+    const handleAlbumsLoading = () => {
+        setIsLoading(prevState => ({...prevState, albums: false}))
+    }
     return (
         <div className={styles.anime__page__wrapper}>
-            {animeData && <div className={styles.anime__banner}>
+            <div className={styles.anime__banner}>
                 <div className={styles.overlay}></div>
-                {isLoadingImage && <Skeleton style={{
+                {isLoading.banner && <Skeleton style={{
                     height: '35vh',
                     borderTopRightRadius: 7,
                     borderTopLeftRadius: 7,
@@ -32,19 +34,20 @@ export const AnimePage = () => {
                     top: 0
                 }}/>}
                 <img
-                    src={storageUrl + animeData.banner.image.source} alt=""
-                    onLoad={() => setIsLoadingImage(false)}
+                    src={storageUrl + animeData?.banner.image.source} alt=""
+                    onLoad={() => setIsLoading({...isLoading, banner: false})}
                 />
-                {!isLoadingImage &&
+                {!isLoading.banner &&
                     <div className={styles.anime__title}>
-                        <h1>{animeData.title}</h1>
+                        <h1>{animeData?.title}</h1>
                     </div>
 
                 }
-            </div>}
+            </div>
             <div style={{background: `linear-gradient(to bottom, ${color}, #121212`}}
                  className={styles.anime__page__bottom__rgb}></div>
-            {id && <AlbumList id={id}/>}
+            {id && <AlbumList id={id} isAlbumsLoading={isLoading.albums && isLoading.banner}
+                              setAlbumsLoading={handleAlbumsLoading}/>}
         </div>
     );
 };

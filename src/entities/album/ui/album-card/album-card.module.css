@@ -52,3 +52,10 @@
     height: 40px;
 }
 
+.album__card__hidden {
+    opacity: 0;
+}
+
+.album__card__show {
+    opacity: 1;
+}

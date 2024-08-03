@@ -1,26 +1,24 @@
-import {useState} from 'react';
 import styles from './album-card.module.css'
 import playButton from '@/shared/icons/playButton.png'
-import Skeleton from "react-loading-skeleton";
 import {useNavigate} from "react-router-dom";
+import {clsx} from "clsx";
 
 interface AlbumCardProps {
     name: string
     id: number
     imageUrl: string
+    show: boolean
+    handleLoadCardImage: () => void
 }
 
-export const AlbumCard = ({name, id, imageUrl}: AlbumCardProps) => {
+export const AlbumCard = ({name, id, imageUrl, show, handleLoadCardImage}: AlbumCardProps) => {
     const navigate = useNavigate()
-    const [loadingImg,setLoadingImg] = useState(true)
     return (
-        <div className={styles.album__card__wrapper} onClick={() => navigate('/album/' + id)}>
-            {loadingImg?
-                <Skeleton style={{width: 152, height: 152, position: 'absolute', top: 0, zIndex: 1000}}/>
-                :null
-            }
+        <div className={clsx(styles.album__card__wrapper, show ? styles.album__card__show : styles.album__card__hidden)}
+             onClick={() => navigate('/album/' + id)}>
             <div className={styles.album__card__image_wrapper}>
-                <img src={imageUrl} alt="" onLoad={() => setLoadingImg(false)}
+                <img src={imageUrl} alt="" onLoad={handleLoadCardImage}
+                     onError={handleLoadCardImage}
                      className={styles.album__card__image}/>
                 <div className={styles.album__card__actions}>
                     <img src={playButton} alt="" className={styles.album__card__actions_img}/>
