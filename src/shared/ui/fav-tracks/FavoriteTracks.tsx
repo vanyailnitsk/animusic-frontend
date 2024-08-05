@@ -3,7 +3,7 @@ import fav from '@/shared/icons/favourites.jpg'
 import styles from './FavoriteTracks.module.css'
 import {useNavigate} from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import {COLLECTION} from "@/app/routers";
+import {COLLECTION} from "@/shared/consts";
 
 export const FavoriteTracks = () => {
     const navigate = useNavigate()

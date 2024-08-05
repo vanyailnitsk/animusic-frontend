@@ -1,7 +1,6 @@
 import {useContext} from 'react';
 import {SkeletonTheme} from 'react-loading-skeleton';
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
-import {ALBUM_ROUTE, ANIME_ROUTE, COLLECTION, HOME_ROUTE, LOGIN, SEARCH_ROUTE, SIGN_UP} from "./routes";
 import {observer} from "mobx-react-lite";
 import {PrivateRoute} from "@/app/routers/privateRoute.tsx";
 import {Context} from "@/main.tsx";
@@ -12,18 +11,18 @@ import {AnimePage} from "@/pages/anime";
 import {AlbumPage} from "@/pages/album";
 import {SearchPage} from "@/pages/search";
 import {PlaylistPage} from "@/pages/playlist";
-import {SignIn} from "@/widgets/sign-in";
-import {SignUp} from "@/widgets/sign-up";
+import {SignIn, SignUp} from "@/pages/auth";
+import {ALBUM_ROUTE, ANIME_ROUTE, COLLECTION, HOME_ROUTE, LOGIN, SEARCH_ROUTE, SIGN_UP} from "@/shared/consts";
 
 export const AppRouter = observer(() => {
     const {userStore} = useContext(Context)
     return (
         <SkeletonTheme baseColor="#313131" highlightColor="#525252">
-        <BrowserRouter>
-            {userStore.isAuth && <MusicPlayer/>}
+            <BrowserRouter>
+                {userStore.isAuth && <MusicPlayer/>}
                 <Routes>
                     <Route path={LOGIN} element={userStore.isAuth ? <Navigate to={HOME_ROUTE} replace/> : <SignIn/>}/>
-                    <Route path={SIGN_UP} element={userStore.isAuth? <Navigate to={HOME_ROUTE} replace /> : <SignUp />} />
+                    <Route path={SIGN_UP} element={userStore.isAuth ? <Navigate to={HOME_ROUTE} replace/> : <SignUp/>}/>
                     {!userStore.isAuthInProgress && (
                         <Route element={<PrivateRoute/>}>
                             <Route path={HOME_ROUTE} element={<AppContent page={<HomePage/>}/>}/>
@@ -34,7 +33,7 @@ export const AppRouter = observer(() => {
                         </Route>
                     )}
                 </Routes>
-        </BrowserRouter>
+            </BrowserRouter>
         </SkeletonTheme>
     );
 })

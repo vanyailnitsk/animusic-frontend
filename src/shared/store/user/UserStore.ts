@@ -68,7 +68,11 @@ export class UserStore {
             this.setAuth(true)
             this.setUser(response.data.user)
         } catch (e : any){
-            console.log(e.response?.data?.message)
+            if (e.request.status === 0) {
+                console.log(e.message)
+            } else {
+                console.log(e.response?.data?.message)
+            }
         } finally {
             this.setAuthProgress(false)
         }

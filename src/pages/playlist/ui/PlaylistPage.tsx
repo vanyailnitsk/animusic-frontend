@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import {getCollection, Playlist} from "@/entities/playlist";
-import {COLLECTION} from "@/app/routers";
+import {COLLECTION} from "@/shared/consts";
 import {SoundtrackList} from "@/widgets/soundtrack-list";
 
 
